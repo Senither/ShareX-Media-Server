@@ -27,6 +27,10 @@ Then install all the dependencies using composer:
 
     composer install
 
+Next you'll need to generate a unique key, you can this using Laravels artisan helper command.
+
+    php artisan key:generate
+
 Once everything is installed, open up the **.env** file and update the database values to match your database settings, once that is done you can migrate and seed the database to get the last few bits up and running.
 
     php artisan migrate --seed

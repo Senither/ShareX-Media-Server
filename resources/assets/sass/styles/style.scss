@@ -1,0 +1,43 @@
+body {
+    color: $text-color;
+    background-color: $background-color-dark;
+}
+.container {
+    margin-top: 32px;
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bottom-space {
+    margin-bottom: 16px;
+}
+.thumbnail {
+    @include background-border;
+}
+.panel, .panel-default {
+    background-color: $background-color-light;
+    border-color: $background-color-light;
+}
+.panel-default > .panel-heading {
+    background-color: $background-color-dark;
+    color: $text-color;
+    border-bottom: none;
+}
+.footer-note {
+    margin-top: 24px;
+    color: $background-color-light;
+
+    & span {
+        color: #337ab7;
+    }
+}
+input[type="password"].token {
+    font-size: 2em;
+}
+.right {
+    float: right;
+
+    &:after { clear: both; }
+}

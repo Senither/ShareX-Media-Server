@@ -1,0 +1,11 @@
+
+@mixin background-border ($size: 1px) {
+    background-color: $background-color-dark;
+    border: $size solid $background-color-light;
+}
+
+@mixin background-border-hf ($size: 1px) {
+    border: $size solid $background-color-light;
+    background-color: $background-color-light;
+    color: $text-color;
+}

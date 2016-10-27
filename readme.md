@@ -49,6 +49,8 @@ To get started, navigate to: *Destinations* -> *Destination Settings* -> *Custom
 
 Create a new custom uploader and set the *Request URL* to the root of your website, and the _Request type_ to POST, next create a new header with the _token_ key, and the token value from the control panel, it should look something like this. 
 
+![ShareX - Custom Uploaders Page](ShareX-custom-uploaders-page.png "ShareX - Custom Uploaders Page")
+
 #### License
 
 The ShareX Media Server open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

@@ -9,13 +9,9 @@ You're welcome to use this project for your own purpose, on your own server.
 
  - PHP >= 5.5.9
  - PDO PHP Extension
+ - Fileinfo PHP Extension
  - Mbstring PHP Extension
  - Tokenizer PHP Extension
-
-#### Examples
-
-![ShareX Media Server - Homepage](ShareX-example-home.png "ShareX Media Server - Homepage")
-![ShareX Media Server - Control Panel](ShareX-example-cp.png "ShareX Media Server - Control Panel")
 
 #### Installing ShareX Media Server
 
@@ -27,7 +23,7 @@ Then install all the dependencies using composer:
 
     composer install
 
-Next you'll need to generate a unique key, you can this using Laravels artisan helper command.
+Next you'll need to generate a unique key, you can do this using Laravels artisan helper command.
 
     php artisan key:generate
 
@@ -45,10 +41,14 @@ The admin login details are:
  * __Username:__ admin
  * __Password:__ secret
 
+> **Tip:** Make sure that Laravel can read and write to the *storage* folder, this is required both for Laravel to work correctly, and for the media server to store the images that are uploaded.
+
 #### Setting up ShareX
 
 To get started, navigate to: *Destinations* -> *Destination Settings* -> *Custom uploaders*
 
 Create a new custom uploader and set the *Request URL* to the root of your website, and the _Request type_ to POST, next create a new header with the _token_ key, and the token value from the control panel, it should look something like this. 
 
-![ShareX Custom Uploaders page](ShareX-custom-uploaders-page.png "ShareX Custom Uploaders page")
+#### License
+
+The ShareX Media Server open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

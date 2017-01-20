@@ -68,7 +68,7 @@ class UserController extends Controller
         $user->token = str_random(62);
         $user->save();
 
-        return redirect('AdminController@index');
+        return redirect()->action('AdminController@index');
     }
 
     public function update(Request $request)

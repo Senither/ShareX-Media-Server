@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Displays a flash message to the user using ToastrJS.
+ * Displays a flash message to the user using flash sessions.
  *
  * @param string $title
  * @param string $message

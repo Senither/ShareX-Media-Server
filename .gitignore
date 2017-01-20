@@ -5,4 +5,5 @@
 Homestead.json
 Homestead.yaml
 .sublime-gulp.cache
+.serve
 .env

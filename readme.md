@@ -1,7 +1,7 @@
 ShareX Media Server
 ===================
 
-*ShareX Media Server* is a simple image shareing website, that utilizes [ShareX](https://getsharex.com/) and [Laravel](http://laravel.com/) to share screenshots with the world. The project was created for myself, since my old media server ran on a "slighty" old version of my own framework.
+*ShareX Media Server* is a simple image sharing website, that utilizes [ShareX](https://getsharex.com/) and [Laravel](https://laravel.com/) to share screenshots with the world. The project was created for myself, since my old media server ran on a "slighty" old version of my own framework.
 
 You're welcome to use this project for your own purpose, on your own server.
 

@@ -45,6 +45,13 @@ class MediaCleanupCommand extends Command
         $this->info('Done!');
     }
 
+    /**
+     * Generates the Carbon expiration object using the settings model, if all 
+     * the settings live values are at zero or below, a Carbon object set to 
+     * one minute in the past will be returned instead. 
+     * 
+     * @return Carbon\Carbon
+     */
     protected function generateCarbonTimestamp()
     {
         $settings = Settings::first();

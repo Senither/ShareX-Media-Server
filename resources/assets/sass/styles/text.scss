@@ -11,3 +11,12 @@ p.cp {
 .text-light {
     color: $background-color-light;
 }
+.media-title {
+    color: $text-color;
+
+    &:hover {
+        // Bootstrap primary colour
+        color: #337ab7;
+        text-decoration: none;
+    }
+}

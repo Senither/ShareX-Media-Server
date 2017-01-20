@@ -2,7 +2,9 @@
 <div class="row hidden-sm hidden-xs bottom-space">
     <div class="col-md-9">
         <h1 class="title">
-            {{ $settings->name }}
+            <a href="{{ action('HomeController') }}" class="media-title">
+                {{ $settings->name }}
+            </a>
             <small>@yield('page-title')</small>
         </h1>
     </div>
@@ -59,4 +61,4 @@
         </p>
     </div>
 </div>
-<!--/ Mobile Header -->
+<!--/ Mobile Header

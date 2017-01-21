@@ -13,6 +13,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::with('group')
+                     ->orderBy('super', 'desc')
                      ->orderBy('group_id')
                      ->orderBy('username')
                      ->paginate(10);

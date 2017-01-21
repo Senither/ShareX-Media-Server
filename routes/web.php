@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cp'], function () {
     Route::post('/user/create', 'UserAdminController@store');
     Route::get('/user/{user}/edit',  'UserAdminController@edit');
     Route::post('/user/{user}/edit', 'UserAdminController@update');
+    Route::get('/user/{user}/delete',  'UserAdminController@showDelete');
+    Route::post('/user/{user}/delete', 'UserAdminController@destory');
 
     Route::get('/images', 'ImageAdminController@index');
     Route::get('/images/{id}/delete', 'ImageAdminController@destory');

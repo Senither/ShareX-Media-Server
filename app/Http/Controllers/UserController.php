@@ -89,7 +89,7 @@ class UserController extends Controller
         Auth::user()->save();
 
         flash()->success(
-            'Account updated successfully!', 
+            'Account updated successfully!',
             'Your account password has been updated successfully.'
         );
 

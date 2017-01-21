@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class UserAdminController extends Controller
@@ -108,5 +109,31 @@ class UserAdminController extends Controller
         flash()->success('Account updated successfully!', $user->username.'\'s account has been updated successfully!');
 
         return redirect()->action('UserAdminController@edit', [$user->username]);
+    }
+
+    public function showDelete(User $user)
+    {
+        if (! Auth::user()->hasPermission('user.edit.group.'.$user->group->id) || $user->super) {
+            return abort(401);
+        }
+
+        return view('user.delete', compact('user'));
+    }
+
+    public function destory(User $user)
+    {
+        DB::table('sessions')->where('user_id', $user->id)->delete();
+
+        foreach ($user->images as $image) {
+            $image->delete();
+        }
+
+        $user->delete();
+        flash()->success(
+            'Account deleted successfully!',
+            'The account <i>'.$user->username.'</i> and <i>'.$user->images->count().'</i> images has been deleted successfully!'
+        );
+
+        return redirect()->action('AdminController@index');
     }
 }

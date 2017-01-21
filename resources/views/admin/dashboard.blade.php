@@ -155,6 +155,10 @@
                                     @else
                                         <a href="#" class="btn btn-primary btn-sm" title="You can't edit this user" disabled>Edit</a>
                                     @endif
+
+                                    @if(Auth::user()->hasPermission('user.delete.group.'.$user->group->id) && !$user->super)
+                                        <a href="{{ action('UserAdminController@showDelete', [$user->username]) }}" class="btn btn-danger btn-sm">Delete</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

@@ -35,6 +35,12 @@ class PermissionsSeeder extends Seeder
             'name' => 'Allows the user to edit other uses with a group ID of 3',
             'node' => 'user.edit.group.3'
         ], [
+            'name' => 'Allows the user to delete other uses with a group ID of 2',
+            'node' => 'user.delete.group.2'
+        ], [
+            'name' => 'Allows the user to delete other uses with a group ID of 3',
+            'node' => 'user.delete.group.3'
+        ], [
             'name' => 'Allows the user to change other peoples usernames',
             'node' => 'user.edit.username'
         ], [
@@ -64,6 +70,8 @@ class PermissionsSeeder extends Seeder
             'user.edit.group.2',
             'user.edit.group',
             'user.edit.group.3',
+            'user.delete.group.2',
+            'user.delete.group.3',
             'user.edit.username',
             'user.edit.password',
             'user.image.delete',
@@ -79,6 +87,7 @@ class PermissionsSeeder extends Seeder
             'user.create',
             'user.create.group.3',
             'user.edit.group.3',
+            'user.delete.group.3',
             'user.edit.password',
             'user.image.see',
             'user.image.delete',

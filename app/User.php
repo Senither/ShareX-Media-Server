@@ -105,4 +105,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }
+
+    /**
+     * Sets up our user-image relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'user_id');
+    }
 }

@@ -17,7 +17,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        View::share('settings', $this->settings());   
+        View::share('settings', $this->settings());
     }
 
     public function settings()

@@ -3,6 +3,7 @@
 <head>
     <title>{{ $settings->name }} &bull; @yield('page-title')</title>
     <link rel="stylesheet" href="{{ asset('static/app.css') }}">
+    @yield('style')
 </head>
 <body>
 <div class="container">

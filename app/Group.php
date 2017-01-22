@@ -15,6 +15,17 @@ class Group extends Model
      */
     protected $fillable = ['name'];
 
+    /**
+     * Sets the route key name, allowing the controllers to type-hint
+     * eloquent models to fetch users from their username.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     /*
      * Sets up our group-to-users relationship.
      *

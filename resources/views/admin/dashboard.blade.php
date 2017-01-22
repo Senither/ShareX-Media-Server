@@ -120,6 +120,43 @@
         @endif
     </div>
 
+    @if(Auth::user()->super)
+    <!-- Permission Management -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Group Permission Management</strong>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Color</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach(\App\Group::all() AS $index => $group)
+                            <tr>
+                                <td>{{ $group->id }}</td>
+                                <td>{{ $group->name }}</td>
+                                <td><span class="label" style="background-color: #{{ $group->color }}">#{{ mb_strtoupper($group->color) }}</span></td>
+                                <td><a href="{{ action('PermissionsController@show', [mb_strtolower($group->name)]) }}" class="btn btn-sm btn-primary">Manage Permissions</a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Permission Management -->
+    @endif
+
     @if(Auth::user()->hasPermission('user.management.see'))
     <!-- User Management -->
     <div class="row">

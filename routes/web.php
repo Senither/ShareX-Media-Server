@@ -1,5 +1,7 @@
 <?php
 
+use App\Group;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'cp'], function () {
     Route::post('/user/{user}/edit', 'UserAdminController@update');
     Route::get('/user/{user}/delete',  'UserAdminController@showDelete');
     Route::post('/user/{user}/delete', 'UserAdminController@destory');
+
+    Route::get('/permissions/{group}', 'PermissionsController@show');
+    Route::post('/permissions/{group}', 'PermissionsController@update');
 
     Route::get('/images', 'ImageAdminController@index');
     Route::get('/images/{id}/delete', 'ImageAdminController@destory');

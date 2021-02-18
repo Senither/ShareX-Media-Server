@@ -1,56 +1,62 @@
-ShareX Media Server
-===================
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-*ShareX Media Server* is a simple image sharing website, that utilizes [ShareX](https://getsharex.com/) and [Laravel](https://laravel.com/) to share screenshots with the world. The project was created for myself, since my old media server ran on a "slighty" old version of my own framework.
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-You're welcome to use this project for your own purpose, on your own server.
+## About Laravel
 
-#### Server Requirements
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
- - PHP >= 5.5.9
- - PDO PHP Extension
- - Fileinfo PHP Extension
- - Mbstring PHP Extension
- - Tokenizer PHP Extension
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-#### Installing ShareX Media Server
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Installing the media server is made super easy with composer, simply clone the repository to the folder you want it in:
+## Learning Laravel
 
-    git clone https://github.com/Senither/ShareX-Media-Server.git .
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Then install all the dependencies using composer:
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-    composer install
+## Laravel Sponsors
 
-Next you'll need to generate a unique key, you can do this using Laravels artisan helper command.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-    php artisan key:generate
+### Premium Partners
 
-Once everything is installed, open up the **.env** file and update the database values to match your database settings, once that is done you can migrate and seed the database to get the last few bits up and running.
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/)**
+- **[OP.GG](https://op.gg)**
 
-    php artisan migrate --seed
+## Contributing
 
-You're now ready to start using the media server, however if you want the images to automatically be deleted after they expire you'll need to make a cronjob that runs every minute that runs Laravels scheduler.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-    * * * * * php /path/to/project/artisan schedule:run
+## Code of Conduct
 
-And you're done with all of the setup, you can now login to the control panel using the admin account, once you're logged in you can change your username, password and even make new accounts.
-The admin login details are:
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
- * __Username:__ admin
- * __Password:__ secret
+## Security Vulnerabilities
 
-> **Tip:** Make sure that Laravel can read and write to the *storage* folder, this is required both for Laravel to work correctly, and for the media server to store the images that are uploaded.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-#### Setting up ShareX
+## License
 
-To get started, navigate to: *Destinations* -> *Destination Settings* -> *Custom uploaders*
-
-Create a new custom uploader and set the *Request URL* to the root of your website, and the _Request type_ to POST, next create a new header with the _token_ key, and the token value from the control panel, it should look something like this. 
-
-![ShareX - Custom Uploaders Page](ShareX-custom-uploaders-page.png "ShareX - Custom Uploaders Page")
-
-#### License
-
-The ShareX Media Server open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

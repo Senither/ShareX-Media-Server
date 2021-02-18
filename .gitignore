@@ -1,9 +1,13 @@
 /node_modules
+/public/hot
 /public/storage
+/storage/*.key
 /vendor
-/.idea
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
 Homestead.json
 Homestead.yaml
-.sublime-gulp.cache
-.serve
-.env
+npm-debug.log
+yarn-error.log

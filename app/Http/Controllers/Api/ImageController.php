@@ -36,7 +36,13 @@ class ImageController extends Controller
      */
     public function store(ImageUploadRequest $request)
     {
-        return response(Image::createAndSave($request->file('image')), 201);
+        $image = Image::createAndSave($request->file('image'));
+
+        if ($request->header('Accept') == 'text/plain') {
+            $image = $image->resource_url;
+        }
+
+        return response($image, 201);
     }
 
     /**

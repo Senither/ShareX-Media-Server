@@ -44,4 +44,18 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    /**
+     * Marks the model as a site administrator.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function siteAdmin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_admin' => true,
+            ];
+        });
+    }
 }

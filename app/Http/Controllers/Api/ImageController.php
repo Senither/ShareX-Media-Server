@@ -24,7 +24,7 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
-        return Image::where('user_id', $request->user()->id)->paginate(10);
+        return Image::paginate(10);
     }
 
     /**

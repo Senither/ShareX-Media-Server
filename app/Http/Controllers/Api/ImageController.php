@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageUploadRequest;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -30,12 +31,12 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ImageUploadRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageUploadRequest $request)
     {
-        // TODO: Store the image and create a tumbnail for it.
+        return response(Image::createAndSave($request->file('image')), 201);
     }
 
     /**
@@ -57,7 +58,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        // TODO: Delete the image, and its thumbnail
+        $image->delete();
 
         return response(null, 204);
     }

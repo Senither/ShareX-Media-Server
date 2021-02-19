@@ -7,6 +7,15 @@ use App\Scopes\UserScope;
 trait MediaResource
 {
     /**
+     * Initializes the media resource trait.
+     */
+    public function initializeMediaResource()
+    {
+        $this->append('resource_url');
+        $this->append('resource_api');
+    }
+
+    /**
      * The route key name, allowing the controllers to type-hint
      * eloquent models to fetch them from their name.
      *
@@ -24,16 +33,26 @@ trait MediaResource
      */
     public function getResourceName()
     {
-        return sprintf('%s/%d/%s.%s', $this->getShortClassName(), $this->user_id, $this->name, $this->extension);
+        return sprintf('%d/%s.%s', $this->user_id, $this->name, $this->extension);
     }
 
     /**
-     * Get the short lowercased version of the class name.
+     * Creates a URL to the direct resource for the current media resource.
      *
      * @return string
      */
-    private function getShortClassName()
+    public function getResourceUrlAttribute()
     {
-        return mb_strtolower((new \ReflectionClass($this))->getShortName());
+        return url($this->resourceIdentifier . '/' . $this->name);
+    }
+
+    /**
+     * Creates a URL to the resource API route for the current media resource.
+     *
+     * @return string
+     */
+    public function getResourceApiAttribute()
+    {
+        return url('api/' . $this->resourceApiName . '/' . $this->name);
     }
 }

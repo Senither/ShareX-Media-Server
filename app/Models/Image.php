@@ -6,6 +6,8 @@ use App\Traits\BelongsToUser;
 use App\Traits\MediaResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 
 class Image extends Model
 {
@@ -21,6 +23,22 @@ class Image extends Model
     protected $fillable = ['user_id', 'name', 'extension'];
 
     /**
+     * The resource identifier, this is what makes each resource unique
+     * in the URL when generating links to the media resource.
+     *
+     * @var string
+     */
+    protected $resourceIdentifier = 'i';
+
+    /**
+     * The API resource name, this is the API resource name
+     * used when registering the route in the API.
+     *
+     * @var string
+     */
+    protected $resourceApiName = 'images';
+
+    /**
      * The belongs to relationship between the image and the user who owns it.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -28,5 +46,26 @@ class Image extends Model
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Creates a new image entry, and stores the uploaded file.
+     *
+     * @param  \Illuminate\Http\UploadedFile $file
+     * @return \App\Models\Image
+     */
+    public static function createAndSave(UploadedFile $file)
+    {
+        $model = new self([
+            'user_id' => auth()->user()->id,
+            'name' => Str::random(rand(0, 5) + 4),
+            'extension' => $file->extension()
+        ]);
+
+        $file->storeAs('images', $model->getResourceName());
+
+        $model->save();
+
+        return $model;
     }
 }

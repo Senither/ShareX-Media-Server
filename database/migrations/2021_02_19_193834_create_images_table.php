@@ -23,6 +23,7 @@ class CreateImagesTable extends Migration
                 ->string('name')
                 ->unique()
                 ->index();
+            $table->string('extension', 12);
             $table->integer('height');
             $table->integer('width');
             $table->integer('size');

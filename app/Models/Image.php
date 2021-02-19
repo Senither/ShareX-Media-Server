@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Traits\BelongsToUser;
+use App\Traits\MediaResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
     use HasFactory;
+    use MediaResource;
     use BelongsToUser;
 
     /**
@@ -17,17 +19,6 @@ class Image extends Model
      * @var array
      */
     protected $fillable = ['user_id', 'name', 'height', 'width'];
-
-    /**
-     * The route key name, allowing the controllers to type-hint
-     * eloquent models to fetch them from their name.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'name';
-    }
 
     /**
      * The belongs to relationship between the image and the user who owns it.

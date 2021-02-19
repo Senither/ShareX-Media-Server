@@ -28,9 +28,6 @@ class ImageFactory extends Factory
             'user_id' => User::factory(),
             'name' => Str::random(10),
             'extension' => 'png',
-            'height' => $this->faker->numberBetween(16, 128),
-            'width' => $this->faker->numberBetween(16, 128),
-            'size' => $this->faker->numberBetween(128, 512),
         ];
     }
 }

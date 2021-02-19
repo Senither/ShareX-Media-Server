@@ -18,7 +18,7 @@ class Image extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'name', 'height', 'width'];
+    protected $fillable = ['user_id', 'name', 'extension'];
 
     /**
      * The belongs to relationship between the image and the user who owns it.

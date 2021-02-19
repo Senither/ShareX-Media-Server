@@ -24,9 +24,6 @@ class CreateImagesTable extends Migration
                 ->unique()
                 ->index();
             $table->string('extension', 12);
-            $table->integer('height');
-            $table->integer('width');
-            $table->integer('size');
             $table->timestamps();
 
             $table->unique(['user_id', 'name']);

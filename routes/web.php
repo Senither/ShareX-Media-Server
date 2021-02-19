@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RenderImageController;
 use App\Http\Middleware\SiteAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('i/{image}', RenderImageController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {

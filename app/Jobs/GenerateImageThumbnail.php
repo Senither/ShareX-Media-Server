@@ -49,11 +49,19 @@ class GenerateImageThumbnail implements ShouldQueue
     {
         $generator = ImageGenerator::make(Storage::get('images/' . $this->image->getResourceName()));
 
-        $this->resizeAndSave($generator, 512);
-        $this->resizeAndSave($generator, 256);
-        $this->resizeAndSave($generator, 128);
+        foreach (Image::$supportedSizes as $size) {
+            $this->resizeAndSave($generator, $size);
+        }
     }
 
+    /**
+     * Resizes the image into a fit so it is matches
+     * the given size, and saves for the user.
+     *
+     * @param  \Intervention\Image\Facades\Image $generator
+     * @param  int $size
+     * @return void
+     */
     protected function resizeAndSave($generator, $size)
     {
         $generator->fit($size, $size);

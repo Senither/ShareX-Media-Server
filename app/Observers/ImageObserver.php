@@ -28,5 +28,9 @@ class ImageObserver
     public function deleted(Image $image)
     {
         Storage::delete('images/' . $image->getResourceName());
+
+        foreach (Image::$supportedSizes as $size) {
+            Storage::delete('images/' . $image->getResourceName($size . 'x' . $size));
+        }
     }
 }

@@ -16,6 +16,13 @@ class Image extends Model
     use BelongsToUser;
 
     /**
+     * The list of supported image sizes that should be generated.
+     *
+     * @var array
+     */
+    public static $supportedSizes = [512, 256, 128];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

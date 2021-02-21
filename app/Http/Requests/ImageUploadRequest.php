@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class ImageUploadRequest extends FormRequest
+class ImageUploadRequest extends ApiRequest
 {
     /**
      * Get the validation rules that apply to the request.

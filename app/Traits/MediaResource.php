@@ -29,11 +29,15 @@ trait MediaResource
     /**
      * Generates the resource name for the current model instance.
      *
+     * @param  string $type
      * @return string
      */
-    public function getResourceName()
+    public function getResourceName($type = null)
     {
-        return sprintf('%d/%s.%s', $this->user_id, $this->name, $this->extension);
+        if ($type == null) {
+            return sprintf('%d/%s.%s', $this->user_id, $this->name, $this->extension);
+        }
+        return sprintf('%d/%s-%s.%s', $this->user_id, $this->name, $type, $this->extension);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\GenerateImageThumbnail;
 use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +16,7 @@ class ImageObserver
      */
     public function created(Image $image)
     {
-        // TODO: Generate thumbnail here
+        GenerateImageThumbnail::dispatch($image);
     }
 
     /**

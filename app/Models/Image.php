@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Identifier\IdentifierContract;
 use App\Traits\BelongsToUser;
 use App\Traits\MediaResource;
+use HyungJu\ReadableURL;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
@@ -65,8 +67,8 @@ class Image extends Model
     {
         $model = new self([
             'user_id' => auth()->user()->id,
-            'name' => Str::random(rand(0, 5) + 4),
-            'extension' => $file->extension()
+            'name' => app(IdentifierContract::class)->generate(),
+            'extension' => $file->extension(),
         ]);
 
         $file->storeAs('images', $model->getResourceName());

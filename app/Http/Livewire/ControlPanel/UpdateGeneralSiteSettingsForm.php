@@ -4,7 +4,7 @@ namespace App\Http\Livewire\ControlPanel;
 
 use Livewire\Component;
 
-class UpdateSiteNameForm extends Component
+class UpdateGeneralSiteSettingsForm extends Component
 {
     /**
      * The name of the site.
@@ -14,12 +14,20 @@ class UpdateSiteNameForm extends Component
     public $name;
 
     /**
+     * The url method used to general URL strings.
+     *
+     * @var string
+     */
+    public $urlMethod;
+
+    /**
      * The validation rules for the component.
      *
      * @var array
      */
     protected $rules = [
-        'name' => 'required|string|min:3',
+        'name' => ['required', 'string', 'min:3'],
+        'urlMethod' => ['required', 'in:wordlist,characters'],
     ];
 
     /**
@@ -30,6 +38,7 @@ class UpdateSiteNameForm extends Component
     public function mount()
     {
         $this->name = 'Some site name...';
+        $this->urlMethod = 'characters';
     }
 
     /**
@@ -56,6 +65,6 @@ class UpdateSiteNameForm extends Component
      */
     public function render()
     {
-        return view('control-panel.update-site-name-form');
+        return view('control-panel.update-general-site-settings-form');
     }
 }

@@ -1,10 +1,10 @@
 <x-jet-form-section submit="updateSiteName">
     <x-slot name="title">
-        {{ __('Site Name') }}
+        {{ __('General Site Settings') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Change the name of the site.') }}
+        {{ __('Change the general global site settings.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -13,6 +13,19 @@
             <x-jet-label for="name" value="{{ __('Name') }}" />
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
+        </div>
+
+        <!-- Name -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="name" value="{{ __('URL Generation Method') }}" />
+            <select
+                wire:model="urlMethod"
+                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+            >
+                <option value="wordlist">Word List</option>
+                <option value="characters">Random Characters</option>
+            </select>
+            <x-jet-input-error for="urlMethod" class="mt-2" />
         </div>
     </x-slot>
 

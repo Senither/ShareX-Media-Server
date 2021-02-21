@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\RandomizeIdentifierProvider::class,
 
         /*
          * Application Service Providers...

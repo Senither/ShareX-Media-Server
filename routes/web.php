@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RenderImageController;
 use App\Http\Middleware\SiteAdmin;
 use Illuminate\Support\Facades\Route;
@@ -20,10 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('i/{image}/{type?}', RenderImageController::class)->name('image');
+Route::get('i/{image}/{type?}', RenderImageController::class)->name('view-image');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::get('/images', ImageController::class)->name('images');
 
     Route::middleware(SiteAdmin::class)
         ->get('/control-panel', function () {

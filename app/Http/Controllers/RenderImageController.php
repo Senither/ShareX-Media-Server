@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\Storage;
 
 class RenderImageController extends Controller
 {
-    public function __invoke(Image $image)
+    public function __invoke(Image $image, $type = null)
     {
-        return response(Storage::get('images/' . $image->getResourceName()))
+        $path = 'images/' . $image->getResourceName($type);
+
+        if (!Storage::exists($path)) {
+            $path = 'images/' . $image->getResourceName();
+        }
+
+        return response(Storage::get($path))
             ->header('Content-Type', MimeType::fromExtension($image->extension));
     }
 }

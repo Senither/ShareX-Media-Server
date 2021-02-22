@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControlPanelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\RenderImageController;
@@ -22,12 +23,10 @@ Route::redirect('/', '/login');
 Route::get('i/{image}/{type?}', RenderImageController::class)->name('view-image');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
-    Route::get('/images', ImageController::class)->name('images');
+    Route::view('/dashboard', 'dashboard.index')->name('dashboard');
+    Route::view('/images', 'images.index')->name('images');
 
-    Route::middleware(SiteAdmin::class)
-        ->get('/control-panel', function () {
-            return view('control-panel.index');
-        })
+    Route::view('/control-panel', 'control-panel.index')
+        ->middleware(SiteAdmin::class)
         ->name('control-panel');
 });

@@ -22,7 +22,21 @@ class ImagePreviewList extends Component
     public function render()
     {
         return view('images.image-preview-list', [
-            'images' => Image::latest()->limit(12)->get(),
+            'images' => Image::latest()
+                ->limit($this->getImagesPerPageSize())
+                ->get(),
         ]);
+    }
+
+    /**
+     * Gets the images that should be shown per page, and divides
+     * it by half, if the value is larger than 12 we just cap
+     * the images shown per page by 12.
+     *
+     * @return int
+     */
+    protected function getImagesPerPageSize()
+    {
+        return min(app('settings')->get('images.per_page') / 2, 12);
     }
 }

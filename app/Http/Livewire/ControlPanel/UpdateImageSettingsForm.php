@@ -44,11 +44,13 @@ class UpdateImageSettingsForm extends Component
      */
     public function mount()
     {
+        $settings = app('settings');
+
         $this->settings = [
-            'ttl_days' => 90,
-            'ttl_hours' => 0,
-            'ttl_minutes' => 0,
-            'per_page' => 24,
+            'ttl_days' => $settings->get('images.ttl_days'),
+            'ttl_hours' => $settings->get('images.ttl_hours'),
+            'ttl_minutes' => $settings->get('images.ttl_minutes'),
+            'per_page' => $settings->get('images.per_page'),
         ];
     }
 
@@ -61,8 +63,11 @@ class UpdateImageSettingsForm extends Component
     {
         $this->validate();
 
-        // TODO: Setup somewhere to store the site settings, and
-        // save the value of the site name to that place here.
+        $manager = app('settings');
+
+        foreach ($this->settings as $name => $value) {
+            $manager->set('images.' . $name, $value);
+        }
 
         $this->emit('saved');
     }

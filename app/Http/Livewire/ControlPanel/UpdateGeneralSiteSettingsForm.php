@@ -37,8 +37,10 @@ class UpdateGeneralSiteSettingsForm extends Component
      */
     public function mount()
     {
-        $this->name = 'Some site name...';
-        $this->urlMethod = 'characters';
+        $settings = app('settings');
+
+        $this->name = $settings->get('app.name');
+        $this->urlMethod = $settings->get('app.url_generator');
     }
 
     /**
@@ -50,8 +52,10 @@ class UpdateGeneralSiteSettingsForm extends Component
     {
         $this->validate();
 
-        // TODO: Setup somewhere to store the site settings, and
-        // save the value of the site name to that place here.
+        $manager = app('settings');
+
+        $manager->set('app.name', $this->name);
+        $manager->set('app.url_generator', $this->urlMethod);
 
         $this->emit('saved');
 

@@ -25,7 +25,7 @@ class PaginatedImageList extends Component
     public function render()
     {
         return view('images.paginated-image-list', [
-            'images' => Image::latest()->paginate(24),
+            'images' => Image::latest()->paginate(app('settings')->get('images.per_page')),
         ]);
     }
 }

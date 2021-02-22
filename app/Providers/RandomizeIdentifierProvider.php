@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Identifier\IdentifierContract;
-use App\Identifier\SentenceIdentifier;
+use App\Identifier\WordlistIdentifier;
 use App\Identifier\StringIdentifier;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,13 +17,9 @@ class RandomizeIdentifierProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(IdentifierContract::class, function ($app) {
-            // TODO: Check for settings value here and return
-            // the identifier the user wants to use.
-            $settingsValue = 'string';
-
-            switch ($settingsValue) {
-                case 'sentence':
-                    return new SentenceIdentifier();
+            switch (app('settings')->get('app.url_generator')) {
+                case 'wordlist':
+                    return new WordlistIdentifier();
 
                 default:
                     return new StringIdentifier();

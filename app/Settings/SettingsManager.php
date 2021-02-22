@@ -124,6 +124,7 @@ class SettingsManager
             return;
         }
 
+        $this->hasLoadedDatabase = true;
         $this->existingKeys = [];
 
         foreach (DB::table('settings')->get() as $setting) {
@@ -131,8 +132,6 @@ class SettingsManager
 
             $this->existingKeys[] .= $setting->key;
         }
-
-        $this->hasLoadedDatabase = true;
     }
 
     /**

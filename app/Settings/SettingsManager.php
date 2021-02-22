@@ -38,17 +38,11 @@ class SettingsManager
     protected $existingKeys = [];
 
     /**
-     * Creates a new setting instance, loading the existing
-     * settings values from the database.
+     * Determines if the settings has been loaded from the database yet or not.
+     *
+     * @var boolean
      */
-    public function __construct()
-    {
-        foreach (DB::table('settings')->get() as $setting) {
-            $this->set($setting->key, $setting->value, false);
-
-            $this->existingKeys[] .= $setting->key;
-        }
-    }
+    protected $hasLoadedDatabase = false;
 
     /**
      * Syncs any changes with the database that was made.
@@ -72,6 +66,8 @@ class SettingsManager
      */
     public function get(string $name)
     {
+        $this->ensureSettingsAreLoaded();
+
         if (!$this->exists($name)) {
             throw new InvalidSettingsKeyException($name);
         }
@@ -91,6 +87,8 @@ class SettingsManager
      */
     public function set($name, $value, $updateOnChanges = true)
     {
+        $this->ensureSettingsAreLoaded();
+
         if (!$this->exists($name)) {
             throw new InvalidSettingsKeyException($name);
         }
@@ -111,6 +109,30 @@ class SettingsManager
     public function exists(string $name): bool
     {
         return array_key_exists($name, $this->settings);
+    }
+
+    /**
+     * Checks if the settings have been loaded from the database yet, if they
+     * haven't the method will load all the settings in the database, and
+     * store their keys in an array so we can check for them later
+     *
+     * @return void
+     */
+    public function ensureSettingsAreLoaded()
+    {
+        if ($this->hasLoadedDatabase) {
+            return;
+        }
+
+        $this->existingKeys = [];
+
+        foreach (DB::table('settings')->get() as $setting) {
+            $this->set($setting->key, $setting->value, false);
+
+            $this->existingKeys[] .= $setting->key;
+        }
+
+        $this->hasLoadedDatabase = true;
     }
 
     /**

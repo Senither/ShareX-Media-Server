@@ -112,6 +112,17 @@ class SettingsManager
     }
 
     /**
+     * Checks if the settings has changes that
+     * should be synced with the database.
+     *
+     * @return boolean
+     */
+    public function isDirty()
+    {
+        return !empty($this->dirty);
+    }
+
+    /**
      * Checks if the settings have been loaded from the database yet, if they
      * haven't the method will load all the settings in the database, and
      * store their keys in an array so we can check for them later

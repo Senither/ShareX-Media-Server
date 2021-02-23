@@ -154,6 +154,16 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('images') }}" :active="request()->routeIs('images')">
+                {{ __('Images') }}
+            </x-jet-responsive-nav-link>
+
+            @if(auth()->user()->is_admin)
+                <x-jet-responsive-nav-link href="{{ route('control-panel') }}" :active="request()->routeIs('control-panel')">
+                    {{ __('Control Panel') }}
+                </x-jet-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

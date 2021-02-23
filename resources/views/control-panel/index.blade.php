@@ -11,7 +11,9 @@
 
             <x-jet-section-border />
 
-            @livewire('control-panel.update-image-settings-form')
+            <div class="mt-10 sm:mt-0">
+                @livewire('control-panel.update-image-settings-form')
+            </div>
         </div>
     </div>
 </x-app-layout>

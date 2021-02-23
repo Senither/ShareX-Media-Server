@@ -2,23 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\URL;
+use App\Models\Image;
+use App\Observers\ImageObserver;
+use App\Settings\SettingsManager;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        if (config('app.secure')) {
-            URL::forceSchema('https');
-        }
-    }
-
     /**
      * Register any application services.
      *
@@ -27,5 +17,19 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->app->singleton('settings', function () {
+            return new SettingsManager;
+        });
+
+        Image::observe(ImageObserver::class);
     }
 }

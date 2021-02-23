@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Image;
-use App\Settings;
-use Carbon\Carbon;
+use App\Models\Image;
+use App\Settings\SettingsManager;
 use Illuminate\Console\Command;
 
 class MediaCleanupCommand extends Command
@@ -21,22 +20,51 @@ class MediaCleanupCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Cleans up the media images that has expired.';
+    protected $description = 'Deletes all the media resources that have expired.';
+
+    /**
+     * The application settings.
+     *
+     * @var \App\Settings\SettingsManager
+     */
+    protected $settings;
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct(SettingsManager $settings)
+    {
+        parent::__construct();
+
+        $this->settings = $settings;
+    }
 
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return int
      */
     public function handle()
     {
-        $images = Image::where('created_at', '<', $this->generateCarbonTimestamp())->get();
+        $this->cleanupImages();
+    }
+
+    /**
+     * Cleans up the expired images.
+     *
+     * @return void
+     */
+    protected function cleanupImages()
+    {
+        $images = Image::where('created_at', '<', $this->createTimestampFor('images'))->get();
 
         if ($images->isEmpty()) {
-            return $this->info('There are nothing to cleanup!');
+            return $this->warn('No images to cleanup, skipping...');
         }
 
-        $this->info('Starting cleanup process for '.$images->count().' images...');
+        $this->info('Starting cleanup process for ' . $images->count() . ' images!');
 
         foreach ($images as $image) {
             $image->delete();
@@ -46,20 +74,16 @@ class MediaCleanupCommand extends Command
     }
 
     /**
-     * Generates the Carbon expiration object using the settings model, if all
-     * the settings live values are at zero or below, a Carbon object set to
-     * one minute in the past will be returned instead.
+     * Creates a Carbon timestamp using the given settings type.
      *
-     * @return Carbon\Carbon
+     * @param  string $type
+     * @return \Carbon\Carbon
      */
-    protected function generateCarbonTimestamp()
+    protected function createTimestampFor($type)
     {
-        $settings = Settings::first();
-
-        if (! $settings->hasLiveValues()) {
-            return Carbon::now()->subMinute();
-        }
-
-        return $settings->getLiveTimestamp();
+        return now()
+            ->subDays($this->settings->get($type . '.ttl_days'))
+            ->subHours($this->settings->get($type . '.ttl_hours'))
+            ->subMinutes($this->settings->get($type . '.ttl_minutes'));
     }
 }

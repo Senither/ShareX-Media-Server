@@ -1,9 +1,30 @@
-/node_modules
-/public/storage
+# PHP & Composer
 /vendor
-/.idea
+/storage/*.key
+.phpunit.result.cache
+.env.backup
+.env
+
+# NPM & Mix
+/node_modules
+/public/hot
+/public/storage
+/public/js
+/public/css
+/public/mix-manifest.json
+
+# Error logs
+npm-debug.log
+yarn-error.log
+
+# Homestead
 Homestead.json
 Homestead.yaml
-.sublime-gulp.cache
-.serve
-.env
+
+# Sail & Docker
+docker-compose.override.yml
+supervisord.pid
+supervisord.log
+
+# Misc
+TODO

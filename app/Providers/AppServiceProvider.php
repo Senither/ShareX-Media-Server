@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Image;
 use App\Observers\ImageObserver;
 use App\Settings\SettingsManager;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Schema::defaultStringLength(191);
     }
 
     /**
@@ -27,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->singleton('settings', function () {
-            return new SettingsManager;
+            return new SettingsManager();
         });
 
         Image::observe(ImageObserver::class);

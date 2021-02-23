@@ -12,11 +12,14 @@ class CreateAdminUser extends Migration
      */
     public function up()
     {
-        User::factory()
-            ->siteAdmin()
-            ->create([
-                'name' => 'Site Administrator',
-                'email' => 'admin@admin.com',
-            ]);
+        $user = User::create([
+            'name' => 'Site Administrator',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $user->is_admin = true;
+
+        $user->save();
     }
 }

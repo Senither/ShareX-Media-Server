@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\ControlPanel;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,17 +10,6 @@ use Tests\TestCase;
 class AuthorizationTest extends TestCase
 {
     use RefreshDatabase;
-
-    public function test_dashboard_can_only_be_reached_when_signed_in()
-    {
-        $this->get('/dashboard')
-            ->assertStatus(302)
-            ->assertRedirect('/login');
-
-        $this->actingAs(User::factory()->create())
-            ->get('/dashboard')
-            ->assertStatus(200);
-    }
 
     public function test_control_panel_can_be_reached_by_site_admins()
     {

@@ -34,6 +34,7 @@ _ShareX Media Server_ is an app made to support sharing images, files, and text 
   - PDO PHP Extension
   - Tokenizer PHP Extension
   - XML PHP Extension
+  - GD PHP Extension
 
 ## Installing ShareX Media Server
 

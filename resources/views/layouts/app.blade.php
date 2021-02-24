@@ -21,7 +21,7 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="flex flex-col min-h-screen justify-between bg-gray-100">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
@@ -34,9 +34,23 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="mb-auto">
                 {{ $slot }}
             </main>
+
+            <footer class="mt-12 bg-white shadow">
+                <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+                    <p class="font-semibold">
+                        ShareX Media Server
+                    </p>
+                    <p class="text-sm">
+                        Created by <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://senither.com/">Alexis Tan</a>,
+                        powered by <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://laravel.com/">Laravel</a>,
+                        <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://laravel-livewire.com/">Livewire</a>,
+                        and <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://tailwindcss.com/">TailwindCSS</a>.
+                    </p>
+                </div>
+            </footer>
         </div>
 
         @stack('modals')

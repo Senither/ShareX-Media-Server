@@ -63,22 +63,22 @@
             <div>
                 <!-- Name -->
                 <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="user_name" value="{{ __('Name') }}" />
-                    <x-jet-input id="user_name" type="text" class="mt-1 block w-full" wire:model.defer="userForm.name" />
+                    <x-jet-label for="user_name_{{ $user->id }}" value="{{ __('Name') }}" />
+                    <x-jet-input id="user_name_{{ $user->id }}" type="text" class="mt-1 block w-full" wire:model.defer="userForm.name" />
                     <x-jet-input-error for="userForm.name" class="mt-2" />
                 </div>
 
                 <!-- Name -->
                 <div class="mt-4 col-span-6 sm:col-span-4">
-                    <x-jet-label for="user_email" value="{{ __('Email') }}" />
-                    <x-jet-input id="user_email" type="email" class="mt-1 block w-full" wire:model.defer="userForm.email" />
+                    <x-jet-label for="user_email_{{ $user->id }}" value="{{ __('Email') }}" />
+                    <x-jet-input id="user_email_{{ $user->id }}" type="email" class="mt-1 block w-full" wire:model.defer="userForm.email" />
                     <x-jet-input-error for="userForm.email" class="mt-2" />
                 </div>
 
                 <!-- New password -->
                 <div class="mt-4 col-span-6 sm:col-span-4">
-                    <x-jet-label for="user_password" value="{{ __('New Password') }}" />
-                    <x-jet-input id="user_password" type="password" class="mt-1 block w-full" wire:model.defer="userForm.password" />
+                    <x-jet-label for="user_password_{{ $user->id }}" value="{{ __('New Password') }}" />
+                    <x-jet-input id="user_password_{{ $user->id }}" type="password" class="mt-1 block w-full" wire:model.defer="userForm.password" />
                     <x-jet-input-error for="userForm.password" class="mt-2" />
                 </div>
 

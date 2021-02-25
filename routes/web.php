@@ -3,6 +3,7 @@
 use App\Http\Controllers\ControlPanelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ImposterController;
 use App\Http\Controllers\RenderImageController;
 use App\Http\Middleware\SiteAdmin;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,11 @@ Route::get('i/{image}/{type?}', RenderImageController::class)->name('view-image'
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');
     Route::view('/images', 'images.index')->name('images');
+
+    Route::get('/imposter/leave', [ImposterController::class, 'leave'])->name('imposter.leave');
+    Route::get('/imposter/{user}', [ImposterController::class, 'join'])
+        ->middleware(SiteAdmin::class)
+        ->name('imposter.join');
 
     Route::view('/control-panel', 'control-panel.index')
         ->middleware(SiteAdmin::class)

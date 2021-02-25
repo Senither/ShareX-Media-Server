@@ -108,6 +108,16 @@ class UserManagementEntity extends Component
     }
 
     /**
+     * Impersonates the user.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function impersonateUser()
+    {
+        return redirect()->route('imposter.join', $this->user);
+    }
+
+    /**
      * Render the component.
      *
      * @return \Illuminate\View\View

@@ -22,6 +22,19 @@
         <x-jet-banner />
 
         <div class="flex flex-col min-h-screen justify-between bg-gray-100">
+            @if(request()->user()->isImposter())
+                <div class="w-full bg-gray-900 text-center">
+                    <p class="p-3 text-sm text-gray-200">
+                        You're currently viewing the site as
+                        <span class="font-bold text-indigo-200">{{ request()->user()->name }}</span>,
+                        you can <a
+                            href="{{ route('imposter.leave') }}"
+                            class="text-indigo-400 cursor-pointer hover:text-indigo-300 hover:underline"
+                        >click here</a> to return to your own account.
+                    </p>
+                </div>
+            @endif
+
             @livewire('navigation-menu')
 
             <!-- Page Heading -->

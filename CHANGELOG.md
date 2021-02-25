@@ -6,13 +6,15 @@ All notable changes to **ShareX Media Server** will be documented in this file.
 
 User management support has been added to the control panel, it's now possible to:
 
-  - Create new users.
-  - Update existing users name, email, and passwords.
-  - Delete users, along with all their data (image uploads).
+-   Create new users.
+-   Update existing users name, email, and passwords.
+-   Delete users, along with all their data (image uploads).
+-   Impersonate users to view their image uploads.
+    - It's not possible to edit the user while impersonating them, this is done so the user sessions, 2FA settings, and other sensetive data isn't accessable by anyone other than the user it belongs to.
 
 > The user magement section also comes with search that filters by users names and emails.
 
-The app layout also now have a footer with some helpful information, and all the PHP composer dependencies has been updated. 
+The app layout also now have a footer with some helpful information, and all the PHP composer dependencies has been updated.
 
 ## v1.0
 

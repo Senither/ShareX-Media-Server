@@ -59,4 +59,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Checks if the user is an imposter.
+     *
+     * @return boolean
+     */
+    public function isImposter()
+    {
+        return session()->has('imposter_id');
+    }
 }

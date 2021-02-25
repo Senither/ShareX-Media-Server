@@ -994,16 +994,16 @@
         },
         {
             "name": "hyungju/readable-url",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HyungJu/readable-url.git",
-                "reference": "e5dc93882eabbba6b155c6d74a75e315c26ec032"
+                "reference": "98eaf86396ecabbbea6775a59d86565d0df6b201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HyungJu/readable-url/zipball/e5dc93882eabbba6b155c6d74a75e315c26ec032",
-                "reference": "e5dc93882eabbba6b155c6d74a75e315c26ec032",
+                "url": "https://api.github.com/repos/HyungJu/readable-url/zipball/98eaf86396ecabbbea6775a59d86565d0df6b201",
+                "reference": "98eaf86396ecabbbea6775a59d86565d0df6b201",
                 "shasum": ""
             },
             "require": {
@@ -1034,9 +1034,9 @@
             ],
             "support": {
                 "issues": "https://github.com/HyungJu/readable-url/issues",
-                "source": "https://github.com/HyungJu/readable-url/tree/1.2.4"
+                "source": "https://github.com/HyungJu/readable-url/tree/1.2.5"
             },
-            "time": "2020-10-03T15:17:11+00:00"
+            "time": "2021-02-22T15:07:21+00:00"
         },
         {
             "name": "intervention/image",
@@ -1249,16 +1249,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.7.6",
+            "version": "v1.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "9a5ec8d52145d5b59bc3f130b814f5f285bc71d4"
+                "reference": "e657d583f9b01ed794fc9b810f28a9a8632dcc13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/9a5ec8d52145d5b59bc3f130b814f5f285bc71d4",
-                "reference": "9a5ec8d52145d5b59bc3f130b814f5f285bc71d4",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/e657d583f9b01ed794fc9b810f28a9a8632dcc13",
+                "reference": "e657d583f9b01ed794fc9b810f28a9a8632dcc13",
                 "shasum": ""
             },
             "require": {
@@ -1308,20 +1308,20 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2021-02-16T15:20:27+00:00"
+            "time": "2021-02-23T20:32:10+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v8.28.1",
+            "version": "v8.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "73dd43d92fcde6c6abc00658ae33391397ca119d"
+                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/73dd43d92fcde6c6abc00658ae33391397ca119d",
-                "reference": "73dd43d92fcde6c6abc00658ae33391397ca119d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d2eba352b3b3a3c515b18c5726b373fe5026733e",
+                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e",
                 "shasum": ""
             },
             "require": {
@@ -1429,7 +1429,7 @@
                 "phpunit/phpunit": "Required to use assertions and run tests (^8.5.8|^9.3.3).",
                 "predis/predis": "Required to use the predis connector (^1.1.2).",
                 "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
-                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0).",
+                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0|^5.0).",
                 "symfony/cache": "Required to PSR-6 cache bridge (^5.1.4).",
                 "symfony/filesystem": "Required to enable support for relative symbolic links (^5.1.4).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0).",
@@ -1476,20 +1476,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-02-16T18:07:44+00:00"
+            "time": "2021-02-23T14:27:41+00:00"
         },
         {
             "name": "laravel/jetstream",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "36c46858b2dfd0b6b001872ce4d682a31221bb49"
+                "reference": "81faacb09334976bab9dc3b02921272ef2a71d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/36c46858b2dfd0b6b001872ce4d682a31221bb49",
-                "reference": "36c46858b2dfd0b6b001872ce4d682a31221bb49",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/81faacb09334976bab9dc3b02921272ef2a71d25",
+                "reference": "81faacb09334976bab9dc3b02921272ef2a71d25",
                 "shasum": ""
             },
             "require": {
@@ -1543,7 +1543,7 @@
                 "issues": "https://github.com/laravel/jetstream/issues",
                 "source": "https://github.com/laravel/jetstream"
             },
-            "time": "2021-02-16T18:36:07+00:00"
+            "time": "2021-02-23T20:40:55+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1931,16 +1931,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.3.18",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "c0c78f430e4151fb6902bbb88c75e782d2549e1a"
+                "reference": "8055af7730938cd607616fde122825ed960a9b71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/c0c78f430e4151fb6902bbb88c75e782d2549e1a",
-                "reference": "c0c78f430e4151fb6902bbb88c75e782d2549e1a",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/8055af7730938cd607616fde122825ed960a9b71",
+                "reference": "8055af7730938cd607616fde122825ed960a9b71",
                 "shasum": ""
             },
             "require": {
@@ -1991,7 +1991,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.3.18"
+                "source": "https://github.com/livewire/livewire/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -1999,20 +1999,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-16T20:34:52+00:00"
+            "time": "2021-02-23T17:44:50+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.8.36",
+            "version": "2.8.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "e55c155f4d1ab299a0cfca8ec29a0154918c9e3d"
+                "reference": "9841e3c46f5bd0739b53aed8ac677fa712943df7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/e55c155f4d1ab299a0cfca8ec29a0154918c9e3d",
-                "reference": "e55c155f4d1ab299a0cfca8ec29a0154918c9e3d",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/9841e3c46f5bd0739b53aed8ac677fa712943df7",
+                "reference": "9841e3c46f5bd0739b53aed8ac677fa712943df7",
                 "shasum": ""
             },
             "require": {
@@ -2053,9 +2053,15 @@
             ],
             "support": {
                 "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
-                "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.36"
+                "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.37"
             },
-            "time": "2021-02-13T14:35:52+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/serbanghita",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-02-19T21:22:57+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6182,19 +6188,20 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.3.1",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "a18519e96c32894ac3f8775fa8eb6de5750aca5a"
+                "reference": "0200ce6e0f697699bce036c42d91f1daab8039a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/a18519e96c32894ac3f8775fa8eb6de5750aca5a",
-                "reference": "a18519e96c32894ac3f8775fa8eb6de5750aca5a",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/0200ce6e0f697699bce036c42d91f1daab8039a8",
+                "reference": "0200ce6e0f697699bce036c42d91f1daab8039a8",
                 "shasum": ""
             },
             "require": {
+                "illuminate/console": "^8.0|^9.0",
                 "illuminate/contracts": "^8.0|^9.0",
                 "illuminate/support": "^8.0|^9.0",
                 "php": "^7.3|^8.0"
@@ -6237,7 +6244,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2021-02-09T16:44:58+00:00"
+            "time": "2021-02-24T21:20:16+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -6306,16 +6313,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "20cab678faed06fac225193be281ea0fddb43b93"
+                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/20cab678faed06fac225193be281ea0fddb43b93",
-                "reference": "20cab678faed06fac225193be281ea0fddb43b93",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1339f64479af1bee0e82a0413813fe5345a54ea",
+                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea",
                 "shasum": ""
             },
             "require": {
@@ -6372,9 +6379,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/master"
+                "source": "https://github.com/mockery/mockery/tree/1.4.3"
             },
-            "time": "2020-08-11T18:10:13+00:00"
+            "time": "2021-02-24T09:51:49+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -6584,16 +6591,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/e4782611070e50613683d2b9a57730e9a3ba5451",
-                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/bae7c545bef187884426f042434e561ab1ddb182",
+                "reference": "bae7c545bef187884426f042434e561ab1ddb182",
                 "shasum": ""
             },
             "require": {
@@ -6629,9 +6636,9 @@
             "description": "Library for handling version information and constraints",
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
-                "source": "https://github.com/phar-io/version/tree/3.0.4"
+                "source": "https://github.com/phar-io/version/tree/3.1.0"
             },
-            "time": "2020-12-13T23:18:30+00:00"
+            "time": "2021-02-23T14:00:09+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",

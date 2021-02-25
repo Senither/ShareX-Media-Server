@@ -19,7 +19,7 @@
                 </button>
             @endif
 
-            <button class="border-2 border-indigo-200 rounded-md p-1 focus:outline-none">
+            <button wire:click="$toggle('confirmingUserEditing')" class="border-2 border-indigo-200 rounded-md p-1 focus:outline-none">
                 <!-- Heroicons: pencil -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-indigo-500">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -66,6 +66,63 @@
                 <x-jet-danger-button class="ml-2" wire:click="deleteUser" wire:loading.attr="disabled">
                     {{ __('Delete Account') }}
                 </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
+
+    <!-- Edit user modal -->
+    <x-jet-dialog-modal wire:model="confirmingUserEditing">
+        <x-slot name="title">
+            {{ __('Update :name', ['name' => $user->name]) }}
+        </x-slot>
+
+        <x-slot name="content">
+            <div>
+                <!-- Name -->
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label for="user_name" value="{{ __('Name') }}" />
+                    <x-jet-input id="user_name" type="text" class="mt-1 block w-full" wire:model.defer="userForm.name" />
+                    <x-jet-input-error for="userForm.name" class="mt-2" />
+                </div>
+
+                <!-- Name -->
+                <div class="mt-4 col-span-6 sm:col-span-4">
+                    <x-jet-label for="user_email" value="{{ __('Email') }}" />
+                    <x-jet-input id="user_email" type="email" class="mt-1 block w-full" wire:model.defer="userForm.email" />
+                    <x-jet-input-error for="userForm.email" class="mt-2" />
+                </div>
+
+                <!-- New password -->
+                <div class="mt-4 col-span-6 sm:col-span-4">
+                    <x-jet-label for="user_password" value="{{ __('New Password') }}" />
+                    <x-jet-input id="user_password" type="password" class="mt-1 block w-full" wire:model.defer="userForm.password" />
+                    <x-jet-input-error for="userForm.password" class="mt-2" />
+                </div>
+
+                <div class="mt-4 p-2 flex items-center bg-gray-800 text-sm text-gray-100 rounded">
+                    <svg class="w-6 h-6 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p>If the password option is left blank, the users password will not be updated.</p>
+                </div>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <div class="flex justify-between">
+                <x-jet-secondary-button wire:click="$toggle('confirmingUserEditing')" wire:loading.attr="disabled">
+                    {{ __('Close') }}
+                </x-jet-secondary-button>
+
+                <div class="flex items-center">
+                    <x-jet-action-message class="mr-3" on="saved">
+                        {{ __('Saved.') }}
+                    </x-jet-action-message>
+
+                    <x-jet-button class="ml-2" wire:click="updateUser" wire:loading.attr="disabled">
+                        {{ __('Save Changes') }}
+                    </x-jet-button>
+                </div>
+            </div>
         </x-slot>
     </x-jet-dialog-modal>
 </div>

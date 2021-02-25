@@ -36,51 +36,22 @@
             @if($users->isEmpty())
                 <p class="text-center text-gray-700 font-medium">Found no users matching the "{{ $search }}" query.</p>
             @else
-                <table class="overflow-x-auto w-full bg-white">
-                    <thead class="bg-gray-100 border-b border-gray-300">
-                        <tr>
-                            <th class="p-4 text-left text-sm font-medium text-gray-500">Name</th>
-                            <th class="p-4 text-left text-sm font-medium text-gray-500">Email</th>
-                            <th class="p-4 text-left text-sm font-medium text-gray-500">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-gray-600 text-sm divide-y divide-gray-300">
+                <div class="flex flex-col w-full pb-8">
+                    <div class="w-full grid grid-cols-12 bg-gray-100 border-b border-gray-300">
+                        <div class="p-4 col-span-4 text-left text-sm font-medium text-gray-500">Name</div>
+                        <div class="p-4 col-span-5 text-left text-sm font-medium text-gray-500">Email</div>
+                        <div class="p-4 col-span-3 text-left text-sm font-medium text-gray-500">Actions</div>
+                    </div>
+                    <div class="w-full flex flex-col">
                         @foreach ($users as $user)
-                            <tr class="bg-white font-medium text-sm divide-y divide-gray-200">
-                                <td class="p-4 whitespace-nowrap">{{ $user->name }}</td>
-                                <td class="p-4 whitespace-nowrap">{{ $user->email }}</td>
-                                <td class="p-4 whitespace-nowrap">
-                                    <div class="flex space-x-1">
-                                        <button class="border-2 border-indigo-200 rounded-md p-1 focus:outline-none">
-                                            <!-- Heroicons: users -->
-                                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-500">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                                            </svg>
-                                        </button>
-
-                                        <button class="border-2 border-indigo-200 rounded-md p-1 focus:outline-none">
-                                            <!-- Heroicons: pencil -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-indigo-500">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                            </svg>
-                                        </button>
-
-                                        <button class="border-2 border-red-200 rounded-md p-1 focus:outline-none">
-                                            <!-- Heroicons: trash -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-red-500">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @livewire('control-panel.user-management-entity', [
+                                'user' => $user
+                            ], key($user->id))
                         @endforeach
-                    </tbody>
-                </table>
-
-                <div class="pt-4">
-                    {{ $users->links() }}
+                    </div>
                 </div>
+
+                {{ $users->links() }}
             @endif
         </div>
     </div>
@@ -97,14 +68,14 @@
             </div>
 
             <div class="pt-4">
-                <x-jet-label for="per_page" value="{{ __('Name') }}" />
-                <x-jet-input id="per_page" type="text" class="mt-1 block w-full" min="1" wire:model.defer="userDetails.name" />
+                <x-jet-label for="userDetails_name" value="{{ __('Name') }}" />
+                <x-jet-input id="userDetails_name" type="text" class="mt-1 block w-full" min="1" wire:model.defer="userDetails.name" />
                 <x-jet-input-error for="userDetails.name" class="mt-2" />
             </div>
 
             <div class="pt-4">
-                <x-jet-label for="per_page" value="{{ __('Email') }}" />
-                <x-jet-input id="per_page" type="text" class="mt-1 block w-full" min="1" wire:model.defer="userDetails.email" />
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" type="text" class="mt-1 block w-full" min="1" wire:model.defer="userDetails.email" />
                 <x-jet-input-error for="userDetails.email" class="mt-2" />
             </div>
         </x-slot>

@@ -13,6 +13,13 @@ class UserManagementList extends Component
     use WithPagination;
 
     /**
+     * The events the component should listen for.
+     *
+     * @var array
+     */
+    protected $listeners = ['userDeleted' => '$refresh'];
+
+    /**
      * The search query to filter users by.
      *
      * @var string

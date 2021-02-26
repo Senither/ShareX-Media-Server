@@ -8,6 +8,7 @@ use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RenderImageController extends Controller
 {
@@ -45,8 +46,16 @@ class RenderImageController extends Controller
      */
     protected function loadImageOrFail($name)
     {
-        return Image::withoutGlobalScope(UserScope::class)
-            ->where('name', $name)
+        $parts = explode('.', $name);
+
+        $image = Image::withoutGlobalScope(UserScope::class)
+            ->where('name', array_shift($parts))
             ->firstOrFail();
+
+        if (count($parts) > 0) {
+            abort_unless($parts[0] == $image->extension, 404);
+        }
+
+        return $image;
     }
 }

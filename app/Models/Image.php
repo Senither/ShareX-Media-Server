@@ -48,6 +48,14 @@ class Image extends Model
     protected $resourceApiName = 'images';
 
     /**
+     * A list of file extensions that should be included in the
+     * resource URL if the file has a matching file extension.
+     *
+     * @var array
+     */
+    protected $resourceExtensions = ['gif'];
+
+    /**
      * The belongs to relationship between the image and the user who owns it.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -47,7 +47,13 @@ trait MediaResource
      */
     public function getResourceUrlAttribute()
     {
-        return url($this->resourceIdentifier . '/' . $this->name);
+        $url = url($this->resourceIdentifier . '/' . $this->name);
+
+        if (in_array($this->extension, $this->resourceExtensions ?? [])) {
+            $url .= '.' . $this->extension;
+        }
+
+        return $url;
     }
 
     /**

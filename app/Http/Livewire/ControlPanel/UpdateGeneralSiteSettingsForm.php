@@ -84,7 +84,7 @@ class UpdateGeneralSiteSettingsForm extends Component
     }
 
     /**
-     * Update the site name.
+     * Update the site settings.
      *
      * @return void
      */
@@ -95,6 +95,9 @@ class UpdateGeneralSiteSettingsForm extends Component
         $this->domains = collect($this->domains)
             ->filter(function ($domain) {
                 return mb_strlen(trim($domain)) > 0;
+            })
+            ->map(function ($domain) {
+                return rtrim($domain, '/');
             })
             ->toArray();
 

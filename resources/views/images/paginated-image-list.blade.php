@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8" wire:poll.10s>
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             @if($images->isEmpty())

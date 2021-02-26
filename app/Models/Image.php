@@ -32,12 +32,11 @@ class Image extends Model
     protected $fillable = ['user_id', 'name', 'extension'];
 
     /**
-     * The resource identifier, this is what makes each resource unique
-     * in the URL when generating links to the media resource.
+     * The name of the route used to view the resource directly.
      *
      * @var string
      */
-    protected $resourceIdentifier = 'i';
+    protected $resourceViewRoute = 'view-image';
 
     /**
      * The API resource name, this is the API resource name

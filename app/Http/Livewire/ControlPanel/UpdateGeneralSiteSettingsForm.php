@@ -21,6 +21,13 @@ class UpdateGeneralSiteSettingsForm extends Component
     public $urlMethod;
 
     /**
+     * The list of domains that can be used to access file uploads.
+     *
+     * @var array
+     */
+    public $domains;
+
+    /**
      * The validation rules for the component.
      *
      * @var array
@@ -28,6 +35,17 @@ class UpdateGeneralSiteSettingsForm extends Component
     protected $rules = [
         'name' => ['required', 'string', 'min:3'],
         'urlMethod' => ['required', 'in:wordlist,characters'],
+        'domains' => ['array'],
+        'domains.*' => ['nullable', 'url'],
+    ];
+
+    /**
+     * List of validation attribute names that are more human friendly.
+     *
+     * @var array
+     */
+    protected $validationAttributes = [
+        'domains.*' => 'domain',
     ];
 
     /**
@@ -41,6 +59,28 @@ class UpdateGeneralSiteSettingsForm extends Component
 
         $this->name = $settings->get('app.name');
         $this->urlMethod = $settings->get('app.url_generator');
+        $this->domains = $settings->get('app.domains');
+    }
+
+    /**
+     * Add a new empty string to the domains list.
+     *
+     * @return void
+     */
+    public function incrementDomains()
+    {
+        $this->domains[] .= '';
+    }
+
+    /**
+     * Remove the domain entry with the given key.
+     *
+     * @param  int $key
+     * @return void
+     */
+    public function removeDomain($key)
+    {
+        unset($this->domains[$key]);
     }
 
     /**
@@ -48,14 +88,21 @@ class UpdateGeneralSiteSettingsForm extends Component
      *
      * @return void
      */
-    public function updateSiteName()
+    public function update()
     {
         $this->validate();
+
+        $this->domains = collect($this->domains)
+            ->filter(function ($domain) {
+                return mb_strlen(trim($domain)) > 0;
+            })
+            ->toArray();
 
         $manager = app('settings');
 
         $manager->set('app.name', $this->name);
         $manager->set('app.url_generator', $this->urlMethod);
+        $manager->set('app.domains', $this->domains);
 
         $this->emit('saved');
 

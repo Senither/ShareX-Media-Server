@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Scopes\UserScope;
+use Illuminate\Support\Arr;
 
 trait MediaResource
 {
@@ -47,10 +48,15 @@ trait MediaResource
      */
     public function getResourceUrlAttribute()
     {
-        $url = url($this->resourceIdentifier . '/' . $this->name);
+        $url = route($this->resourceViewRoute, $this);
 
         if (in_array($this->extension, $this->resourceExtensions ?? [])) {
             $url .= '.' . $this->extension;
+        }
+
+        $domains = app('settings')->get('app.domains');
+        if (rand(0, count($domains)) > 0) {
+            $url = str_replace(url('/'), Arr::random($domains), $url);
         }
 
         return $url;

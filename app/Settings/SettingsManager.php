@@ -16,10 +16,20 @@ class SettingsManager
     protected $settings = [
         'app.name' => 'Media Server',
         'app.url_generator' => 'characters',
+        'app.domains' => [],
         'images.ttl_days' => 90,
         'images.ttl_hours' => 0,
         'images.ttl_minutes' => 0,
         'images.per_page' => 24,
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'app.domains' => 'json',
     ];
 
     /**
@@ -139,6 +149,14 @@ class SettingsManager
         $this->existingKeys = [];
 
         foreach (DB::table('settings')->get() as $setting) {
+            if (array_key_exists($setting->key, $this->casts ?? [])) {
+                switch ($this->casts[$setting->key]) {
+                    case 'json':
+                        $setting->value = json_decode($setting->value, true);
+                        break;
+                }
+            }
+
             $this->set($setting->key, $setting->value, false);
 
             $this->existingKeys[] .= $setting->key;
@@ -153,6 +171,14 @@ class SettingsManager
     protected function syncDirtWithDatabase()
     {
         foreach ($this->dirty as $key => $value) {
+            if (array_key_exists($key, $this->casts ?? [])) {
+                switch ($this->casts[$key]) {
+                    case 'json':
+                        $value = json_encode($value);
+                        break;
+                }
+            }
+
             if (!in_array($key, $this->existingKeys)) {
                 DB::table('settings')->insert(compact('key', 'value'));
             } else {

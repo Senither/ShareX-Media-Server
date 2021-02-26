@@ -108,7 +108,7 @@ sudo supervisorctl start media-server-worker:*
 
 The entire server side should now be setup and ready to be used!
 
-### Setting up application assets]
+### Setting up application assets
 
 Next we'll need to build all of the front-end resources so users can view and use the website, this can be done using [Yarn](https://yarnpkg.com/).
 

@@ -56,7 +56,7 @@ class Text extends Model
     }
 
     /**
-     * Creates a new image entry, and stores the uploaded file.
+     * Creates a new text entry, and stores the uploaded file.
      *
      * @param  \Illuminate\Http\UploadedFile $file
      * @return \App\Models\Image
@@ -66,11 +66,15 @@ class Text extends Model
         $name = $file->getClientOriginalName();
         $parts = explode('.', $name);
 
+        if (count($parts) > 1) {
+            array_shift($parts);
+        }
+
         $model = new self([
             'user_id' => auth()->user()->id,
             'name' => app(IdentifierContract::class)->generate(),
             'original_name' => $name,
-            'extension' => end($parts),
+            'extension' => strtolower(join('.', $parts)),
             'content' => file_get_contents($file->getRealPath()),
         ]);
 

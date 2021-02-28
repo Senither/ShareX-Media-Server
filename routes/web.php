@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImposterController;
 use App\Http\Controllers\RenderImageController;
+use App\Http\Controllers\RenderTextController;
 use App\Http\Middleware\SiteAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 
 Route::get('i/{image}/{type?}', RenderImageController::class)->name('view-image');
+Route::get('t/{text}/{raw?}', RenderTextController::class)->name('view-text');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');

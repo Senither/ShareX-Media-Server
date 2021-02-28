@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ImageController;
+use App\Http\Controllers\Api\TextController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::resource('/images', ImageController::class)
+         ->only(['index', 'show', 'store', 'destroy']);
+
+    Route::resource('/text', TextController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 });

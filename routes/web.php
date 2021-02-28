@@ -31,7 +31,7 @@ Route::get('t/{text}/{raw?}', RenderTextController::class)
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');
     Route::view('/images', 'images.index')->name('images');
-    Route::view('/text', 'text.index')->name('text');
+    Route::view('/texts', 'text.index')->name('texts');
 
     Route::get('/imposter/leave', [ImposterController::class, 'leave'])
          ->name('imposter.leave');

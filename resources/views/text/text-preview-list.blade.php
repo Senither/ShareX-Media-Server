@@ -6,7 +6,7 @@
                     Latest text uploads
                 </div>
 
-                <a href="{{ route('text') }}">
+                <a href="{{ route('texts') }}">
                     <div class="flex items-center text-sm font-semibold text-indigo-700">
                         <div>View all text files</div>
 

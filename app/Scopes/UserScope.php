@@ -18,7 +18,12 @@ class UserScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         if (auth()->check()) {
-            $builder->where('user_id', request()->user()->id);
+            $builder->where(
+                'user_id',
+                session()->has('imposter_id')
+                    ? session()->get('imposter_id')
+                    : request()->user()->id
+            );
         }
     }
 }

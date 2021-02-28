@@ -6,4 +6,6 @@
     </x-slot>
 
     @livewire('images.image-preview-list')
+
+    @livewire('text.text-preview-list')
 </x-app-layout>

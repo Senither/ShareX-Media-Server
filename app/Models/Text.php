@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Identifier\IdentifierContract;
 use App\Traits\BelongsToUser;
+use App\Traits\FileExtensionIcon;
 use App\Traits\MediaResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,7 @@ class Text extends Model
     use HasFactory;
     use MediaResource;
     use BelongsToUser;
+    use FileExtensionIcon;
 
     /**
      * The attributes that are mass assignable.

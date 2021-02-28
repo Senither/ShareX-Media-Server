@@ -22,14 +22,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
 
-Route::get('i/{image}/{type?}', RenderImageController::class)->name('view-image');
-Route::get('t/{text}/{raw?}', RenderTextController::class)->name('view-text');
+Route::get('i/{image}/{type?}', RenderImageController::class)
+     ->name('view-image');
+Route::get('t/{text}/{raw?}', RenderTextController::class)
+     ->where(['raw' => 'raw'])
+     ->name('view-text');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');
     Route::view('/images', 'images.index')->name('images');
 
-    Route::get('/imposter/leave', [ImposterController::class, 'leave'])->name('imposter.leave');
+    Route::get('/imposter/leave', [ImposterController::class, 'leave'])
+         ->name('imposter.leave');
     Route::get('/imposter/{user}', [ImposterController::class, 'join'])
         ->middleware(SiteAdmin::class)
         ->name('imposter.join');

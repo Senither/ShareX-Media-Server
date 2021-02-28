@@ -23,7 +23,7 @@
                         {{ __('Images') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('texts') }}" :active="request()->routeIs('text')">
+                    <x-jet-nav-link href="{{ route('texts') }}" :active="request()->routeIs('texts')">
                         {{ __('Texts') }}
                     </x-jet-nav-link>
 
@@ -175,7 +175,7 @@
                 {{ __('Images') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('texts') }}" :active="request()->routeIs('text')">
+            <x-jet-responsive-nav-link href="{{ route('texts') }}" :active="request()->routeIs('texts')">
                 {{ __('Texts') }}
             </x-jet-responsive-nav-link>
 

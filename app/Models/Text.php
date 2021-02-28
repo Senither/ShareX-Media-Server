@@ -43,7 +43,7 @@ class Text extends Model
      *
      * @var string
      */
-    protected $resourceApiName = 'text';
+    protected $resourceApiName = 'texts';
 
     /**
      * The belongs to relationship between the image and the user who owns it.

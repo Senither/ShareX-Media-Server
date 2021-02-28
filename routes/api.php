@@ -24,6 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/images', ImageController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 
-    Route::resource('/text', TextController::class)
+    Route::resource('/texts', TextController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 });

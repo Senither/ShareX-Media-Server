@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Change how images and handled and displayed on the site.') }}
+        {{ __('Change how images are handled and displayed on the site.') }}
     </x-slot>
 
     <x-slot name="form">

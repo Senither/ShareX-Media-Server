@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Text;
 use App\Scopes\UserScope;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RenderTextController extends Controller
 {
@@ -20,7 +21,15 @@ class RenderTextController extends Controller
         $text = $this->loadTextOrFail($id);
 
         if (!$raw) {
-            return view('preview.text', compact('text'));
+            $metaDescription = Str::words(
+                Str::of($text->content)
+                    ->explode("\n")
+                    ->join(' '),
+                22,
+                '...'
+            );
+
+            return view('preview.text', compact('text', 'metaDescription'));
         }
 
         return response($text->content)->header('Content-Type', 'text/plain');

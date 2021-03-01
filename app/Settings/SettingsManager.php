@@ -161,9 +161,11 @@ class SettingsManager
                 }
             }
 
-            $this->set($setting->key, $setting->value, false);
+            if ($this->exists($setting->key)) {
+                $this->set($setting->key, $setting->value, false);
 
-            $this->existingKeys[] .= $setting->key;
+                $this->existingKeys[] .= $setting->key;
+            }
         }
     }
 

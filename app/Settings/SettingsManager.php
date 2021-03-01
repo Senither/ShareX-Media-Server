@@ -21,6 +21,10 @@ class SettingsManager
         'images.ttl_hours' => 0,
         'images.ttl_minutes' => 0,
         'images.per_page' => 24,
+        'texts.ttl_days' => 30,
+        'texts.ttl_hours' => 0,
+        'texts.ttl_minutes' => 0,
+        'texts.per_page' => 24,
     ];
 
     /**

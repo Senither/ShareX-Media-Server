@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Image;
+use App\Models\Text;
 use App\Settings\SettingsManager;
 use Illuminate\Console\Command;
 
@@ -49,6 +50,8 @@ class MediaCleanupCommand extends Command
     public function handle()
     {
         $this->cleanupImages();
+
+        $this->cleanupTextFiles();
     }
 
     /**
@@ -69,6 +72,22 @@ class MediaCleanupCommand extends Command
         foreach ($images as $image) {
             $image->delete();
         }
+
+        $this->info('Done!');
+    }
+
+    protected function cleanupTextFiles()
+    {
+        $query = Text::where('created_at', '<', $this->createTimestampFor('texts'));
+        $total = $query->count();
+
+        if ($total == 0) {
+            return $this->warn('No text files to cleanup, skipping...');
+        }
+
+        $this->info('Starting cleanup process for ' . $total . ' text files!');
+
+        $query->delete();
 
         $this->info('Done!');
     }

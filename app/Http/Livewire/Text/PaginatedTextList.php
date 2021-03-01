@@ -25,7 +25,7 @@ class PaginatedTextList extends Component
     public function render()
     {
         return view('text.paginated-text-list', [
-            'textFiles' => Text::latest()->paginate(24),
+            'textFiles' => Text::latest()->paginate(app('settings')->get('texts.per_page')),
         ]);
     }
 }

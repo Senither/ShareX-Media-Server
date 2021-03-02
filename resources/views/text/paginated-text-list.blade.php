@@ -15,7 +15,7 @@
         </div>
 
         @if($textFiles->hasPages())
-            <div class="p-4 bg-gray-50 border-t">
+            <div class="p-4 bg-gray-50 dark:bg-dark-gray-800 border-t dark:border-dark-gray-900">
                 {{ $textFiles->links() }}
             </div>
         @endif

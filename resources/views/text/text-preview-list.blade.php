@@ -22,8 +22,8 @@
 
             <div class="bg-gray-200 dark:bg-dark-gray-700 bg-opacity-25 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @if($textFiles->isEmpty())
-                    <p class="p-8 col-span-6 text-center">
-                        You don't have any text uploads right now, create an <a class="text-indigo-700" href="{{ route('api-tokens.index') }}">API token</a> to start uploading text files.
+                    <p class="p-8 col-span-6 text-center dark:text-dark-gray-400">
+                        You don't have any text uploads right now, create an <a class="text-indigo-700 dark:text-indigo-400" href="{{ route('api-tokens.index') }}">API token</a> to start uploading text files.
                     </p>
                 @else
                     @foreach($textFiles as $file)

@@ -35,7 +35,7 @@
 
                 <div class="block mt-4">
                     @if (Route::has('password.request'))
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        <a class="underline text-sm text-gray-600 dark:text-dark-gray-400 hover:text-gray-900" href="{{ route('password.request') }}">
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
@@ -43,7 +43,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 dark:bg-dark-gray-600 hover:bg-gray-600 dark:hover:bg-dark-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                <x-jet-button class="group relative w-full flex justify-center">
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                         <!-- Heroicon name: lock-closed -->
                         <svg class="h-5 w-5 text-gray-500 group-hover:text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -51,14 +51,14 @@
                         </svg>
                     </span>
                     Sign in
-                </button>
+                </x-jet-button>
             </div>
 
             <div class="flex items-center justify-center mt-4">
                 @if (Route::has('register'))
-                    <p class="text-sm text-gray-600">
+                    <p class="text-sm text-gray-600 dark:text-dark-gray-400">
                         Don't have an account?
-                        <a class="ml-1 underline hover:text-gray-900" href="{{ route('register') }}">
+                        <a class="ml-1 underline hover:text-gray-900 dark:hover:text-dark-gray-100" href="{{ route('register') }}">
                             Sign up
                         </a>
                     </p>

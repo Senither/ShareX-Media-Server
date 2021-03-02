@@ -30,7 +30,7 @@
                     </p>
                 </div>
 
-                <div class="mt-4 dark:p-4 dark:w-56 dark:bg-white">
+                <div class="mt-4 dark:p-4 dark:w-56">
                     {!! $this->user->twoFactorQrCodeSvg() !!}
                 </div>
             @endif
@@ -42,7 +42,7 @@
                     </p>
                 </div>
 
-                <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg">
+                <div class="grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 dark:bg-dark-gray-800 dark:text-dark-gray-200 rounded-lg">
                     @foreach (json_decode(decrypt($this->user->two_factor_recovery_codes), true) as $code)
                         <div>{{ $code }}</div>
                     @endforeach

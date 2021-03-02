@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Text;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class TextFactory extends Factory
 {
@@ -24,6 +26,7 @@ class TextFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => Str::random(10),
+            'original_name' => $this->faker->name,
             'extension' => 'txt',
             'content' => Str::random(1000),
         ];

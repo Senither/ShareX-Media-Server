@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="dark" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,9 +21,9 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="flex flex-col min-h-screen justify-between bg-gray-100">
+        <div class="flex flex-col min-h-screen justify-between bg-gray-100 dark:bg-dark-gray-900">
             @if(request()->user()->isImposter())
-                <div class="w-full bg-gray-900 text-center">
+                <div class="w-full bg-gray-900 dark:bg-dark-gray-600 text-center">
                     <p class="p-3 text-sm text-gray-200">
                         You're currently viewing the site as
                         <span class="font-bold text-indigo-200">{{ request()->user()->name }}</span>,
@@ -39,7 +39,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-white dark:bg-dark-gray-800 text-gray-800 dark:text-gray-100 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -51,16 +51,16 @@
                 {{ $slot }}
             </main>
 
-            <footer class="mt-12 bg-white shadow">
-                <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+            <footer class="mt-12 bg-white dark:bg-dark-gray-800 shadow">
+                <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600 dark:text-dark-gray-200">
                     <p class="font-semibold">
                         ShareX Media Server
                     </p>
                     <p class="text-sm">
-                        Created by <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://senither.com/">Alexis Tan</a>,
-                        powered by <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://laravel.com/">Laravel</a>,
-                        <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://laravel-livewire.com/">Livewire</a>,
-                        and <a class="text-indigo-600 hover:text-indigo-400 font-semibold" href="https://tailwindcss.com/">TailwindCSS</a>.
+                        Created by <a class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold" href="https://senither.com/">Alexis Tan</a>,
+                        powered by <a class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold" href="https://laravel.com/">Laravel</a>,
+                        <a class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold" href="https://laravel-livewire.com/">Livewire</a>,
+                        and <a class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold" href="https://tailwindcss.com/">TailwindCSS</a>.
                     </p>
                 </div>
             </footer>

@@ -7,8 +7,8 @@
         >
     </a>
 
-    <div class="p-2 items-end grid grid-cols-2 text-center bg-white rounded-md border-b border-gray-200 shadow-md divide-x">
-        <a class="hover:text-gray-500" href="{{ $image->resource_url }}" target="blank">View</a>
+    <div class="p-2 mt-2 items-end grid grid-cols-2 text-center bg-white dark:bg-dark-gray-800 rounded-md border-b border-gray-200 dark:border-dark-gray-900 shadow-md divide-x dark:divide-dark-gray-500">
+        <a class="hover:text-gray-500 dark:text-dark-gray-200 dark:hover:text-dark-gray-400" href="{{ $image->resource_url }}" target="blank">View</a>
         <a class="text-red-500 hover:text-red-400 cursor-pointer" wire:click="delete">Delete</a>
     </div>
 </div>

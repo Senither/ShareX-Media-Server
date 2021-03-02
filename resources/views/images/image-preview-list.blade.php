@@ -1,13 +1,13 @@
 <div class="pt-12" wire:poll.10s>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="p-6 flex items-center justify-between bg-white border-b border-gray-200">
-                <div class="text-xl">
+        <div class="bg-white dark:bg-dark-gray-900 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="p-6 flex items-center justify-between bg-white dark:bg-dark-gray-800 border-b border-gray-200 dark:border-dark-gray-500">
+                <div class="text-xl dark:text-dark-gray-100">
                     Latest image uploads
                 </div>
 
                 <a href="{{ route('images') }}">
-                    <div class="flex items-center text-sm font-semibold text-indigo-700">
+                    <div class="flex items-center text-sm font-semibold text-indigo-700 dark:text-indigo-300">
                         <div>View all images</div>
 
                         <div class="ml-1 text-indigo-500">
@@ -20,7 +20,7 @@
                 </a>
             </div>
 
-            <div class="bg-gray-200 bg-opacity-25 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            <div class="bg-gray-200 dark:bg-dark-gray-700 bg-opacity-25 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @if($images->isEmpty())
                     <p class="p-8 col-span-6 text-center">
                         You don't have any image uploads right now, create an <a class="text-indigo-700" href="{{ route('api-tokens.index') }}">API token</a> to start uploading images.

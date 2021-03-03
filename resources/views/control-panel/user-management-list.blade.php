@@ -6,10 +6,10 @@
         </x-slot>
     </x-jet-section-title>
 
-    <div class="mt-5 md:mt-0 md:col-span-2 px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
+    <div class="mt-5 md:mt-0 md:col-span-2 px-4 py-5 bg-white dark:bg-dark-gray-700 dark:text-dark-gray-200 sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
         <div class="col-span-6 flex flex-col max-w-full">
             @if(session()->has('createdUser'))
-                <div class="p-4 mb-4 bg-green-200 text-gray-800 rounded">
+                <div class="p-4 mb-4 bg-green-200 dark:bg-green-400 text-gray-800 rounded">
                     <p>The a user for <span class="font-semibold">{{ session()->get('createdUser')['name'] }}</span>, they can sign in using their email and the generated password.</p>
                     <ul class="list-inside list-disc">
                         <li><span class="font-semibold">Email:</span> {{ session()->get('createdUser')['email'] }}</li>
@@ -37,10 +37,10 @@
                 <p class="text-center text-gray-700 font-medium">Found no users matching the "{{ $search }}" query.</p>
             @else
                 <div class="flex flex-col w-full pb-8">
-                    <div class="w-full grid grid-cols-12 bg-gray-100 border-b border-gray-300">
-                        <div class="p-4 col-span-4 text-left text-sm font-medium text-gray-500">Name</div>
-                        <div class="p-4 col-span-5 text-left text-sm font-medium text-gray-500">Email</div>
-                        <div class="p-4 col-span-3 text-left text-sm font-medium text-gray-500">Actions</div>
+                    <div class="w-full grid grid-cols-12 bg-gray-100 dark:bg-dark-gray-800 border-b border-gray-300 dark:border-dark-gray-500">
+                        <div class="p-4 col-span-4 text-left text-sm font-medium text-gray-500 dark:text-dark-gray-400">Name</div>
+                        <div class="p-4 col-span-5 text-left text-sm font-medium text-gray-500 dark:text-dark-gray-400">Email</div>
+                        <div class="p-4 col-span-3 text-left text-sm font-medium text-gray-500 dark:text-dark-gray-400">Actions</div>
                     </div>
                     <div class="w-full flex flex-col">
                         @foreach ($users as $user)

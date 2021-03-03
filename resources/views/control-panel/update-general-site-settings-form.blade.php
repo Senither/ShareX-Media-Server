@@ -15,12 +15,27 @@
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
-        <!-- Name -->
+        <!-- Site Theme -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('URL Generation Method') }}" />
+            <x-jet-label for="site_theme" value="{{ __('Default Site Theme') }}" />
             <select
+                id="site_theme"
+                wire:model="theme"
+                class="mt-1 block w-full border-gray-300 dark:border-dark-gray-600 focus:border-indigo-300 dark:focus:border-dark-gray-600 focus:ring focus:ring-indigo-200 dark:focus:ring-dark-gray-800 focus:ring-opacity-50 dark:bg-dark-gray-800 rounded-md shadow-sm"
+            >
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <x-jet-input-error for="theme" class="mt-2" />
+        </div>
+
+        <!-- URL Method -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="url_method" value="{{ __('URL Generation Method') }}" />
+            <select
+                id="url_method"
                 wire:model="urlMethod"
-                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                class="mt-1 block w-full border-gray-300 dark:border-dark-gray-600 focus:border-indigo-300 dark:focus:border-dark-gray-600 focus:ring focus:ring-indigo-200 dark:focus:ring-dark-gray-800 focus:ring-opacity-50 dark:bg-dark-gray-800 rounded-md shadow-sm"
             >
                 <option value="wordlist">Word List</option>
                 <option value="characters">Random Characters</option>
@@ -28,7 +43,7 @@
             <x-jet-input-error for="urlMethod" class="mt-2" />
         </div>
 
-        <!-- Name -->
+        <!-- Domains -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="domains_0" value="{{ __('URL Domains') }}" />
 
@@ -40,8 +55,8 @@
                 @foreach ($domains as $key => $domain)
                     <div>
                         <div class="mt-1 relative rounded-md shadow-sm">
-                            <input
-                                class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-8 sm:text-sm border-gray-300 rounded-md"
+                            <x-jet-input
+                                class="w-full"
                                 id="domains_{{ $key }}"
                                 type="text"
                                 wire:model.defer="domains.{{ $key }}"

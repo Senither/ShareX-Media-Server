@@ -28,6 +28,13 @@ class UpdateGeneralSiteSettingsForm extends Component
     public $domains;
 
     /**
+     * The current site theme.
+     *
+     * @var string
+     */
+    public $theme;
+
+    /**
      * The validation rules for the component.
      *
      * @var array
@@ -37,6 +44,7 @@ class UpdateGeneralSiteSettingsForm extends Component
         'urlMethod' => ['required', 'in:wordlist,characters'],
         'domains' => ['array'],
         'domains.*' => ['nullable', 'url'],
+        'theme' => ['required', 'string', 'in:light,dark'],
     ];
 
     /**
@@ -60,6 +68,7 @@ class UpdateGeneralSiteSettingsForm extends Component
         $this->name = $settings->get('app.name');
         $this->urlMethod = $settings->get('app.url_generator');
         $this->domains = $settings->get('app.domains');
+        $this->theme = $settings->get('app.theme');
     }
 
     /**
@@ -86,7 +95,7 @@ class UpdateGeneralSiteSettingsForm extends Component
     /**
      * Update the site settings.
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function update()
     {
@@ -103,13 +112,20 @@ class UpdateGeneralSiteSettingsForm extends Component
 
         $manager = app('settings');
 
+        $wasThemeChanged = $this->theme != $manager->get('app.theme');
+
         $manager->set('app.name', $this->name);
         $manager->set('app.url_generator', $this->urlMethod);
         $manager->set('app.domains', $this->domains);
+        $manager->set('app.theme', $this->theme);
 
         $this->emit('saved');
 
         $this->emit('refresh-navigation-menu');
+
+        if ($wasThemeChanged) {
+            return redirect()->route('control-panel');
+        }
     }
 
     /**

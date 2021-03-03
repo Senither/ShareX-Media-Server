@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight">
             {{ __('Profile') }}
         </h2>
     </x-slot>
@@ -28,6 +28,12 @@
 
                 <x-jet-section-border />
             @endif
+
+            <div class="mt-10 sm:mt-0">
+                @livewire('profile.theme-switcher-form')
+            </div>
+
+            <x-jet-section-border />
 
             <div class="mt-10 sm:mt-0">
                 @livewire('profile.logout-other-browser-sessions-form')

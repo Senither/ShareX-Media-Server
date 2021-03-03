@@ -17,6 +17,7 @@ class SettingsManager
         'app.name' => 'Media Server',
         'app.url_generator' => 'characters',
         'app.domains' => [],
+        'app.theme' => 'light',
         'images.ttl_days' => 90,
         'images.ttl_hours' => 0,
         'images.ttl_minutes' => 0,

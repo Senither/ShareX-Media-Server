@@ -12,8 +12,6 @@ if (!function_exists('isUsingDarkMode')) {
             return true;
         }
 
-        // TODO: Check general settings here.
-
-        return false;
+        return app('settings')->get('app.theme') == 'dark';
     }
 }

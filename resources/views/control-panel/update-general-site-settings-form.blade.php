@@ -38,7 +38,8 @@
                 class="mt-1 block w-full border-gray-300 dark:border-dark-gray-600 focus:border-indigo-300 dark:focus:border-dark-gray-600 focus:ring focus:ring-indigo-200 dark:focus:ring-dark-gray-800 focus:ring-opacity-50 dark:bg-dark-gray-800 rounded-md shadow-sm"
             >
                 <option value="wordlist">Word List</option>
-                <option value="characters">Random Characters</option>
+                <option value="characters">Characters</option>
+                <option value="random">Random Generator</option>
             </select>
             <x-jet-input-error for="urlMethod" class="mt-2" />
         </div>

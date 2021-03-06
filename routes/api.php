@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\TextController;
+use App\Http\Controllers\Api\UrlController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,8 @@ Route::middleware('auth:sanctum')->group(function () {
          ->only(['index', 'show', 'store', 'destroy']);
 
     Route::resource('/texts', TextController::class)
+         ->only(['index', 'show', 'store', 'destroy']);
+
+    Route::resource('/urls', UrlController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 });

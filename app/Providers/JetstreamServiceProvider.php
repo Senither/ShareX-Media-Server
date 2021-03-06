@@ -48,6 +48,10 @@ class JetstreamServiceProvider extends ServiceProvider
             'text:list',
             'text:upload',
             'text:delete',
+            'url:view',
+            'url:list',
+            'url:upload',
+            'url:delete',
         ]);
     }
 }

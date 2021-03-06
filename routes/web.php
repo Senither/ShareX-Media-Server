@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImposterController;
 use App\Http\Controllers\RenderImageController;
 use App\Http\Controllers\RenderTextController;
+use App\Http\Controllers\RenderUrlController;
 use App\Http\Middleware\SiteAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::get('i/{image}/{type?}', RenderImageController::class)
 Route::get('t/{text}/{raw?}', RenderTextController::class)
      ->where(['raw' => 'raw'])
      ->name('view-text');
+ Route::get('u/{url}/{preview?}', RenderUrlController::class)
+     ->where(['preview' => 'preview'])
+     ->name('view-url');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');

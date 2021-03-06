@@ -27,6 +27,10 @@
                         {{ __('Texts') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('urls') }}" :active="request()->routeIs('urls')">
+                        {{ __('URLs') }}
+                    </x-jet-nav-link>
+
                     @if(request()->user()->is_admin)
                         <x-jet-nav-link href="{{ route('control-panel') }}" :active="request()->routeIs('control-panel')">
                             {{ __('Control Panel') }}
@@ -127,6 +131,10 @@
 
             <x-jet-responsive-nav-link href="{{ route('texts') }}" :active="request()->routeIs('texts')">
                 {{ __('Texts') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('urls') }}" :active="request()->routeIs('urls')">
+                {{ __('URLs') }}
             </x-jet-responsive-nav-link>
 
             @if(request()->user()->is_admin)

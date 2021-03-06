@@ -6,7 +6,7 @@
                     Latest shorten URLs
                 </div>
 
-                <a href="#">
+                <a href="{{ route('urls') }}">
                     <div class="flex items-center text-sm font-semibold text-indigo-700 dark:text-indigo-300">
                         <div>View all shorten URLs</div>
 

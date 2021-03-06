@@ -24,6 +24,7 @@ class CreateUrlsTable extends Migration
                 ->unique()
                 ->index();
             $table->string('url');
+            $table->integer('visits')->default(0);
             $table->timestamps();
 
             $table->unique(['user_id', 'name']);

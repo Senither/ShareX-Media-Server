@@ -27,6 +27,8 @@ class RenderUrlController extends Controller
             return $this->createPreview($url);
         }
 
+        $url->increment('visits');
+
         return redirect($url->url);
     }
 

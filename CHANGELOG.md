@@ -2,6 +2,16 @@
 
 All notable changes to **ShareX Media Server** will be documented in this file.
 
+## v1.3
+
+-   Added dark theme support
+    -   Users can no select if they want to use a light or dark version of the site on the profile page, and site administrators can control the default theme used globally on the site, including login, register, and password reset pages.
+-   Added random URL generator
+    -   This generator just betweens the other generators at random.
+-   Added update bash script to make it easier to update the app in the future.
+-   Improve validation checks for text uploads.
+-   Upgraded to Laravel 8.30+
+
 ## v1.2
 
 Text file support has been added! It's now possible to:

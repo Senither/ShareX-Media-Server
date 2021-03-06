@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Url;
+use App\Scopes\UserScope;
+use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RenderUrlController extends Controller
 {
@@ -15,6 +19,34 @@ class RenderUrlController extends Controller
      */
     public function __invoke($id, $preview = null)
     {
-        // TODO: Render url here...
+        $url = Url::withoutGlobalScope(UserScope::class)
+            ->where('name', $id)
+            ->firstOrFail();
+
+        if ($preview) {
+            return $this->createPreview($url);
+        }
+
+        return redirect($url->url);
+    }
+
+    /**
+     * Create the preview response.
+     *
+     * @param  \App\Models\Url $url
+     * @return \Illuminate\Http\Response
+     */
+    protected function createPreview($url)
+    {
+        $path = 'urls/' . $url->name . '.jpg';
+
+        if (!Storage::exists($path)) {
+            return abort(404);
+        }
+
+        return response(Storage::get($path))->header(
+            'Content-Type',
+            MimeType::fromExtension('jpg')
+        );
     }
 }

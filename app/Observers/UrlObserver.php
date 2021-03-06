@@ -27,6 +27,6 @@ class UrlObserver
      */
     public function deleted(Url $url)
     {
-        Storage::delete('urls/' . $image->name . '.jpg');
+        Storage::delete('urls/' . $url->name . '.jpg');
     }
 }

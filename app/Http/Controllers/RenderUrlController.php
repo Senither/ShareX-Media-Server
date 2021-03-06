@@ -9,10 +9,11 @@ class RenderUrlController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  string $id
+     * @param  string|null $preview
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke($id, $preview = null)
     {
         // TODO: Render url here...
     }

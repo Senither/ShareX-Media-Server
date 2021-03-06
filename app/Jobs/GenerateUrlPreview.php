@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Url;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -19,9 +20,9 @@ class GenerateUrlPreview implements ShouldQueue
     /**
      * The URL that the preview should be generated for.
      *
-     * @var string
+     * @var \App\Models\Url
      */
-    public $url;
+    public $model;
 
     /**
      * The number of seconds the job can run before timing out.
@@ -40,12 +41,12 @@ class GenerateUrlPreview implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param  $url
+     * @param  \App\Models\Url $url
      * @return void
      */
-    public function __construct($url)
+    public function __construct(Url $url)
     {
-        $this->url = $url;
+        $this->model = $url;
     }
 
     /**
@@ -55,15 +56,15 @@ class GenerateUrlPreview implements ShouldQueue
      */
     public function handle()
     {
-        if (!Storage::exists('url-previews')) {
-            Storage::makeDirectory('url-previews');
+        if (!Storage::exists('urls')) {
+            Storage::makeDirectory('urls');
         }
 
-        Browsershot::url($this->url)
+        Browsershot::url($this->model->url)
             ->noSandbox()
             ->windowSize(640, 480)
             ->fit(Manipulations::FIT_CONTAIN, 256, 256)
             ->setScreenshotType('jpeg', 100)
-            ->save(storage_path('app/url-previews/some-unique-id.jpg'));
+            ->save(storage_path('app/urls/' . $this->model->name . '.jpg'));
     }
 }

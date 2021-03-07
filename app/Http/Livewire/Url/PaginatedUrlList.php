@@ -25,7 +25,9 @@ class PaginatedUrlList extends Component
     public function render()
     {
         return view('url.paginated-url-list', [
-            'urls' => Url::latest()->paginate(24),
+            'urls' => Url::latest()->paginate(
+                app('settings')->get('urls.per_page')
+            ),
         ]);
     }
 }

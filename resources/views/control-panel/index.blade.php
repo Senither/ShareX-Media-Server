@@ -24,6 +24,12 @@
             <x-jet-section-border />
 
             <div class="mt-10 sm:mt-0">
+                @livewire('control-panel.update-url-settings-form')
+            </div>
+
+            <x-jet-section-border />
+
+            <div class="mt-10 sm:mt-0">
                 @livewire('control-panel.user-management-list')
             </div>
         </div>

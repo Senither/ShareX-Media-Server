@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TextUploadRequest;
 use App\Models\Text;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class TextController extends Controller
      * @param  \App\Http\Requests\TextUploadRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TextUploadRequest $request)
     {
         $file = Text::createAndSave($request->file('file'));
 

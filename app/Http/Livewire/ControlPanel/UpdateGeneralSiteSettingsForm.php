@@ -41,7 +41,7 @@ class UpdateGeneralSiteSettingsForm extends Component
      */
     protected $rules = [
         'name' => ['required', 'string', 'min:3'],
-        'urlMethod' => ['required', 'in:wordlist,characters'],
+        'urlMethod' => ['required', 'in:wordlist,characters,random'],
         'domains' => ['array'],
         'domains.*' => ['nullable', 'url'],
         'theme' => ['required', 'string', 'in:light,dark'],

@@ -10,7 +10,7 @@
     <x-slot name="form">
         <!-- TTL -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="url_ttl_days" value="{{ __('Text Files Live Time (Days, Hours and Minutes)') }}" />
+            <x-jet-label for="url_ttl_days" value="{{ __('Shorten URLs Live Time (Days, Hours and Minutes)') }}" />
             <div class="flex space-x-3">
                 <x-jet-input id="url_ttl_days" type="number" class="mt-1 block w-full" min="0" wire:model.defer="settings.ttl_days" />
                 <x-jet-input id="url_ttl_hours" type="number" class="mt-1 block w-full" min="0" wire:model.defer="settings.ttl_hours" />
@@ -23,7 +23,7 @@
 
         <!-- Per page -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="url_per_page" value="{{ __('Text files per page') }}" />
+            <x-jet-label for="url_per_page" value="{{ __('Shorten URLs per page') }}" />
             <x-jet-input id="url_per_page" type="number" class="mt-1 block w-full" min="1" wire:model.defer="settings.per_page" />
             <x-jet-input-error for="settings.per_page" class="mt-2" />
         </div>

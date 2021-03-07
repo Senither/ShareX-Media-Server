@@ -8,6 +8,7 @@ use App\Traits\MediaResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 
 class Url extends Model
 {
@@ -60,5 +61,27 @@ class Url extends Model
             'name' => app(IdentifierContract::class)->generate(),
             'url' => $url,
         ]);
+    }
+
+    /**
+     * Creates a URL to the direct resource using the
+     * shortest URL defined of all the domains.
+     *
+     * @return string
+     */
+    public function getResourceUrlAttribute()
+    {
+        $url = route($this->resourceViewRoute, $this);
+
+        $domain = collect(app('settings')->get('app.domains'), url('/'))
+            ->sort(fn($first, $second) => strlen($first) > strlen($second))
+            ->flatten()
+            ->get(0);
+
+        if ($domain == null) {
+            return $url;
+        }
+
+        return str_replace(url('/'), $domain, $url);
     }
 }

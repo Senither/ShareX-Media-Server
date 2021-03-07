@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Image;
 use App\Models\Text;
+use App\Models\Url;
 use App\Settings\SettingsManager;
 use Illuminate\Console\Command;
 
@@ -52,6 +53,8 @@ class MediaCleanupCommand extends Command
         $this->cleanupImages();
 
         $this->cleanupTextFiles();
+
+        $this->cleanupUrls();
     }
 
     /**
@@ -76,6 +79,11 @@ class MediaCleanupCommand extends Command
         $this->info('Done!');
     }
 
+    /**
+     * Cleans up the expired text files.
+     *
+     * @return void
+     */
     protected function cleanupTextFiles()
     {
         $query = Text::where('created_at', '<', $this->createTimestampFor('texts'));
@@ -86,6 +94,27 @@ class MediaCleanupCommand extends Command
         }
 
         $this->info('Starting cleanup process for ' . $total . ' text files!');
+
+        $query->delete();
+
+        $this->info('Done!');
+    }
+
+    /**
+     * Cleans up the expired shorten URLs.
+     *
+     * @return void
+     */
+    protected function cleanupUrls()
+    {
+        $query = Url::where('created_at', '<', $this->createTimestampFor('urls'));
+        $total = $query->count();
+
+        if ($total == 0) {
+            return $this->warn('No shorten URLs to cleanup, skipping...');
+        }
+
+        $this->info('Starting cleanup process for ' . $total . ' shorten URLs!');
 
         $query->delete();
 

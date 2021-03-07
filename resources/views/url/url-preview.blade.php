@@ -8,7 +8,7 @@
                 onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/url.svg') }}'"
             >
 
-            <p class="pt-2 text-xs dark:text-dark-gray-200">Visited {{ $url->visits }} times!</p>
+            <p class="pt-2 text-xs dark:text-dark-gray-200">Visited {{ $url->visits }} times</p>
         </div>
     </a>
 

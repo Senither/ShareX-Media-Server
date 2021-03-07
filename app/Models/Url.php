@@ -7,7 +7,6 @@ use App\Traits\BelongsToUser;
 use App\Traits\MediaResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 
 class Url extends Model

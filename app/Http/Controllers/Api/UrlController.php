@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UrlUploadRequest;
 use App\Models\Url;
 use Illuminate\Http\Request;
 
@@ -30,10 +31,10 @@ class UrlController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\TextUploadRequest  $request
+     * @param  \App\Http\Requests\UrlUploadRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UrlUploadRequest $request)
     {
         $url = Url::createAndSave($request->get('url'));
 

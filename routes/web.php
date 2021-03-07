@@ -6,6 +6,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImposterController;
 use App\Http\Controllers\RenderImageController;
 use App\Http\Controllers\RenderTextController;
+use App\Http\Controllers\RenderUrlController;
 use App\Http\Middleware\SiteAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -27,11 +28,15 @@ Route::get('i/{image}/{type?}', RenderImageController::class)
 Route::get('t/{text}/{raw?}', RenderTextController::class)
      ->where(['raw' => 'raw'])
      ->name('view-text');
+ Route::get('u/{url}/{preview?}', RenderUrlController::class)
+     ->where(['preview' => 'preview'])
+     ->name('view-url');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard.index')->name('dashboard');
     Route::view('/images', 'images.index')->name('images');
     Route::view('/texts', 'text.index')->name('texts');
+    Route::view('/urls', 'url.index')->name('urls');
 
     Route::get('/imposter/leave', [ImposterController::class, 'leave'])
          ->name('imposter.leave');

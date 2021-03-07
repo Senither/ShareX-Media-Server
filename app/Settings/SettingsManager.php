@@ -18,14 +18,21 @@ class SettingsManager
         'app.url_generator' => 'characters',
         'app.domains' => [],
         'app.theme' => 'light',
+
         'images.ttl_days' => 90,
         'images.ttl_hours' => 0,
         'images.ttl_minutes' => 0,
         'images.per_page' => 24,
+
         'texts.ttl_days' => 30,
         'texts.ttl_hours' => 0,
         'texts.ttl_minutes' => 0,
         'texts.per_page' => 24,
+
+        'urls.ttl_days' => 90,
+        'urls.ttl_hours' => 0,
+        'urls.ttl_minutes' => 0,
+        'urls.per_page' => 24,
     ];
 
     /**

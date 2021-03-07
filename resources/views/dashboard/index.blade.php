@@ -8,4 +8,6 @@
     @livewire('images.image-preview-list')
 
     @livewire('text.text-preview-list')
+
+    @livewire('url.url-preview-list')
 </x-app-layout>

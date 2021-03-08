@@ -2,6 +2,9 @@
     <a class="flex-1 flex items-center" href="{{ $image->resource_url }}" target="blank">
         <img
             class="rounded-sm shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+            loading="lazy"
+            height="256"
+            width="256"
             src="{{ route('view-image', [$image, '256x256']) }}"
             alt="{{ $image->name }}"
         >

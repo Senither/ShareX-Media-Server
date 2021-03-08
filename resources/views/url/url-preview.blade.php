@@ -3,6 +3,9 @@
         <div class="p-2 mb-1 flex flex-col w-full text-center overflow-ellipsis dark:bg-dark-gray-800 rounded shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
             <img
                 class="flex flex-1"
+                loading="lazy"
+                height="256"
+                width="256"
                 src="{{ route('view-url', [$url, 'preview']) }}"
                 alt="{{ $url->name }}"
                 onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/url.svg') }}'"

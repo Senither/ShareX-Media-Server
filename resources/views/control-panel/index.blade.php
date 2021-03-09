@@ -11,20 +11,58 @@
 
             <x-jet-section-border />
 
-            <div class="mt-10 sm:mt-0">
-                @livewire('control-panel.update-image-settings-form')
-            </div>
+            <div x-data="{ active: 'image' }">
+                <div class="pt-8 sm:pt-0 pb-8 text-center font-semibold text-gray-100">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-dark-gray-100">
+                        Media Settings Type
+                    </h4>
+                    <p class="pb-4 text-sm text-gray-600 dark:text-dark-gray-400">
+                        Select the type of media resource you want the change the settings for.
+                    </p>
 
-            <x-jet-section-border />
+                    <a
+                        x-on:click="active = 'image'"
+                        :class="{
+                            'underline bg-gray-800 dark:bg-dark-gray-700': active == 'image',
+                            'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'image'
+                        }"
+                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400"
+                    >
+                        Images
+                    </a>
+                    <a
+                        x-on:click="active = 'text'"
+                        :class="{
+                            'underline bg-gray-800 dark:bg-dark-gray-700': active == 'text',
+                            'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'text'
+                        }"
+                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400"
+                    >
+                        Texts
+                    </a>
+                    <a
+                        x-on:click="active = 'url'"
+                        :class="{
+                            'underline bg-gray-800 dark:bg-dark-gray-700': active == 'url',
+                            'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'url'
+                        }"
+                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400"
+                    >
+                        URLs
+                    </a>
+                </div>
 
-            <div class="mt-10 sm:mt-0">
-                @livewire('control-panel.update-text-settings-form')
-            </div>
+                <div x-show="active == 'image'" class="mt-10 sm:mt-0">
+                    @livewire('control-panel.update-image-settings-form')
+                </div>
 
-            <x-jet-section-border />
+                <div x-show="active == 'text'" class="mt-10 sm:mt-0">
+                    @livewire('control-panel.update-text-settings-form')
+                </div>
 
-            <div class="mt-10 sm:mt-0">
-                @livewire('control-panel.update-url-settings-form')
+                <div x-show="active == 'url'" class="mt-10 sm:mt-0">
+                    @livewire('control-panel.update-url-settings-form')
+                </div>
             </div>
 
             <x-jet-section-border />

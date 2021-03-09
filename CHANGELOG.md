@@ -2,6 +2,19 @@
 
 All notable changes to **ShareX Media Server** will be documented in this file.
 
+## v1.4
+
+-   Support for shortening URL was added.
+    -   The shorten URL service will always pick the shortest domain you have registered if multiple domains are registered under the control panel.
+-   Support for viewing and deleting short URLs via the dashboard.
+-   Grouped media resource settings under tabs.
+-   Improved image loading.
+    -   All images on the site are now lazy loaded, this should help lower the bandwidth on mobile devices since images not shown on the screen are no longer loaded.
+-   Optimized JS assets.
+    -   Unused JS packages have been removed to help reduce the file size of JS files.
+-   Fixed some spelling mistakes.
+-   Updated Laravel to 8.32 along with some other PHP and Node dependencies.
+
 ## v1.3
 
 -   Added dark theme support

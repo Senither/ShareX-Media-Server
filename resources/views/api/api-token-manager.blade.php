@@ -6,7 +6,9 @@
         </x-slot>
 
         <x-slot name="description">
-            {{ __('API tokens allow third-party services to authenticate with our application on your behalf.') }}
+            API tokens allow third-party services to authenticate with our application on your behalf.
+            <br class="hidden sm:block">
+            A guide for how to setup ShareX with the media server can be found on the <a class="text-indigo-700 dark:text-indigo-400 hover:underline" target="blank" href="https://github.com/Senither/ShareX-Media-Server/wiki/Setting-up-ShareX">project wiki page</a>.
         </x-slot>
 
         <x-slot name="form">

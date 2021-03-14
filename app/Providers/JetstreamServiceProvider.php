@@ -37,7 +37,11 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     protected function configurePermissions()
     {
-        Jetstream::defaultApiTokenPermissions(['read']);
+        Jetstream::defaultApiTokenPermissions([
+            'image:upload',
+            'text:upload',
+            'url:upload',
+        ]);
 
         Jetstream::permissions([
             'image:view',

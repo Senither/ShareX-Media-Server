@@ -8,8 +8,8 @@ if (!function_exists('isUsingDarkMode')) {
      */
     function isUsingDarkMode()
     {
-        if (request()->user() && request()->user()->theme == 'dark') {
-            return true;
+        if (request()->user() && request()->user()->theme !== null) {
+            return request()->user()->theme == 'dark';
         }
 
         return app('settings')->get('app.theme') == 'dark';

@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Image;
 use App\Models\User;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

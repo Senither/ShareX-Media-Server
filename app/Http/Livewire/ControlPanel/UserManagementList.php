@@ -13,13 +13,6 @@ class UserManagementList extends Component
     use WithPagination;
 
     /**
-     * The events the component should listen for.
-     *
-     * @var array
-     */
-    protected $listeners = ['userDeleted' => '$refresh'];
-
-    /**
      * The search query to filter users by.
      *
      * @var string
@@ -42,6 +35,13 @@ class UserManagementList extends Component
         'name' => '',
         'email' => '',
     ];
+
+    /**
+     * The events the component should listen for.
+     *
+     * @var array
+     */
+    protected $listeners = ['userDeleted' => '$refresh'];
 
     /**
      * The validation rules for the component.
@@ -91,11 +91,11 @@ class UserManagementList extends Component
         $password = Str::random(16);
 
         User::create(array_merge([
-            'password' => Hash::make($password)
+            'password' => Hash::make($password),
         ], $this->userDetails));
 
         session()->flash('createdUser', array_merge([
-            'password' => $password
+            'password' => $password,
         ], $this->userDetails));
 
         $this->displayingCreateNewUser = false;

@@ -5,11 +5,9 @@ namespace App\Models;
 use App\Identifier\IdentifierContract;
 use App\Traits\BelongsToUser;
 use App\Traits\MediaResource;
-use HyungJu\ReadableURL;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
 
 class Image extends Model
 {
@@ -55,16 +53,6 @@ class Image extends Model
     protected $resourceExtensions = ['gif'];
 
     /**
-     * The belongs to relationship between the image and the user who owns it.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
      * Creates a new image entry, and stores the uploaded file.
      *
      * @param  \Illuminate\Http\UploadedFile $file
@@ -83,5 +71,15 @@ class Image extends Model
         $model->save();
 
         return $model;
+    }
+
+    /**
+     * The belongs to relationship between the image and the user who owns it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

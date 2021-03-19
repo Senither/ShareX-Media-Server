@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Url;
 use App\Scopes\UserScope;
 use GuzzleHttp\Psr7\MimeType;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class RenderUrlController extends Controller

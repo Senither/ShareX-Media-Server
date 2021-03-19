@@ -9,7 +9,6 @@ use App\Policies\ImagePolicy;
 use App\Policies\TextPolicy;
 use App\Policies\UrlPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {

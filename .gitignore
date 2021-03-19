@@ -5,6 +5,9 @@
 .env.backup
 .env
 
+# PHP CS
+.php_cs.cache
+
 # NPM & Mix
 /node_modules
 /public/hot

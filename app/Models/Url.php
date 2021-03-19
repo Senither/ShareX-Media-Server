@@ -7,7 +7,6 @@ use App\Traits\BelongsToUser;
 use App\Traits\MediaResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
 class Url extends Model
 {
@@ -38,16 +37,6 @@ class Url extends Model
     protected $resourceApiName = 'urls';
 
     /**
-     * The belongs to relationship between the image and the user who owns it.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
      * Creates a new url entry, and stores url
      *
      * @param  string $url
@@ -63,6 +52,16 @@ class Url extends Model
     }
 
     /**
+     * The belongs to relationship between the image and the user who owns it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
      * Creates a URL to the direct resource using the
      * shortest URL defined of all the domains.
      *
@@ -73,7 +72,7 @@ class Url extends Model
         $url = route($this->resourceViewRoute, $this);
 
         $domain = collect(app('settings')->get('app.domains'), url('/'))
-            ->sort(fn($first, $second) => strlen($first) > strlen($second))
+            ->sort(fn ($first, $second) => strlen($first) > strlen($second))
             ->flatten()
             ->get(0);
 

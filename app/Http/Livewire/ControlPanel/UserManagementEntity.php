@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\ControlPanel;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Jetstream\Contracts\DeletesUsers;
 use Livewire\Component;
@@ -47,20 +46,6 @@ class UserManagementEntity extends Component
         'userForm.email' => 'email',
         'userForm.password' => 'password',
     ];
-
-    /**
-     * The validation rules for the component.
-     *
-     * @return array
-     */
-    protected function rules()
-    {
-        return [
-            'userForm.name' => ['required', 'string', 'min:2'],
-            'userForm.email' => ['required', 'email', 'unique:users,email,' . $this->user->id],
-            'userForm.password' => ['nullable', 'string', 'min:8'],
-        ];
-    }
 
     /**
      * Set the user form data and resets error bag when
@@ -125,5 +110,19 @@ class UserManagementEntity extends Component
     public function render()
     {
         return view('control-panel.user-management-entity');
+    }
+
+    /**
+     * The validation rules for the component.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'userForm.name' => ['required', 'string', 'min:2'],
+            'userForm.email' => ['required', 'email', 'unique:users,email,' . $this->user->id],
+            'userForm.password' => ['nullable', 'string', 'min:8'],
+        ];
     }
 }

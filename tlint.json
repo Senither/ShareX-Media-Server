@@ -1,0 +1,10 @@
+{
+    "preset": "laravel",
+    "disabled": [
+        "NoParensEmptyInstantiations",
+        "SpaceAfterBladeDirectives",
+        "SpaceAfterSoleNotOperator",
+        "ConcatenationNoSpacing"
+    ],
+    "excluded": ["tests/"]
+}

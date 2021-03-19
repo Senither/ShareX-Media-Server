@@ -46,16 +46,6 @@ class Text extends Model
     protected $resourceApiName = 'texts';
 
     /**
-     * The belongs to relationship between the image and the user who owns it.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
      * Creates a new text entry, and stores the uploaded file.
      *
      * @param  \Illuminate\Http\UploadedFile $file
@@ -81,5 +71,15 @@ class Text extends Model
         $model->save();
 
         return $model;
+    }
+
+    /**
+     * The belongs to relationship between the image and the user who owns it.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

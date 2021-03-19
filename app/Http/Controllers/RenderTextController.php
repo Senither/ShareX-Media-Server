@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Text;
 use App\Scopes\UserScope;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class RenderTextController extends Controller
@@ -29,7 +28,10 @@ class RenderTextController extends Controller
                 '...'
             );
 
-            return view('preview.text', compact('text', 'metaDescription'));
+            return view('preview.text', [
+                'text' => $text,
+                'metaDescription' => $metaDescription,
+            ]);
         }
 
         return response($text->content)->header('Content-Type', 'text/plain');

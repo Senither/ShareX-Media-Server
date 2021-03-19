@@ -2,9 +2,6 @@
 
 namespace App\Traits;
 
-use App\Scopes\UserScope;
-use Illuminate\Support\Arr;
-
 trait FileExtensionIcon
 {
     /**

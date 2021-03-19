@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTextsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('texts', function (Blueprint $table) {
@@ -32,11 +27,6 @@ class CreateTextsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('texts');

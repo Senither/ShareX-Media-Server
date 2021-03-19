@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a20688c25a2f0813ad641533508ae36",
+    "content-hash": "c56e8d855b632aa5edea932ca8c68b8f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8671,6 +8671,61 @@
                 }
             ],
             "time": "2020-07-12T23:59:07+00:00"
+        },
+        {
+            "name": "tightenco/tlint",
+            "version": "v5.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tighten/tlint.git",
+                "reference": "d7452af38f9e212f93e3466d9f8ab17f32b72012"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tighten/tlint/zipball/d7452af38f9e212f93e3466d9f8ab17f32b72012",
+                "reference": "d7452af38f9e212f93e3466d9f8ab17f32b72012",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/view": "*",
+                "nikic/php-parser": "^4.5",
+                "php": ">=7.3",
+                "symfony/console": "^4.3 || ^5.0",
+                "symfony/process": "^4.3 || ^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "bin": [
+                "bin/tlint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tighten\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Logan Henson",
+                    "email": "logan@loganhenson.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tighten linter for Laravel conventions",
+            "homepage": "https://github.com/tighten/tlint",
+            "support": {
+                "issues": "https://github.com/tighten/tlint/issues",
+                "source": "https://github.com/tighten/tlint/tree/v5.0.15"
+            },
+            "time": "2021-02-26T22:07:45+00:00"
         }
     ],
     "aliases": [],

@@ -12,15 +12,9 @@ jobs:
         uses: chekalsky/phpcs-action@v1
 
   tlint:
+    name: TLint
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [ubuntu-latest]
-        php: [7.4, 8.0]
-
-    name: TLint - P${{ matrix.php }} - ${{ matrix.os }}
-
+    continue-on-error: false
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
@@ -28,16 +22,10 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 7.4
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
           tools: composer:v2
           coverage: none
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v1
-        with:
-          path: vendor
-          key: composer-${{matrix.php}}-${{ matrix.os }}-${{ hashFiles('composer.lock') }}
 
       - name: Install dependencies
         run: composer install --no-interaction --no-suggest --ignore-platform-reqs

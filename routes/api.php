@@ -18,16 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', function (Request $request) {
+    Route::get('user', function (Request $request) {
         return $request->user();
     });
 
-    Route::resource('/images', ImageController::class)
+    Route::resource('images', ImageController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 
-    Route::resource('/texts', TextController::class)
+    Route::resource('texts', TextController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 
-    Route::resource('/urls', UrlController::class)
+    Route::resource('urls', UrlController::class)
          ->only(['index', 'show', 'store', 'destroy']);
 });

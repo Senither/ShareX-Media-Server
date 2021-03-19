@@ -2,7 +2,9 @@
 
 namespace App\Settings;
 
-class InvalidSettingsKeyException extends \RuntimeException
+use RuntimeException;
+
+class InvalidSettingsKeyException extends RuntimeException
 {
     /**
      * Create a new instance of the invalid settings key exception.

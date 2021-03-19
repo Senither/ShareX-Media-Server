@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\ControlPanelController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImposterController;
 use App\Http\Controllers\RenderImageController;
 use App\Http\Controllers\RenderTextController;
@@ -33,18 +30,18 @@ Route::get('t/{text}/{raw?}', RenderTextController::class)
      ->name('view-url');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::view('/dashboard', 'dashboard.index')->name('dashboard');
-    Route::view('/images', 'images.index')->name('images');
-    Route::view('/texts', 'text.index')->name('texts');
-    Route::view('/urls', 'url.index')->name('urls');
+    Route::view('dashboard', 'dashboard.index')->name('dashboard');
+    Route::view('images', 'images.index')->name('images');
+    Route::view('texts', 'text.index')->name('texts');
+    Route::view('urls', 'url.index')->name('urls');
 
-    Route::get('/imposter/leave', [ImposterController::class, 'leave'])
+    Route::get('imposter/leave', [ImposterController::class, 'leave'])
          ->name('imposter.leave');
-    Route::get('/imposter/{user}', [ImposterController::class, 'join'])
+    Route::get('imposter/{user}', [ImposterController::class, 'join'])
         ->middleware(SiteAdmin::class)
         ->name('imposter.join');
 
-    Route::view('/control-panel', 'control-panel.index')
+    Route::view('control-panel', 'control-panel.index')
         ->middleware(SiteAdmin::class)
         ->name('control-panel');
 });

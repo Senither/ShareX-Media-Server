@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateAdminUser extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         $user = User::create([

@@ -6,9 +6,7 @@ use App\Models\Image;
 use App\Scopes\UserScope;
 use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class RenderImageController extends Controller
 {

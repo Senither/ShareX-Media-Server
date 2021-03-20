@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight">
-            {{ __('Your Images') }}
-        </h2>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl leading-tight">
+                {{ __('Your Images') }}
+            </h2>
+
+            @livewire('images.upload-image-modal-form')
+        </div>
     </x-slot>
 
     <div class="py-12">

@@ -12,7 +12,7 @@ class ImageUploadRequest extends ApiRequest
     public function rules()
     {
         return [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
         ];
     }
 }

@@ -16,7 +16,7 @@ class UploadTextModalForm extends Component
      *
      * @var boolean
      */
-    public $showModal = true;
+    public $showModal = false;
 
     /**
      * The name of the text file.

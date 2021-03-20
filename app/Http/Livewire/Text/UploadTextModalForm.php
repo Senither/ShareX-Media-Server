@@ -48,6 +48,7 @@ class UploadTextModalForm extends Component
     public function updatedShowModal($state)
     {
         if (!$state) {
+            $this->reset('name');
             $this->reset('text');
             $this->reset('file');
         }

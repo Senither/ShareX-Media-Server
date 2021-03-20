@@ -24,7 +24,7 @@
             @endif
 
             <div>
-                {{ __('Select the image you want to be uploaded.') }}
+                {{ __('Select the image you want to upload.') }}
             </div>
 
             <div class="col-span-6 sm:col-span-4">

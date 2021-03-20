@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight">
-            {{ __('Your shorten URLs') }}
-        </h2>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl leading-tight">
+                {{ __('Your shorten URLs') }}
+            </h2>
+
+            @livewire('url.create-url-modal-form')
+        </div>
     </x-slot>
 
     <div class="py-12">

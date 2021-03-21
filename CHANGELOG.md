@@ -2,9 +2,20 @@
 
 All notable changes to **ShareX Media Server** will be documented in this file.
 
+## v1.5
+
+-   Added support for uploading images, text files, and shortening URLs via the dashboard.
+-   Set trusted proxies to trust all traffic
+    -   This is done so Livewire can upload files files on the dashboard behind services like CloudFlare.
+-   Added Linting using [PHP CodeSniffer](https://github.com/FriendsOfPhp/PHP-CS-Fixer) and [TLint](https://github.com/tighten/tlint).
+-   Fixed user theme swap working when going from dark to light mode.
+-   Made upload API scopes be enabled by default.
+-   Moved setup guides to the github wiki pages.
+-   Removed redits from the example environment variable.
+
 ## v1.4
 
--   Support for shortening URL was added.
+-   Added support for shortening URL was added.
     -   The shorten URL service will always pick the shortest domain you have registered if multiple domains are registered under the control panel.
 -   Support for viewing and deleting short URLs via the dashboard.
 -   Grouped media resource settings under tabs.

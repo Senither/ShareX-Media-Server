@@ -1,8 +1,6 @@
 # ShareX Media Server
 
-_ShareX Media Server_ is an app made to support sharing images, files, and text snippets from [ShareX](https://getsharex.com/), built using [Laravel](https://laravel.com/), [Livewire](https://laravel-livewire.com/), and [TailwindCSS](https://tailwindcss.com/).
-
-> Files and Text snippets are not yet supported, but will be supported in the near future.
+_ShareX Media Server_ is an app made to support sharing images, text snippets, and shortening URLs using [ShareX](https://getsharex.com/) or from the website directly, built using [Laravel](https://laravel.com/), [Livewire](https://laravel-livewire.com/), and [TailwindCSS](https://tailwindcss.com/).
 
 ## Table of Content
 

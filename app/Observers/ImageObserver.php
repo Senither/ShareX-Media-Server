@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Jobs\GenerateImageThumbnail;
 use App\Models\Image;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class ImageObserver
@@ -17,6 +18,8 @@ class ImageObserver
     public function created(Image $image)
     {
         GenerateImageThumbnail::dispatch($image);
+
+        Cache::forget('dashboard.stats::' . request()->user()->id);
     }
 
     /**
@@ -32,5 +35,7 @@ class ImageObserver
         foreach (Image::$supportedSizes as $size) {
             Storage::delete('images/' . $image->getResourceName($size . 'x' . $size));
         }
+
+        Cache::forget('dashboard.stats::' . request()->user()->id);
     }
 }

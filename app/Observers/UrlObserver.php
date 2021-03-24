@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Jobs\GenerateUrlPreview;
 use App\Models\Url;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class UrlObserver
@@ -17,6 +18,8 @@ class UrlObserver
     public function created(Url $url)
     {
         GenerateUrlPreview::dispatch($url);
+
+        Cache::forget('dashboard.stats::' . request()->user()->id);
     }
 
     /**
@@ -28,5 +31,7 @@ class UrlObserver
     public function deleted(Url $url)
     {
         Storage::delete('urls/' . $url->name . '.jpg');
+
+        Cache::forget('dashboard.stats::' . request()->user()->id);
     }
 }

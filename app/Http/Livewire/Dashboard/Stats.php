@@ -17,16 +17,7 @@ class Stats extends Component
      */
     public function render()
     {
-        return view(
-            'dashboard.stats',
-            Cache::remember($this->getCacheKey(), 60 * 15, function () {
-                return [
-                    'images' => Image::count(),
-                    'texts' => Text::count(),
-                    'urls' => Url::count(),
-                ];
-            })
-        );
+        return view('dashboard.stats', $this->getStats());
     }
 
     /**
@@ -37,5 +28,25 @@ class Stats extends Component
     protected function getCacheKey()
     {
         return 'dashboard.stats::' . request()->user()->id;
+    }
+
+    /**
+     * Gets the stats for the signed in user.
+     *
+     * @return array
+     */
+    protected function getStats()
+    {
+        return Cache::remember(
+            $this->getCacheKey(),
+            now()->addDay(),
+            function () {
+                return [
+                    'images' => Image::count(),
+                    'texts' => Text::count(),
+                    'urls' => Url::count(),
+                ];
+            }
+        );
     }
 }

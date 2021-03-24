@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Image;
+use App\Models\Text;
 use App\Models\Url;
 use App\Observers\ImageObserver;
+use App\Observers\TextObserver;
 use App\Observers\UrlObserver;
 use App\Settings\SettingsManager;
 use Illuminate\Support\Facades\Schema;
@@ -34,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Image::observe(ImageObserver::class);
+        Text::observe(TextObserver::class);
         Url::observe(UrlObserver::class);
     }
 }

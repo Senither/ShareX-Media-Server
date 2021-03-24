@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    @livewire('dashboard.stats')
+
     @livewire('images.image-preview-list')
 
     @livewire('text.text-preview-list')

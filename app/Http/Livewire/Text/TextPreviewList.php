@@ -23,20 +23,8 @@ class TextPreviewList extends Component
     {
         return view('text.text-preview-list', [
             'textFiles' => Text::latest()
-                ->limit($this->getTextFilesPerPageSize())
+                ->limit(6)
                 ->get(),
         ]);
-    }
-
-    /**
-     * Gets the amount of text files that should be shown per page, and
-     * divides it by half, if the value is larger than 12 we just cap
-     * the text files shown per page at 12.
-     *
-     * @return int
-     */
-    protected function getTextFilesPerPageSize()
-    {
-        return min(app('settings')->get('texts.per_page') / 2, 12);
     }
 }

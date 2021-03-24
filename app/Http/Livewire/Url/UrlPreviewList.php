@@ -23,20 +23,8 @@ class UrlPreviewList extends Component
     {
         return view('url.url-preview-list', [
             'urls' => Url::latest()
-                ->limit($this->getUrlsPerPageSize())
+                ->limit(6)
                 ->get(),
         ]);
-    }
-
-    /**
-     * Gets the amount of shorten URLs that should be shown per page, and
-     * divides it by half, if the value is larger than 12 we just cap
-     * the urls shown per page at 12.
-     *
-     * @return int
-     */
-    protected function getUrlsPerPageSize()
-    {
-        return min(app('settings')->get('urls.per_page') / 2, 12);
     }
 }

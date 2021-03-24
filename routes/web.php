@@ -19,13 +19,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/login');
+Route::fallback(fn() => redirect('/'));
 
 Route::get('i/{image}/{type?}', RenderImageController::class)
      ->name('view-image');
 Route::get('t/{text}/{raw?}', RenderTextController::class)
      ->where(['raw' => 'raw'])
      ->name('view-text');
- Route::get('u/{url}/{preview?}', RenderUrlController::class)
+Route::get('u/{url}/{preview?}', RenderUrlController::class)
      ->where(['preview' => 'preview'])
      ->name('view-url');
 

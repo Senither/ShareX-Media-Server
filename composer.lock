@@ -3222,21 +3222,21 @@
         },
         {
             "name": "senither/version-comparison",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Senither/version-comparison.git",
-                "reference": "8f8efd9c525c98931a7187ee0609fc474caadd7f"
+                "reference": "f793b740137c432709803e422f2f289c17883767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Senither/version-comparison/zipball/8f8efd9c525c98931a7187ee0609fc474caadd7f",
-                "reference": "8f8efd9c525c98931a7187ee0609fc474caadd7f",
+                "url": "https://api.github.com/repos/Senither/version-comparison/zipball/f793b740137c432709803e422f2f289c17883767",
+                "reference": "f793b740137c432709803e422f2f289c17883767",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^8.0",
-                "php": "^7.4"
+                "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "tightenco/tlint": "^5.0"
@@ -3277,9 +3277,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Senither/version-comparison/issues",
-                "source": "https://github.com/Senither/version-comparison/tree/1.0.3"
+                "source": "https://github.com/Senither/version-comparison/tree/1.0.4"
             },
-            "time": "2021-03-30T22:19:33+00:00"
+            "time": "2021-03-30T23:04:38+00:00"
         },
         {
             "name": "spatie/browsershot",

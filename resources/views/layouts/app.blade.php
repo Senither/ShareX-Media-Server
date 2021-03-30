@@ -53,9 +53,21 @@
 
             <footer class="mt-12 bg-white dark:bg-dark-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-600 dark:text-dark-gray-200">
-                    <p class="font-semibold">
+                    <a href="https://github.com/Senither/ShareX-Media-Server" target="blank" class="font-semibold hover:underline">
                         ShareX Media Server
-                    </p>
+                        @if($version)
+                            v{{ $version->getVersion() }}
+                        @endif
+                    </a>
+
+                    @if($version && $version->isOutdated())
+                        <p>
+                            <a href="https://github.com/Senither/ShareX-Media-Server" target="blank" class="text-sm text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold">
+                                New version is available! The media server is {{ $version->getVersionsBehind() }} versions behind.
+                            </a>
+                        </p>
+                    @endif
+
                     <p class="text-sm">
                         Created by <a class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold" href="https://senither.com/">Alexis Tan</a>,
                         powered by <a class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-400 dark:hover:text-indigo-400 font-semibold" href="https://laravel.com/">Laravel</a>,

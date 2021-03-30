@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Storage;
 class RenderUrlController extends Controller
 {
     /**
+     * Create the preview response.
+     *
+     * @param  \App\Models\Url $url
+     * @return \Illuminate\Http\Response
+     */
+    protected function createPreview($url)
+    {
+        $path = 'urls/' . $url->name . '.jpg';
+
+        if (!Storage::exists($path)) {
+            return abort(404);
+        }
+
+        return response(Storage::get($path))
+            ->header('Content-Type', MimeType::fromExtension('jpg'));
+    }
+
+    /**
      * Handle the incoming request.
      *
      * @param  string $id
@@ -29,25 +47,5 @@ class RenderUrlController extends Controller
         $url->increment('visits');
 
         return redirect($url->url);
-    }
-
-    /**
-     * Create the preview response.
-     *
-     * @param  \App\Models\Url $url
-     * @return \Illuminate\Http\Response
-     */
-    protected function createPreview($url)
-    {
-        $path = 'urls/' . $url->name . '.jpg';
-
-        if (!Storage::exists($path)) {
-            return abort(404);
-        }
-
-        return response(Storage::get($path))->header(
-            'Content-Type',
-            MimeType::fromExtension('jpg')
-        );
     }
 }

@@ -67,16 +67,6 @@ class SettingsManager
     protected $hasLoadedDatabase = false;
 
     /**
-     * Syncs any changes with the database that was made.
-     */
-    public function __destruct()
-    {
-        if (!empty($this->dirty)) {
-            $this->syncDirtWithDatabase();
-        }
-    }
-
-    /**
      * Gets the settings value with the given name, if no setting option
      * exists with the given name the InvalidSettingsKeyException will
      * be thrown instead.
@@ -200,6 +190,16 @@ class SettingsManager
                     ->where('key', $key)
                     ->update(compact('value'));
             }
+        }
+    }
+
+    /**
+     * Syncs any changes with the database that was made.
+     */
+    public function __destruct()
+    {
+        if (!empty($this->dirty)) {
+            $this->syncDirtWithDatabase();
         }
     }
 }

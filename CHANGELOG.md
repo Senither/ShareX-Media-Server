@@ -2,7 +2,16 @@
 
 All notable changes to **ShareX Media Server** will be documented in this file.
 
-## v1.5
+## v1.6 - 2021-03-31
+
+-   Added stats cards to the dashboard.
+-   Added fallback route that redirects 404 error pages to the dashboard.
+-   Added version check to the footer.
+    -   The system will check what version the application is running, and add a message if the media server instance is out of date, you can customize how often the system checks versions in the `config/version-comparison.php` config file.
+-   Upgraded to Laravel 8.35.1 along with other PHP dependencies.
+    -   Reordered some methods to follow the new TLint styling rules that was applied when updating TLint.
+
+## v1.5 - 2021-03-21
 
 -   Added support for uploading images, text files, and shortening URLs via the dashboard.
 -   Set trusted proxies to trust all traffic
@@ -13,7 +22,7 @@ All notable changes to **ShareX Media Server** will be documented in this file.
 -   Moved setup guides to the github wiki pages.
 -   Removed redits from the example environment variable.
 
-## v1.4
+## v1.4 - 2021-03-09
 
 -   Added support for shortening URL was added.
     -   The shorten URL service will always pick the shortest domain you have registered if multiple domains are registered under the control panel.
@@ -26,7 +35,7 @@ All notable changes to **ShareX Media Server** will be documented in this file.
 -   Fixed some spelling mistakes.
 -   Updated Laravel to 8.32 along with some other PHP and Node dependencies.
 
-## v1.3
+## v1.3 - 2021-03-07
 
 -   Added dark theme support
     -   Users can no select if they want to use a light or dark version of the site on the profile page, and site administrators can control the default theme used globally on the site, including login, register, and password reset pages.
@@ -36,7 +45,7 @@ All notable changes to **ShareX Media Server** will be documented in this file.
 -   Improve validation checks for text uploads.
 -   Upgraded to Laravel 8.30+
 
-## v1.2
+## v1.2 - 2021-03-02
 
 Text file support has been added! It's now possible to:
 
@@ -53,7 +62,7 @@ Besides support for text file uploads, a few spelling mistakes have also been fi
 
 > The text file upload icons used on the dashboard is provided by [PKief/vscode-material-icon-theme](https://github.com/PKief/vscode-material-icon-theme), and the code highlighting when viewing uploaded text files are provided by [highlight.js](https://highlightjs.org/)
 
-## v1.1
+## v1.1 - 2021-02-25
 
 User management support has been added to the control panel, it's now possible to:
 
@@ -67,7 +76,7 @@ User management support has been added to the control panel, it's now possible t
 
 The app layout also now have a footer with some helpful information, and all the PHP composer dependencies has been updated.
 
-## v1.0
+## v1.0 - 2021-02-24
 
 The application have been completely rewritten using [Laravel 8](https://laravel.com/), [Jetstream](https://jetstream.laravel.com/2.x/introduction.html), [Livewire](https://laravel-livewire.com/), and [TailwindCSS](https://tailwindcss.com/).
 

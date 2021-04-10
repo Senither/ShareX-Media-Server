@@ -40,8 +40,8 @@
         @livewire('preview.text-information', [$text])
 
         <div class="font-sans antialiased">
-            <div class="p-2">
-                <pre><code class="{{ $text->extension }}">{{ $text->content }}</code></pre>
+            <div class="px-2">
+                <pre><code class="h-screen {{ $text->extension }}">{{ $text->content }}</code></pre>
             </div>
         </div>
 

@@ -22,6 +22,8 @@
             }
         </style>
 
+        @livewireStyles
+
         <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js" defer></script>
@@ -35,10 +37,14 @@
         </script>
     </head>
     <body style="background-color: #282C34">
+        @livewire('preview.text-information', [$text])
+
         <div class="font-sans antialiased">
             <div class="p-2">
                 <pre><code class="{{ $text->extension }}">{{ $text->content }}</code></pre>
             </div>
         </div>
+
+        @livewireScripts
     </body>
 </html>

@@ -11,7 +11,7 @@
                 onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/url.svg') }}'"
             >
 
-            <p class="pt-2 text-xs dark:text-dark-gray-200">{{ $text->original_name }}</p>
+            <p class="pt-2 text-xs dark:text-dark-gray-200 overflow-hidden overflow-ellipsis">{{ $text->original_name }}</p>
         </div>
     </a>
 

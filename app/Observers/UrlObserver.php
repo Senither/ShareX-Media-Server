@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\CalculateUsedDiskSpace;
 use App\Jobs\GenerateUrlPreview;
 use App\Models\Url;
 use Illuminate\Support\Facades\Cache;
@@ -33,5 +34,7 @@ class UrlObserver
         Storage::delete('urls/' . $url->name . '.jpg');
 
         Cache::forget('dashboard.stats::' . request()->user()->id);
+
+        CalculateUsedDiskSpace::dispatch(request()->user());
     }
 }

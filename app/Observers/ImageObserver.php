@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\CalculateUsedDiskSpace;
 use App\Jobs\GenerateImageThumbnail;
 use App\Models\Image;
 use Illuminate\Support\Facades\Cache;
@@ -37,5 +38,7 @@ class ImageObserver
         }
 
         Cache::forget('dashboard.stats::' . request()->user()->id);
+
+        CalculateUsedDiskSpace::dispatch(request()->user());
     }
 }

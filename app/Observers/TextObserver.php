@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\CalculateUsedDiskSpace;
 use App\Models\Text;
 use Illuminate\Support\Facades\Cache;
 
@@ -16,6 +17,8 @@ class TextObserver
     public function created(Text $text)
     {
         Cache::forget('dashboard.stats::' . request()->user()->id);
+
+        CalculateUsedDiskSpace::dispatch(request()->user());
     }
 
     /**
@@ -27,5 +30,7 @@ class TextObserver
     public function deleted(Text $text)
     {
         Cache::forget('dashboard.stats::' . request()->user()->id);
+
+        CalculateUsedDiskSpace::dispatch(request()->user());
     }
 }

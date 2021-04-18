@@ -22,24 +22,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'theme',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'theme', 'disk_space_used'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
+    protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret'];
 
     /**
      * The attributes that should be cast to native types.
@@ -56,9 +46,37 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    protected $appends = ['profile_photo_url'];
+
+    /**
+     * The has many relationship between the user and the images they have uploaded.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(Image::class)->withoutGlobalScopes();
+    }
+
+    /**
+     * The has many relationship between the user and the texts they have uploaded.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function texts()
+    {
+        return $this->hasMany(Text::class)->withoutGlobalScopes();
+    }
+
+    /**
+     * The has many relationship between the user and the urls they have uploaded.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function urls()
+    {
+        return $this->hasMany(Url::class)->withoutGlobalScopes();
+    }
 
     /**
      * Checks if the user is an imposter.

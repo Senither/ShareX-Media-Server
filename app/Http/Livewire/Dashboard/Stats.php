@@ -17,7 +17,9 @@ class Stats extends Component
      */
     public function render()
     {
-        return view('dashboard.stats', $this->getStats());
+        return view('dashboard.stats', array_merge([
+            'disk' => $this->calculateUsedDiskSpace(),
+        ], $this->getStats()));
     }
 
     /**
@@ -37,16 +39,33 @@ class Stats extends Component
      */
     protected function getStats()
     {
-        return Cache::remember(
-            $this->getCacheKey(),
-            now()->addDay(),
-            function () {
-                return [
-                    'images' => Image::count(),
-                    'texts' => Text::count(),
-                    'urls' => Url::count(),
-                ];
-            }
-        );
+        return Cache::remember($this->getCacheKey(), now()->addDay(), function () {
+            return [
+                'images' => Image::count(),
+                'texts' => Text::count(),
+                'urls' => Url::count(),
+            ];
+        });
+    }
+
+    /**
+     * Calculates the size and unit of the users used disk space.
+     *
+     * @return array
+     */
+    protected function calculateUsedDiskSpace()
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        $bytes = max(request()->user()->disk_space_used, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+
+        $bytes /= pow(1024, $pow);
+
+        return [
+            'size' => round($bytes, 1),
+            'unit' => $units[$pow],
+        ];
     }
 }

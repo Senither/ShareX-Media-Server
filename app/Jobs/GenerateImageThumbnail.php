@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Jobs\CalculateUsedDiskSpace;
 use App\Models\Image;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -51,6 +52,8 @@ class GenerateImageThumbnail implements ShouldQueue
         foreach (Image::$supportedSizes as $size) {
             $this->resizeAndSave($generator, $size);
         }
+
+        CalculateUsedDiskSpace::dispatch($this->image->owner);
     }
 
     /**

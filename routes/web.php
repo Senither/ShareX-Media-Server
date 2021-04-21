@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/login');
-Route::fallback(fn() => redirect('/'));
+Route::fallback(fn () => redirect('/'));
 
 Route::get('i/{image}/{type?}', RenderImageController::class)
      ->name('view-image');

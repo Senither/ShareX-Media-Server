@@ -13,6 +13,6 @@ trait BelongsToUser
      */
     public static function bootBelongsToUser()
     {
-        static::addGlobalScope(new UserScope);
+        static::addGlobalScope(new UserScope());
     }
 }

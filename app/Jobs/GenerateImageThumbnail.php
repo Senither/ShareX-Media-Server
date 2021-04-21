@@ -14,7 +14,10 @@ use Intervention\Image\Facades\Image as ImageGenerator;
 
 class GenerateImageThumbnail implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Queueable;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithQueue;
 
     /**
      * The number of times the job may be attempted.

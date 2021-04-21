@@ -11,7 +11,10 @@ use Illuminate\Queue\SerializesModels;
 
 class CalculateUsedDiskSpace implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Queueable;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithQueue;
 
     /**
      * The user the disk space should be calculated for.
@@ -44,8 +47,7 @@ class CalculateUsedDiskSpace implements ShouldQueue
      */
     public function handle()
     {
-        $this
-            ->calculateImageDiskSize()
+        $this->calculateImageDiskSize()
             ->calculateTextDiskSize()
             ->calculateUrlDiskSize()
             ->saveTotalSpaceUsed();

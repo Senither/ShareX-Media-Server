@@ -15,7 +15,10 @@ use Spatie\Image\Manipulations;
 
 class GenerateUrlPreview implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Queueable;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithQueue;
 
     /**
      * The URL that the preview should be generated for.

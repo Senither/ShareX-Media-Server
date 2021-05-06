@@ -18,6 +18,16 @@
                     <span class="text-indigo-400 font-semibold pr-2">Extension</span>
                     <span class="overflow-hidden overflow-ellipsis">{{ $text->extension }}</span>
                 </div>
+
+                <div class="flex justify-between">
+                    <span class="text-indigo-400 font-semibold pr-2">Lines</span>
+                    <span class="overflow-hidden overflow-ellipsis">{{ $text->line_count }}</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-indigo-400 font-semibold pr-2">Words</span>
+                    <span class="overflow-hidden overflow-ellipsis">{{ $text->word_count }}</span>
+                </div>
             </div>
         </div>
     @endif

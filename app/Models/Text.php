@@ -82,4 +82,24 @@ class Text extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * Counts the amount of lines the text document contains.
+     *
+     * @return string
+     */
+    public function getLineCountAttribute()
+    {
+        return number_format(count(explode("\n", rtrim($this->content))));
+    }
+
+    /**
+     * Counts the amount of words the text document contains.
+     *
+     * @return string
+     */
+    public function getWordCountAttribute()
+    {
+        return number_format(str_word_count(rtrim($this->content)));
+    }
 }

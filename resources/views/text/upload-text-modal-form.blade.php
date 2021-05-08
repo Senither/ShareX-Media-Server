@@ -9,17 +9,16 @@
         </x-slot>
 
         <x-slot name="content">
-            @if(session()->has('upload-url'))
+            @if (session()->has('upload-url'))
                 <div class="pb-4">
                     <p class="pb-2">
                         The text file has been created successfully, you can copy the link below to share the file with other people.
                     </p>
                     <x-jet-input class="w-full rounded" type="text"
-                        value="{{ session('upload-url') }}"
-                        onfocus="this.select()" autofocus readonly
-                        autocomplete="off" autocorrect="off"
-                        autocapitalize="off" spellcheck="false"
-                    />
+                                 value="{{ session('upload-url') }}"
+                                 onfocus="this.select()" autofocus readonly
+                                 autocomplete="off" autocorrect="off"
+                                 autocapitalize="off" spellcheck="false" />
                 </div>
             @endif
 
@@ -29,37 +28,33 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-input class="w-full rounded" type="text"
-                    wire:model="name"
-                    placeholder="Enter the name of the file here..."
-                />
+                             wire:model="name"
+                             placeholder="Enter the name of the file here..." />
 
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
                 <textarea
-                    class="dark:text-dark-gray-200 border-gray-300 dark:border-dark-gray-600 focus:border-indigo-300 dark:focus:border-dark-gray-600 focus:ring-1 dark:focus:ring-dark-gray-800 dark:bg-dark-gray-800 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                    wire:model="text"
-                    rows="6"
-                    placeholder="Enter the contents of the text snippet here..."
-                ></textarea>
+                          class="dark:text-dark-gray-200 border-gray-300 dark:border-dark-gray-600 focus:border-indigo-300 dark:focus:border-dark-gray-600 focus:ring-1 dark:focus:ring-dark-gray-800 dark:bg-dark-gray-800 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                          wire:model="text"
+                          rows="6"
+                          placeholder="Enter the contents of the text snippet here..."></textarea>
 
                 <x-jet-input-error for="text" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-               <input type="file" class="hidden"
-                    wire:model="file"
-                    x-ref="file"
-                />
+                <input type="file" class="hidden"
+                       wire:model="file"
+                       x-ref="file" />
 
                 <div class="flex items-center">
                     <x-jet-secondary-button
-                        class="mt-2 mr-2"
-                        type="button"
-                        wire:loading.attr="disabled"
-                        x-on:click.prevent="$refs.file.click()"
-                    >
+                                            class="mt-2 mr-2"
+                                            type="button"
+                                            wire:loading.attr="disabled"
+                                            x-on:click.prevent="$refs.file.click()">
                         {{ __('or upload a text file') }}
                     </x-jet-secondary-button>
 
@@ -75,7 +70,7 @@
                 {{ __('Close') }}
             </x-jet-secondary-button>
 
-            @if($name && $text)
+            @if ($name && $text)
                 <x-jet-button class="ml-2" wire:click="save" wire:loading.attr="disabled">
                     {{ __('Save Text') }}
                 </x-jet-button>

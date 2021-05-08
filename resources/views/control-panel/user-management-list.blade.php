@@ -8,9 +8,10 @@
 
     <div class="mt-5 md:mt-0 md:col-span-2 px-4 py-5 bg-white dark:bg-dark-gray-700 dark:text-dark-gray-200 sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
         <div class="col-span-6 flex flex-col max-w-full">
-            @if(session()->has('createdUser'))
+            @if (session()->has('createdUser'))
                 <div class="p-4 mb-4 bg-green-200 dark:bg-green-400 text-gray-800 rounded">
-                    <p>The a user for <span class="font-semibold">{{ session()->get('createdUser')['name'] }}</span>, they can sign in using their email and the generated password.</p>
+                    <p>The a user for <span class="font-semibold">{{ session()->get('createdUser')['name'] }}</span>, they can sign in using their email and
+                        the generated password.</p>
                     <ul class="list-inside list-disc">
                         <li><span class="font-semibold">Email:</span> {{ session()->get('createdUser')['email'] }}</li>
                         <li><span class="font-semibold">Pass:</span> {{ session()->get('createdUser')['password'] }}</li>
@@ -19,13 +20,11 @@
             @endif
             <div class="flex pb-6 space-x-2 justify-between">
                 <div class="flex-1">
-                    <x-jet-input
-                        id="search"
-                        type="text"
-                        class="block w-full placeholder-gray-500 focus:z-10"
-                        wire:model.500ms="search"
-                        placeholder="Search..."
-                    />
+                    <x-jet-input id="search"
+                                 type="text"
+                                 class="block w-full placeholder-gray-500 focus:z-10"
+                                 wire:model.500ms="search"
+                                 placeholder="Search..." />
                 </div>
 
                 <x-jet-button wire:click="$set('displayingCreateNewUser', true)" class="text-xs">
@@ -33,7 +32,7 @@
                 </x-jet-button>
             </div>
 
-            @if($users->isEmpty())
+            @if ($users->isEmpty())
                 <p class="text-center text-gray-700 font-medium">Found no users matching the "{{ $search }}" query.</p>
             @else
                 <div class="flex flex-col w-full pb-8">
@@ -44,9 +43,7 @@
                     </div>
                     <div class="w-full flex flex-col">
                         @foreach ($users as $user)
-                            @livewire('control-panel.user-management-entity', [
-                                'user' => $user
-                            ], key($user->id))
+                            @livewire('control-panel.user-management-entity', ['user' => $user], key($user->id))
                         @endforeach
                     </div>
                 </div>

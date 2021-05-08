@@ -9,7 +9,7 @@
 
     <x-slot name="content">
         <div class="mt-3 max-w-xl text-sm text-gray-600 dark:text-dark-gray-100">
-            @if(request()->user()->theme == null)
+            @if (request()->user()->theme == null)
                 <blockquote class="px-3 py-2 mb-4 bg-gray-300 dark:bg-dark-gray-800 border-l-4 border-gray-500 dark:border-dark-gray-500">
                     {{ __('The default theme is selected, this means that the theme can be changed. via the application control panel.') }}
                 </blockquote>
@@ -17,7 +17,7 @@
 
             <p>
                 {{ __("You're currently viewing the site in :theme mode, you can use the button below to change your prefered site theme.", [
-                    'theme' => $theme
+                    'theme' => $theme,
                 ]) }}
             </p>
 

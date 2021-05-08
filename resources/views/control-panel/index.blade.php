@@ -21,33 +21,30 @@
                     </p>
 
                     <a
-                        x-on:click="active = 'image'"
-                        :class="{
+                       x-on:click="active = 'image'"
+                       :class="{
                             'underline bg-gray-800 dark:bg-dark-gray-700': active == 'image',
                             'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'image'
                         }"
-                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400"
-                    >
+                       class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400">
                         Images
                     </a>
                     <a
-                        x-on:click="active = 'text'"
-                        :class="{
+                       x-on:click="active = 'text'"
+                       :class="{
                             'underline bg-gray-800 dark:bg-dark-gray-700': active == 'text',
                             'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'text'
                         }"
-                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400"
-                    >
+                       class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400">
                         Texts
                     </a>
                     <a
-                        x-on:click="active = 'url'"
-                        :class="{
+                       x-on:click="active = 'url'"
+                       :class="{
                             'underline bg-gray-800 dark:bg-dark-gray-700': active == 'url',
                             'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'url'
                         }"
-                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400"
-                    >
+                       class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-gray-600 dark:text-dark-gray-400">
                         URLs
                     </a>
                 </div>

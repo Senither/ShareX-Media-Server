@@ -11,27 +11,6 @@ use Illuminate\Support\Facades\Storage;
 class RenderImageController extends Controller
 {
     /**
-     * Loads the image with the given name, or fails trying.
-     *
-     * @param  string $name
-     * @return \App\Models\Image
-     */
-    protected function loadImageOrFail($name)
-    {
-        $parts = explode('.', $name);
-
-        $image = Image::withoutGlobalScope(UserScope::class)
-            ->where('name', array_shift($parts))
-            ->firstOrFail();
-
-        if (count($parts) > 0) {
-            abort_unless($parts[0] == $image->extension, 404);
-        }
-
-        return $image;
-    }
-
-    /**
      * Invokes the method automatically when the
      * class is called as a function.
      *
@@ -54,5 +33,26 @@ class RenderImageController extends Controller
         } catch (FileNotFoundException $exception) {
             abort(404);
         }
+    }
+
+    /**
+     * Loads the image with the given name, or fails trying.
+     *
+     * @param  string $name
+     * @return \App\Models\Image
+     */
+    protected function loadImageOrFail($name)
+    {
+        $parts = explode('.', $name);
+
+        $image = Image::withoutGlobalScope(UserScope::class)
+            ->where('name', array_shift($parts))
+            ->firstOrFail();
+
+        if (count($parts) > 0) {
+            abort_unless($parts[0] == $image->extension, 404);
+        }
+
+        return $image;
     }
 }

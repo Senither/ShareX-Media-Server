@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38b9ce44fdf01d418559c0ca997f58e8",
+    "content-hash": "dce19bb8d4ab90bc286c13e9a06e83e5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8713,16 +8713,16 @@
         },
         {
             "name": "tightenco/tlint",
-            "version": "v5.0.16",
+            "version": "v6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/tlint.git",
-                "reference": "5f406e888725ba93a8452826321b5f01f7d7e7b2"
+                "reference": "f9a8335b4bfa53d7b7118c028fc9507b8d39b386"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/tlint/zipball/5f406e888725ba93a8452826321b5f01f7d7e7b2",
-                "reference": "5f406e888725ba93a8452826321b5f01f7d7e7b2",
+                "url": "https://api.github.com/repos/tighten/tlint/zipball/f9a8335b4bfa53d7b7118c028fc9507b8d39b386",
+                "reference": "f9a8335b4bfa53d7b7118c028fc9507b8d39b386",
                 "shasum": ""
             },
             "require": {
@@ -8741,11 +8741,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Tighten\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
+                    "Tighten\\TLint\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -8762,9 +8759,9 @@
             "homepage": "https://github.com/tighten/tlint",
             "support": {
                 "issues": "https://github.com/tighten/tlint/issues",
-                "source": "https://github.com/tighten/tlint/tree/v5.0.16"
+                "source": "https://github.com/tighten/tlint/tree/v6.0.0"
             },
-            "time": "2021-03-26T14:39:01+00:00"
+            "time": "2021-04-23T16:03:55+00:00"
         }
     ],
     "aliases": [],

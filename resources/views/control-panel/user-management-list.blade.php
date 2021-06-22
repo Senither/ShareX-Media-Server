@@ -2,7 +2,7 @@
     <x-jet-section-title>
         <x-slot name="title">{{ __('Manage Users') }}</x-slot>
         <x-slot name="description">
-            {{ __('Manage user details, create new users, view server as specific user, or delete users.') }}
+            {{ __('Manage user details, create new users, impersonate users, or delete users.') }}
         </x-slot>
     </x-jet-section-title>
 

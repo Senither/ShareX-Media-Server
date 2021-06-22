@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <h2 class="font-semibold text-xl leading-tight">
-                {{ __('Your shorten URLs') }}
+                {{ __('Your Shorten URLs') }}
             </h2>
 
             @livewire('url.create-url-modal-form')

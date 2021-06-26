@@ -26,6 +26,7 @@ class FileFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => Str::random(10),
+            'original_name' => $this->faker->name,
             'extension' => 'zip',
             'size' => function () {
                 return \rand(100, 9999999);

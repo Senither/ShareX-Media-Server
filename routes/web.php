@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImposterController;
+use App\Http\Controllers\RenderFileController;
 use App\Http\Controllers\RenderImageController;
 use App\Http\Controllers\RenderTextController;
 use App\Http\Controllers\RenderUrlController;
@@ -29,6 +30,9 @@ Route::get('t/{text}/{raw?}', RenderTextController::class)
 Route::get('u/{url}/{preview?}', RenderUrlController::class)
      ->where(['preview' => 'preview'])
      ->name('view-url');
+Route::get('f/{file}/{raw?}', RenderFileController::class)
+     ->where(['raw' => 'raw'])
+     ->name('view-file');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard.index')->name('dashboard');
@@ -38,12 +42,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('files', 'files.index')->name('files');
 
     Route::get('imposter/leave', [ImposterController::class, 'leave'])
-         ->name('imposter.leave');
+          ->name('imposter.leave');
     Route::get('imposter/{user}', [ImposterController::class, 'join'])
-        ->middleware(SiteAdmin::class)
-        ->name('imposter.join');
+          ->middleware(SiteAdmin::class)
+          ->name('imposter.join');
 
     Route::view('control-panel', 'control-panel.index')
-        ->middleware(SiteAdmin::class)
-        ->name('control-panel');
+          ->middleware(SiteAdmin::class)
+          ->name('control-panel');
 });

@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
                 ->string('name')
                 ->unique()
                 ->index();
+            $table->string('original_name');
             $table->string('extension', 12);
             $table->integer('size')->unsigned();
             $table->string('hash_md5', 32);

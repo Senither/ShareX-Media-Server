@@ -1,12 +1,15 @@
 # PHP & Composer
 /vendor
 /storage/*.key
+/storage/debugbar
 .phpunit.result.cache
+.php-cs-fixer.cache
+.phpstorm.meta.php
+.php_cs.cache
+_ide_*.php
 .env.backup
 .env
-
-# PHP CS
-.php_cs.cache
+.rnd
 
 # NPM & Mix
 /node_modules

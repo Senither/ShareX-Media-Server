@@ -24,7 +24,7 @@
 
             <div class="bg-gray-200 dark:bg-dark-gray-700 bg-opacity-25 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                 @if ($files->isEmpty())
-                    <x-has-no-media :type="'image'" />
+                    <x-has-no-media :type="'files'" />
                 @else
                     @foreach ($files as $file)
                         @livewire('files.file-preview', [

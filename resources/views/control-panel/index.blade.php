@@ -39,15 +39,6 @@
                         Texts
                     </a>
                     <a
-                       x-on:click="active = 'url'"
-                       :class="{
-                            'underline bg-gray-800 dark:bg-dark-gray-700': active == 'url',
-                            'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'url'
-                        }"
-                       class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-dark-gray-400">
-                        URLs
-                    </a>
-                    <a
                        x-on:click="active = 'file'"
                        :class="{
                             'underline bg-gray-800 dark:bg-dark-gray-700': active == 'file',
@@ -55,6 +46,15 @@
                         }"
                        class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-dark-gray-400">
                         Files
+                    </a>
+                    <a
+                       x-on:click="active = 'url'"
+                       :class="{
+                            'underline bg-gray-800 dark:bg-dark-gray-700': active == 'url',
+                            'bg-gray-700 dark:bg-dark-gray-800 hover:bg-gray-500 dark:hover:bg-dark-gray-600': active != 'url'
+                        }"
+                       class="px-3 py-1.5 mx-2 rounded dark:bg-dark-gray-800 text-sm cursor-pointer text-white dark:text-dark-gray-400">
+                        URLs
                     </a>
                 </div>
 
@@ -66,12 +66,12 @@
                     @livewire('control-panel.update-text-settings-form')
                 </div>
 
-                <div x-show="active == 'url'" class="mt-10 sm:mt-0">
-                    @livewire('control-panel.update-url-settings-form')
-                </div>
-
                 <div x-show="active == 'file'" class="mt-10 sm:mt-0">
                     @livewire('control-panel.update-file-settings-form')
+                </div>
+
+                <div x-show="active == 'url'" class="mt-10 sm:mt-0">
+                    @livewire('control-panel.update-url-settings-form')
                 </div>
             </div>
 

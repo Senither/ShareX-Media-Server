@@ -26,6 +26,16 @@ class UploadFileModalForm extends Component
     public $file = null;
 
     /**
+     * Hydrates the component.
+     *
+     * @return void
+     */
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+    }
+
+    /**
      * Handle state changes when the model is toggled.
      *
      * @param  bool $state
@@ -45,6 +55,8 @@ class UploadFileModalForm extends Component
      */
     public function save()
     {
+        $this->resetErrorBag();
+
         if ($this->file) {
             $file = File::createAndSave($this->file);
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\TextController;
 use App\Http\Controllers\Api\UrlController;
@@ -23,11 +24,14 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::resource('images', ImageController::class)
-         ->only(['index', 'show', 'store', 'destroy']);
+          ->only(['index', 'show', 'store', 'destroy']);
 
     Route::resource('texts', TextController::class)
-         ->only(['index', 'show', 'store', 'destroy']);
+          ->only(['index', 'show', 'store', 'destroy']);
 
     Route::resource('urls', UrlController::class)
-         ->only(['index', 'show', 'store', 'destroy']);
+          ->only(['index', 'show', 'store', 'destroy']);
+
+    Route::resource('files', FileController::class)
+          ->only(['index', 'show', 'store', 'destroy']);
 });

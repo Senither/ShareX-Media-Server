@@ -1,5 +1,5 @@
 <div class="pt-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-4 sm:space-x-4">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-5 sm:gap-4">
         <div class="p-6 bg-white dark:bg-dark-gray-800 bg-opacity-25 sm:shadow-xl sm:rounded-lg">
             <div class="flex justify-center items-center space-x-8">
                 <div>
@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <!-- Heroicons : photograph -->
-                <svg class="hidden sm:block h-16 w-16 text-gray-400 dark:text-dark-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                <svg class="h-16 w-16 text-gray-400 dark:text-dark-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round"
                           stroke-linejoin="round"
@@ -33,13 +33,34 @@
                     </div>
                 </div>
                 <!-- Heroicons : document-text -->
-                <svg class="hidden sm:block h-16 w-16 text-gray-400 dark:text-dark-gray-400"
+                <svg class="h-16 w-16 text-gray-400 dark:text-dark-gray-400"
                      fill="none"
                      stroke="currentColor"
                      viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="p-6 bg-white dark:bg-dark-gray-800 bg-opacity-25 sm:shadow-xl sm:rounded-lg">
+            <div class="flex justify-center items-center space-x-8">
+                <div>
+                    <div class="uppercase text-sm text-gray-400 dark:text-dark-gray-400">
+                        Files
+                    </div>
+                    <div class="mt-1 text-5xl font-bold dark:text-dark-gray-200">
+                        {{ number_format($files) }}
+                    </div>
+                </div>
+                <!-- Heroicons : document-duplicate -->
+                <svg class="h-16 w-16 text-gray-400 dark:text-dark-gray-400"
+                     fill="currentColor"
+                     viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z"></path>
+                    <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"></path>
                 </svg>
             </div>
         </div>
@@ -55,7 +76,7 @@
                     </div>
                 </div>
                 <!-- Heroicons : link -->
-                <svg class="hidden sm:block h-16 w-16 text-gray-400 dark:text-dark-gray-400"
+                <svg class="h-16 w-16 text-gray-400 dark:text-dark-gray-400"
                      fill="none"
                      stroke="currentColor"
                      viewBox="0 0 24 24"
@@ -69,7 +90,7 @@
             </div>
         </div>
 
-        <div class="p-6 bg-white dark:bg-dark-gray-800 bg-opacity-25 sm:shadow-xl sm:rounded-lg">
+        <div class="p-6 bg-white dark:bg-dark-gray-800 bg-opacity-25 sm:shadow-xl sm:rounded-lg col-span-2 lg:col-span-1">
             <div class="flex justify-center items-center space-x-8">
                 <div>
                     <div class="uppercase text-sm text-gray-400 dark:text-dark-gray-400">
@@ -77,7 +98,7 @@
                     </div>
                     <div class="mt-1 text-5xl font-bold dark:text-dark-gray-200">
                         {{ $disk['size'] }}
-                        <span class="text-3xl">
+                        <span class="text-xl">
                             {{ $disk['unit'] }}
                         </span>
                     </div>

@@ -21,6 +21,7 @@ trait FileExtensionIcon
         'typescript' => ['ts', 'd.ts'],
         'python' => ['py'],
         'git' => ['git-commit', 'git-rebase', 'ignore'],
+        'zip' => ['zip', 'ear', 'war', 'rar', 'jar', '7z'],
         'settings' => [
             'properties',
             'editorconfig',

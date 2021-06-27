@@ -48,6 +48,7 @@ class CalculateUsedDiskSpace implements ShouldQueue
     public function handle()
     {
         $this->calculateImageDiskSize()
+            ->calculateFileDiskSize()
             ->calculateTextDiskSize()
             ->calculateUrlDiskSize()
             ->saveTotalSpaceUsed();
@@ -79,6 +80,21 @@ class CalculateUsedDiskSpace implements ShouldQueue
                     storage_path('app/images/' . $image->getResourceName($size . 'x' . $size))
                 );
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Calculate the total amount of disk space
+     * used up by files for the given user.
+     *
+     * @return self
+     */
+    protected function calculateFileDiskSize()
+    {
+        foreach ($this->user->files()->cursor() as $file) {
+            $this->totalSize += filesize(storage_path('app/files/' . $file->getResourceName()));
         }
 
         return $this;

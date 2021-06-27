@@ -11,5 +11,7 @@
 
     @livewire('text.text-preview-list')
 
+    @livewire('files.file-preview-list')
+
     @livewire('url.url-preview-list')
 </x-app-layout>

@@ -59,6 +59,16 @@ class User extends Authenticatable
     }
 
     /**
+     * The has many relationship between the user and the files they have uploaded.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function files()
+    {
+        return $this->hasMany(File::class)->withoutGlobalScopes();
+    }
+
+    /**
      * The has many relationship between the user and the texts they have uploaded.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

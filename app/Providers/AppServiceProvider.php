@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\File;
 use App\Models\Image;
 use App\Models\Text;
 use App\Models\Url;
+use App\Observers\FileObserver;
 use App\Observers\ImageObserver;
 use App\Observers\TextObserver;
 use App\Observers\UrlObserver;
@@ -37,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         Image::observe(ImageObserver::class);
         Text::observe(TextObserver::class);
+        File::observe(FileObserver::class);
         Url::observe(UrlObserver::class);
     }
 }

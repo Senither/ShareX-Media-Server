@@ -33,6 +33,11 @@ class SettingsManager
         'urls.ttl_hours' => 0,
         'urls.ttl_minutes' => 0,
         'urls.per_page' => 24,
+
+        'files.ttl_days' => 90,
+        'files.ttl_hours' => 0,
+        'files.ttl_minutes' => 0,
+        'files.per_page' => 24,
     ];
 
     /**

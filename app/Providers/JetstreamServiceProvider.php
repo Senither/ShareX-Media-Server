@@ -41,6 +41,7 @@ class JetstreamServiceProvider extends ServiceProvider
             'image:upload',
             'text:upload',
             'url:upload',
+            'file:upload',
         ]);
 
         Jetstream::permissions([
@@ -56,6 +57,10 @@ class JetstreamServiceProvider extends ServiceProvider
             'url:list',
             'url:upload',
             'url:delete',
+            'file:view',
+            'file:list',
+            'file:upload',
+            'file:delete',
         ]);
     }
 }

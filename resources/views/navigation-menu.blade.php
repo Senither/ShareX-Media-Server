@@ -24,6 +24,10 @@
                         {{ __('Texts') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('files') }}" :active="request()->routeIs('files')">
+                        {{ __('Files') }}
+                    </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('urls') }}" :active="request()->routeIs('urls')">
                         {{ __('URLs') }}
                     </x-jet-nav-link>
@@ -146,6 +150,10 @@
                 {{ __('Texts') }}
             </x-jet-responsive-nav-link>
 
+            <x-jet-responsive-nav-link href="{{ route('files') }}" :active="request()->routeIs('files')">
+                {{ __('Files') }}
+            </x-jet-responsive-nav-link>
+
             <x-jet-responsive-nav-link href="{{ route('urls') }}" :active="request()->routeIs('urls')">
                 {{ __('URLs') }}
             </x-jet-responsive-nav-link>
@@ -236,7 +244,8 @@
                         {{ __('Switch Teams') }}
                     </div>
 
-                    @foreach (request()->user()->allTeams() as $team)
+                    @foreach (request()->user()->allTeams()
+    as $team)
                         <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
                     @endforeach
                 @endif

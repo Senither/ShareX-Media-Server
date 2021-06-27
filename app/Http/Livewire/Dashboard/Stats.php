@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Dashboard;
 
+use App\Models\File;
 use App\Models\Image;
 use App\Models\Text;
 use App\Models\Url;
@@ -43,6 +44,7 @@ class Stats extends Component
             return [
                 'images' => Image::count(),
                 'texts' => Text::count(),
+                'files' => File::count(),
                 'urls' => Url::count(),
             ];
         });

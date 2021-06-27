@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\File;
 use App\Models\Image;
 use App\Models\Text;
 use App\Models\Url;
@@ -55,6 +56,8 @@ class MediaCleanupCommand extends Command
         $this->cleanupTextFiles();
 
         $this->cleanupUrls();
+
+        $this->cleanupFiles();
     }
 
     /**
@@ -117,6 +120,30 @@ class MediaCleanupCommand extends Command
         $this->info('Starting cleanup process for ' . $total . ' shorten URLs!');
 
         $query->delete();
+
+        $this->info('Done!');
+    }
+
+    /**
+     * Cleans up the expired files.
+     *
+     * @return void
+     */
+    protected function cleanupFiles()
+    {
+        $query = File::where('created_at', '<', $this->createTimestampFor('files'));
+        $total = $query->count();
+
+        if ($total == 0) {
+            return $this->warn('No files to cleanup, skipping...');
+        }
+
+        $this->info('Starting cleanup process for ' . $total . ' files!');
+
+        foreach ($query->cursor() as $file) {
+            $file->delete();
+        }
+
 
         $this->info('Done!');
     }

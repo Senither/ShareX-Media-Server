@@ -65,4 +65,23 @@ class File extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * Get the formatted version of the size in with the matching
+     * size unit appended to the end of the size.
+     *
+     * @return string
+     */
+    public function getFormattedSizeAttribute()
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        $bytes = max($this->size, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+
+        $bytes /= pow(1024, $pow);
+
+        return round($bytes, 1) . ' ' . $units[$pow];
+    }
 }

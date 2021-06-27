@@ -18,6 +18,13 @@ class RenderFileController extends Controller
     {
         $file = $this->loadFileOrFail($id);
 
+        if (!$raw) {
+            return view('preview.file', [
+                'file' => $file,
+            ]);
+        }
+
+        // TODO: Download the actual file here...
         return response($file->content);
     }
 

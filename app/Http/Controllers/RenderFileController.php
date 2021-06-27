@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use App\Scopes\UserScope;
+use Illuminate\Support\Facades\Storage;
 
 class RenderFileController extends Controller
 {
@@ -24,8 +25,10 @@ class RenderFileController extends Controller
             ]);
         }
 
-        // TODO: Download the actual file here...
-        return response($file->content);
+        return Storage::download(
+            'files/' . $file->getResourceName(),
+            $file->original_name
+        );
     }
 
     /**

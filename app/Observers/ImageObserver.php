@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Jobs\CalculateUsedDiskSpace;
 use App\Jobs\GenerateImageThumbnail;
 use App\Models\Image;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,9 +19,13 @@ class ImageObserver
      */
     public function created(Image $image)
     {
-        GenerateImageThumbnail::dispatch($image);
+        $queue = [new GenerateImageThumbnail($image)];
 
-        Cache::forget('dashboard.stats::' . request()->user()->id);
+        if (request()->user()) {
+            $queue[] = new CalculateUsedDiskSpace(request()->user());
+        }
+
+        Bus::chain($queue)->dispatch();
     }
 
     /**
@@ -37,8 +42,8 @@ class ImageObserver
             Storage::delete('images/' . $image->getResourceName($size . 'x' . $size));
         }
 
-        Cache::forget('dashboard.stats::' . request()->user()->id);
-
-        CalculateUsedDiskSpace::dispatch(request()->user());
+        if (request()->user()) {
+            CalculateUsedDiskSpace::dispatch(request()->user());
+        }
     }
 }

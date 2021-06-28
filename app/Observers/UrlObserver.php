@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Jobs\CalculateUsedDiskSpace;
 use App\Jobs\GenerateUrlPreview;
 use App\Models\Url;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,9 +19,13 @@ class UrlObserver
      */
     public function created(Url $url)
     {
-        GenerateUrlPreview::dispatch($url);
+        $queue = [new GenerateUrlPreview($url)];
 
-        Cache::forget('dashboard.stats::' . request()->user()->id);
+        if (request()->user()) {
+            $queue[] = new CalculateUsedDiskSpace(request()->user());
+        }
+
+        Bus::chain($queue)->dispatch();
     }
 
     /**
@@ -33,8 +38,8 @@ class UrlObserver
     {
         Storage::delete('urls/' . $url->name . '.jpg');
 
-        Cache::forget('dashboard.stats::' . request()->user()->id);
-
-        CalculateUsedDiskSpace::dispatch(request()->user());
+        if (request()->user()) {
+            CalculateUsedDiskSpace::dispatch(request()->user());
+        }
     }
 }

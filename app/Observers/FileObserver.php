@@ -17,9 +17,9 @@ class FileObserver
      */
     public function created(File $file)
     {
-        CalculateUsedDiskSpace::dispatch(request()->user());
-
-        Cache::forget('dashboard.stats::' . request()->user()->id);
+        if (request()->user()) {
+            CalculateUsedDiskSpace::dispatch(request()->user());
+        }
     }
 
     /**
@@ -32,8 +32,8 @@ class FileObserver
     {
         Storage::delete('files/' . $file->getResourceName());
 
-        Cache::forget('dashboard.stats::' . request()->user()->id);
-
-        CalculateUsedDiskSpace::dispatch(request()->user());
+        if (request()->user()) {
+            CalculateUsedDiskSpace::dispatch(request()->user());
+        }
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Jobs\CalculateUsedDiskSpace;
 use App\Models\Url;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -69,7 +68,5 @@ class GenerateUrlPreview implements ShouldQueue
             ->fit(Manipulations::FIT_CONTAIN, 256, 256)
             ->setScreenshotType('jpeg', 100)
             ->save(storage_path('app/urls/' . $this->model->name . '.jpg'));
-
-        CalculateUsedDiskSpace::dispatch($this->model->owner);
     }
 }

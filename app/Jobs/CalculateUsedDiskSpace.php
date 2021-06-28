@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Cache;
 
 class CalculateUsedDiskSpace implements ShouldQueue
 {
@@ -47,21 +48,13 @@ class CalculateUsedDiskSpace implements ShouldQueue
      */
     public function handle()
     {
-        $this->calculateImageDiskSize()
+        $this
+            ->calculateImageDiskSize()
             ->calculateFileDiskSize()
             ->calculateTextDiskSize()
             ->calculateUrlDiskSize()
-            ->saveTotalSpaceUsed();
-    }
-
-    /**
-     * Saves the calculated total used disk space to the user.
-     *
-     * @return void
-     */
-    protected function saveTotalSpaceUsed()
-    {
-        $this->user->update(['disk_space_used' => $this->totalSize]);
+            ->saveTotalSpaceUsed()
+            ->deleteStatsCache();
     }
 
     /**
@@ -130,5 +123,28 @@ class CalculateUsedDiskSpace implements ShouldQueue
         }
 
         return $this;
+    }
+
+    /**
+     * Saves the calculated total used disk space to the user.
+     *
+     * @return self
+     */
+    protected function saveTotalSpaceUsed()
+    {
+        $this->user->update(['disk_space_used' => $this->totalSize]);
+
+        return $this;
+    }
+
+    /**
+     * clears the cache of the dashboard stats related
+     * to the user the job was run for.
+     *
+     * @return void
+     */
+    protected function deleteStatsCache()
+    {
+        Cache::forget('dashboard.stats::' . $this->user->id);
     }
 }

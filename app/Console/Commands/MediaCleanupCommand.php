@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\CalculateUsedDiskSpace;
 use App\Models\File;
 use App\Models\Image;
 use App\Models\Text;
@@ -33,6 +34,20 @@ class MediaCleanupCommand extends Command
     protected $settings;
 
     /**
+     * The list of models that should be cleaned up, where the key is the
+     *  model itself, and the value is the name/settings key which is
+     * used to determine if records have actually expired.
+     *
+     * @var array
+     */
+    protected $models = [
+        Image::class => 'images',
+        Text::class => 'texts',
+        Url::class => 'urls',
+        File::class => 'files',
+    ];
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -51,101 +66,71 @@ class MediaCleanupCommand extends Command
      */
     public function handle()
     {
-        $this->cleanupImages();
+        $affectedUsers = $this->cleanupExpiredModels();
 
-        $this->cleanupTextFiles();
+        if ($affectedUsers->isEmpty()) {
+            return 0;
+        }
 
-        $this->cleanupUrls();
+        $this->info('');
+        $this->info($affectedUsers->count() . ' users were affected by the cleanup');
+        $this->info('Recalculating used disk space for all affected users');
 
-        $this->cleanupFiles();
+        foreach ($affectedUsers as $user) {
+            CalculateUsedDiskSpace::dispatch($user);
+        }
     }
 
     /**
-     * Cleans up the expired images.
+     * Cleans up expired model records by deleting
+     * them from the database and from the disk.
      *
-     * @return void
+     * @return \Illuminate\Support\Collection
      */
-    protected function cleanupImages()
+    protected function cleanupExpiredModels()
     {
-        $images = Image::where('created_at', '<', $this->createTimestampFor('images'))->get();
+        $affectedUsers = \collect();
 
-        if ($images->isEmpty()) {
-            return $this->warn('No images to cleanup, skipping...');
+        foreach ($this->models as $model => $name) {
+            $this->info('');
+            $this->info('Starting cleanup for ' . $name);
+
+            // Loads the model records that have expired along
+            // with the user that the record belongs to.
+            $items = $model::with('owner')
+                ->where('created_at', '<', $this->createTimestampFor($name))
+                ->get();
+
+            if ($items->isEmpty()) {
+                $this->warn('> Found no ' . $name . ' records to cleanup, skipping...');
+
+                continue;
+            }
+
+            $this->info('> Found ' . $items->count() . ' expired record, starting cleanup process');
+
+            $progress = $this->output->createProgressBar($items->count());
+            $progress->setMessage('Deleting ' . $name . '...');
+            $progress->start();
+
+            // Loops over every expired record, pushing the owner user
+            // instance to the affected users collection, then
+            // deletes the record from the database.
+            foreach ($items as $instance) {
+                $affectedUsers->push($instance->owner);
+
+                $instance->delete();
+
+                $progress->advance();
+            }
+
+            $progress->finish();
+
+            $this->info('');
+            $this->info('> Done!');
         }
 
-        $this->info('Starting cleanup process for ' . $images->count() . ' images!');
-
-        foreach ($images as $image) {
-            $image->delete();
-        }
-
-        $this->info('Done!');
-    }
-
-    /**
-     * Cleans up the expired text files.
-     *
-     * @return void
-     */
-    protected function cleanupTextFiles()
-    {
-        $query = Text::where('created_at', '<', $this->createTimestampFor('texts'));
-        $total = $query->count();
-
-        if ($total == 0) {
-            return $this->warn('No text files to cleanup, skipping...');
-        }
-
-        $this->info('Starting cleanup process for ' . $total . ' text files!');
-
-        $query->delete();
-
-        $this->info('Done!');
-    }
-
-    /**
-     * Cleans up the expired shorten URLs.
-     *
-     * @return void
-     */
-    protected function cleanupUrls()
-    {
-        $query = Url::where('created_at', '<', $this->createTimestampFor('urls'));
-        $total = $query->count();
-
-        if ($total == 0) {
-            return $this->warn('No shorten URLs to cleanup, skipping...');
-        }
-
-        $this->info('Starting cleanup process for ' . $total . ' shorten URLs!');
-
-        $query->delete();
-
-        $this->info('Done!');
-    }
-
-    /**
-     * Cleans up the expired files.
-     *
-     * @return void
-     */
-    protected function cleanupFiles()
-    {
-        $query = File::where('created_at', '<', $this->createTimestampFor('files'));
-        $total = $query->count();
-
-        if ($total == 0) {
-            return $this->warn('No files to cleanup, skipping...');
-        }
-
-        $this->info('Starting cleanup process for ' . $total . ' files!');
-
-        foreach ($query->cursor() as $file) {
-            $file->delete();
-        }
-
-
-        $this->info('Done!');
+        return $affectedUsers->unique();
     }
 
     /**

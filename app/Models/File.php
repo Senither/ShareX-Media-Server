@@ -44,7 +44,7 @@ class File extends Model
         HeaderPreview::class => [
             'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
             'mov', 'avi', 'wmv', 'mp3', 'm4a', 'webm',
-            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
+            'jpg', 'jpeg', 'mpga', 'webp', 'wma', 'pdf',
         ],
     ];
 

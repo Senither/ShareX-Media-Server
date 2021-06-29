@@ -30,8 +30,8 @@ Route::get('t/{text}/{raw?}', RenderTextController::class)
 Route::get('u/{url}/{preview?}', RenderUrlController::class)
      ->where(['preview' => 'preview'])
      ->name('view-url');
-Route::get('f/{file}/{raw?}', RenderFileController::class)
-     ->where(['raw' => 'raw'])
+Route::get('f/{file}/{type?}', RenderFileController::class)
+     ->where(['type' => 'raw|preview'])
      ->name('view-file');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

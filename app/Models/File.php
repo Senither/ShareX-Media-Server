@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Identifier\IdentifierContract;
+use App\Previewable\HeaderPreview;
+use App\Previewable\NullPreview;
 use App\Traits\BelongsToUser;
 use App\Traits\FileExtensionIcon;
 use App\Traits\MediaResource;
@@ -30,6 +32,20 @@ class File extends Model
         'size',
         'hash_md5',
         'hash_sha1',
+    ];
+
+    /**
+     * List of previewable file types, and the class that
+     * handles rendering the given file type.
+     *
+     * @var array
+     */
+    protected $previewableTypes = [
+        HeaderPreview::class => [
+            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
+            'mov', 'avi', 'wmv', 'mp3', 'm4a', 'webm',
+            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
+        ],
     ];
 
     /**
@@ -77,6 +93,36 @@ class File extends Model
         $model->save();
 
         return $model;
+    }
+
+    /**
+     * Checks if the file is previewable.
+     *
+     * @return bool
+     */
+    public function getPreviewableAttribute()
+    {
+        return collect(\array_values($this->previewableTypes))
+            ->flatten()
+            ->contains($this->extension);
+    }
+
+    /**
+     * Create a new previewer instance that can be used to render
+     * the file preview, if the previewer is not found the
+     * default header previewer will be returned instead.
+     *
+     * @return \App\Previewable\FilePreview
+     */
+    public function createPreviewer()
+    {
+        foreach ($this->previewableTypes as $previewer => $types) {
+            if (\in_array($this->extension, $types)) {
+                return new $previewer($this);
+            }
+        }
+
+        return new NullPreview($this);
     }
 
     /**

@@ -15,14 +15,18 @@ class RenderFileController extends Controller
      * @param  string|null $type
      * @return \Illuminate\Http\Response
      */
-    public function __invoke($id, $raw = null)
+    public function __invoke($id, $type = null)
     {
         $file = $this->loadFileOrFail($id);
 
-        if (!$raw) {
+        if (!$type) {
             return view('preview.file', [
                 'file' => $file,
             ]);
+        }
+
+        if (\mb_strtolower($type) == 'preview' && $file->previewable) {
+            return $file->createPreviewer()->render();
         }
 
         return Storage::download(

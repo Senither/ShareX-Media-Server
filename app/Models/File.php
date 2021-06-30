@@ -108,6 +108,23 @@ class File extends Model
     }
 
     /**
+     * Gets the URL that should be used to preview the file, if the
+     * storage link have been setup the file will be linked to
+     * directly, otherwise it will be pointed to a preview
+     * page that attempts to render the page.
+     *
+     * @return string
+     */
+    public function getPreviewUrlAttribute()
+    {
+        if ($this->previewable && \file_exists(\public_path('fr'))) {
+            return url('fr/' . $this->getResourceName());
+        }
+
+        return route('view-file', [$this->name, 'preview', $this->original_name]);
+    }
+
+    /**
      * Create a new previewer instance that can be used to render
      * the file preview, if the previewer is not found the
      * default header previewer will be returned instead.

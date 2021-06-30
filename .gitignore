@@ -15,6 +15,7 @@ _ide_*.php
 /node_modules
 /public/hot
 /public/storage
+/public/fr
 /public/js
 /public/css
 /public/mix-manifest.json

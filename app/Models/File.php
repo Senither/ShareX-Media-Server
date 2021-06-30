@@ -49,6 +49,15 @@ class File extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'preview_url',
+    ];
+
+    /**
      * The name of the route used to view the resource directly.
      *
      * @var string

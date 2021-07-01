@@ -40,7 +40,7 @@ class UploadTextModalForm extends Component
     public $file;
 
     /**
-     * Handle state changes when the model is toggeled.
+     * Handle state changes when the model is toggled.
      *
      * @param  bool $state
      * @return void
@@ -58,7 +58,7 @@ class UploadTextModalForm extends Component
      * Sets the contents of the uploaded file to the text property.
      *
      * @param  \Livewire\TemporaryUploadedFile  $uploadedFile
-     * @return void
+     * @return mixed
      */
     public function updatedFile($uploadedFile)
     {

@@ -21,7 +21,7 @@ class TextController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function index(Request $request)
     {
@@ -49,7 +49,7 @@ class TextController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Text  $text
-     * @return \Illuminate\Http\Response
+     * @return \App\Models\Text
      */
     public function show(Text $text)
     {

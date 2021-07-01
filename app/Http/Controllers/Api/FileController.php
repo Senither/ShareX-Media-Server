@@ -19,7 +19,7 @@ class FileController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Pagination\Paginator
      */
     public function index()
     {
@@ -47,7 +47,7 @@ class FileController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\File  $file
-     * @return \Illuminate\Http\Response
+     * @return \App\Models\File
      */
     public function show(File $file)
     {

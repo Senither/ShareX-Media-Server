@@ -49,7 +49,7 @@ class Text extends Model
      * Creates a new text entry, and stores the uploaded file.
      *
      * @param  \Illuminate\Http\UploadedFile $file
-     * @return \App\Models\Image
+     * @return \App\Models\Text
      */
     public static function createAndSave(UploadedFile $file)
     {

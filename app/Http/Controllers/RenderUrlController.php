@@ -14,7 +14,7 @@ class RenderUrlController extends Controller
      *
      * @param  string $id
      * @param  string|null $preview
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function __invoke($id, $preview = null)
     {
@@ -35,7 +35,7 @@ class RenderUrlController extends Controller
      * Create the preview response.
      *
      * @param  \App\Models\Url $url
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|void
      */
     protected function createPreview($url)
     {

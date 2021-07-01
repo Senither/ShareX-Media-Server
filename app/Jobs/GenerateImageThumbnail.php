@@ -60,7 +60,7 @@ class GenerateImageThumbnail implements ShouldQueue
      * Resizes the image into a fit so it is matches
      * the given size, and saves for the user.
      *
-     * @param  \Intervention\Image\Facades\Image $generator
+     * @param  \Intervention\Image\Image $generator
      * @param  int $size
      * @return void
      */

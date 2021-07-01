@@ -16,6 +16,7 @@ class HasNoMedia extends Component
     /**
      * Create a new component instance.
      *
+     * @param string $type
      * @return void
      */
     public function __construct($type)

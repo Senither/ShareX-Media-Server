@@ -40,7 +40,7 @@ class Url extends Model
      * Creates a new url entry, and stores url
      *
      * @param  string $url
-     * @return \App\Models\Image
+     * @return \App\Models\Url
      */
     public static function createAndSave(string $url)
     {

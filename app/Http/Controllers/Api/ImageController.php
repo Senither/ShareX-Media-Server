@@ -21,7 +21,7 @@ class ImageController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Pagination\Paginator
      */
     public function index(Request $request)
     {
@@ -49,7 +49,7 @@ class ImageController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
+     * @return \App\Models\Image
      */
     public function show(Image $image)
     {

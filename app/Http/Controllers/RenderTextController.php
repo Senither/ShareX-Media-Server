@@ -12,8 +12,8 @@ class RenderTextController extends Controller
      * Handle the incoming request.
      *
      * @param  string $id
-     * @param  string|null $type
-     * @return \Illuminate\Http\Response
+     * @param  string|null $raw
+     * @return \Illuminate\Http\Response|\Illuminate\View\View
      */
     public function __invoke($id, $raw = null)
     {

@@ -13,7 +13,7 @@ class RenderFileController extends Controller
      *
      * @param  string $id
      * @param  string|null $type
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View|\Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function __invoke($id, $type = null)
     {

@@ -58,7 +58,7 @@ class UploadImageModalForm extends Component
     /**
      * Handles uploading and saving the image.
      *
-     * @return
+     * @return void
      */
     public function save()
     {

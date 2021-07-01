@@ -51,7 +51,7 @@ class UploadFileModalForm extends Component
     /**
      * Handles uploading and saving the file.
      *
-     * @return
+     * @return void
      */
     public function save()
     {

@@ -34,6 +34,7 @@ class CalculateUsedDiskSpace implements ShouldQueue
     /**
      * Create a new job instance.
      *
+     * @param \App\Models\User $user
      * @return void
      */
     public function __construct($user)

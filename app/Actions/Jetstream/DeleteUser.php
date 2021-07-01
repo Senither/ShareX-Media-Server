@@ -25,6 +25,7 @@ class DeleteUser implements DeletesUsers
     /**
      * Delete the user media resource directory.
      *
+     * @param  mixed   $user
      * @param  string  $name
      * @return void
      */

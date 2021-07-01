@@ -7,6 +7,11 @@ use Illuminate\Contracts\Validation\Validator;
 
 class PlainTextValidationException extends Exception
 {
+    /**
+     * The validator instance.
+     *
+     * @var \Illuminate\Contracts\Validation\Validator
+     */
     private $validator;
 
     /**

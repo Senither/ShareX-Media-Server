@@ -8,6 +8,8 @@ trait MediaResource
 {
     /**
      * Initializes the media resource trait.
+     *
+     * @return void
      */
     public function initializeMediaResource()
     {

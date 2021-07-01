@@ -33,6 +33,8 @@ trait FileExtensionIcon
 
     /**
      * Initializes the file extension icon resource trait.
+     *
+     * @return void
      */
     public function initializeFileExtensionIcon()
     {

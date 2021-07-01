@@ -80,18 +80,11 @@ class File extends Model
      */
     public static function createAndSave(UploadedFile $file)
     {
-        $name = $file->getClientOriginalName();
-        $parts = explode('.', $name);
-
-        if (count($parts) > 1) {
-            array_shift($parts);
-        }
-
         $model = new self([
             'user_id' => auth()->user()->id,
             'name' => app(IdentifierContract::class)->generate(),
-            'original_name' => $name,
-            'extension' => strtolower(join('.', $parts)),
+            'original_name' => $file->getClientOriginalName(),
+            'extension' => $file->getClientOriginalExtension(),
             'size' => $file->getSize(),
             'hash_md5' => \md5_file($file->getRealPath()),
             'hash_sha1' => \sha1_file($file->getRealPath()),

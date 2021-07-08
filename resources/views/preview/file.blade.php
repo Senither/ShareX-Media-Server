@@ -18,7 +18,7 @@
 <body class="h-screen flex items-center justify-center bg-gray-900 text-gray-50">
 
     <div class="flex flex-col">
-        <div class="flex bg-gray-700 rounded-md shadow-lg">
+        <div class="flex bg-gray-700 rounded-md shadow-lg overflow-hidden">
             <div class="hidden sm:block p-4">
                 <img
                      class="w-32 h-32"
@@ -27,7 +27,8 @@
                      alt="{{ $file->original_name }}"
                      onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/file.svg') }}'">
             </div>
-            <div class="pl-6 sm:pl-0 py-4 pr-6 justify-self-center">
+
+            <div class="pl-6 sm:pl-0 py-4 pr-6 z-10 justify-self-center">
                 <h1 class="text-lg leading-6 font-semibold">{{ $file->original_name }}</h1>
                 <div class="pt-3 flex flex-col">
                     <p class="text-gray-400 font-mono break-all">
@@ -45,6 +46,17 @@
                         <br class="sm:hidden">
                         {{ $file->hash_sha1 }}
                     </p>
+                </div>
+            </div>
+
+            <div class="relative z-0 flex items-center text-gray-600 opacity-10">
+                <div class="absolute w-72 h-72 -right-12">
+                    <img
+                         class="transform rotate-45"
+                         loading="lazy"
+                         src="{{ asset('vendor/vscode-material-icon-theme/icons/' . $file->file_icon . '.svg') }}"
+                         alt="{{ $file->original_name }}"
+                         onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/file.svg') }}'">
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                  width="256"
                  src="{{ asset('vendor/vscode-material-icon-theme/icons/' . $file->file_icon . '.svg') }}"
                  alt="{{ $file->original_name }}"
-                 onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/url.svg') }}'">
+                 onerror="this.onerror=null; this.src='{{ asset('vendor/vscode-material-icon-theme/icons/file.svg') }}'">
 
             <p class="pt-2 text-xs dark:text-dark-gray-200 overflow-hidden overflow-ellipsis">{{ $file->original_name }}</p>
         </div>

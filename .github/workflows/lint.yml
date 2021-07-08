@@ -17,7 +17,7 @@ jobs:
     continue-on-error: false
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -32,3 +32,25 @@ jobs:
 
       - name: Run Tlint
         run: vendor/bin/tlint
+
+  phpstan:
+    name: PHP Stan
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          tools: composer:v2
+          coverage: none
+
+      - name: Install Dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Run PHP Stan
+        run: vendor/bin/phpstan analyse --verbose

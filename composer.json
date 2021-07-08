@@ -30,6 +30,7 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
+        "nunomaduro/larastan": "^0.7.10",
         "phpunit/phpunit": "^9.3.3",
         "tightenco/tlint": "^6.0"
     },

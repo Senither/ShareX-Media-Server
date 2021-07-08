@@ -42,7 +42,7 @@ class RenderUrlController extends Controller
         $path = 'urls/' . $url->name . '.jpg';
 
         if (!Storage::exists($path)) {
-            return abort(404);
+            abort(404);
         }
 
         return response(Storage::get($path))

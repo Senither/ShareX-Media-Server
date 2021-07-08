@@ -4,6 +4,10 @@ namespace App\Traits;
 
 use Illuminate\Support\Arr;
 
+/**
+ * @property string $extension
+ * @property string|null $resourceExtensions
+ */
 trait MediaResource
 {
     /**

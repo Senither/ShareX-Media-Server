@@ -38,7 +38,7 @@ class MediaCleanupCommand extends Command
      *  model itself, and the value is the name/settings key which is
      * used to determine if records have actually expired.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $models = [
         Image::class => 'images',
@@ -79,6 +79,8 @@ class MediaCleanupCommand extends Command
         foreach ($affectedUsers as $user) {
             CalculateUsedDiskSpace::dispatch($user);
         }
+
+        return 0;
     }
 
     /**

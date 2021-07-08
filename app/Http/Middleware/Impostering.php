@@ -23,7 +23,7 @@ class Impostering
         }
 
         if (Str::startsWith($request->route()->uri(), 'user/')) {
-            return abort(403, 'You cant view user profile pages while impersonating a user.');
+            abort(403, 'You cant view user profile pages while impersonating a user.');
         }
 
         $imposter = User::find(session('imposter_id'));

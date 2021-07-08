@@ -78,7 +78,7 @@ class UpdateGeneralSiteSettingsForm extends Component
      */
     public function incrementDomains()
     {
-        $this->domains[] .= '';
+        $this->domains[] = '';
     }
 
     /**

@@ -15,7 +15,7 @@ class HeaderPreview extends FilePreview
     public function render()
     {
         return response(Storage::get('files/' . $this->file->getResourceName()))
-            ->header('Content-Length', $this->file->size)
+            ->header('Content-Length', (string) $this->file->size)
             ->header('Accept-Ranges', 'bytes')
             ->header(
                 'Content-Type',

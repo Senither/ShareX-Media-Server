@@ -71,7 +71,8 @@ class Url extends Model
     {
         $url = route($this->resourceViewRoute, $this);
 
-        $domain = collect(app('settings')->get('app.domains'), url('/'))
+        $domain = collect(app('settings')->get('app.domains'))
+            ->add(url('/'))
             ->sort(fn ($first, $second) => strlen($first) > strlen($second))
             ->flatten()
             ->get(0);

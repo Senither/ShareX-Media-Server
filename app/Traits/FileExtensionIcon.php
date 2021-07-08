@@ -22,6 +22,17 @@ trait FileExtensionIcon
         'python' => ['py'],
         'git' => ['git-commit', 'git-rebase', 'ignore'],
         'zip' => ['zip', 'ear', 'war', 'rar', 'jar', '7z'],
+        'video' => ['mp4', 'webm', 'mkv', 'flv', 'vob', 'ogv', 'ogg', 'avi', 'mov', 'wmv'],
+        'audio' => [
+            '3gp', 'aa', 'aac', 'aax', 'act',
+            'aif', 'ala', 'amr', 'ape', 'au',
+            'awb', 'dss', 'dvf', 'fla', 'gsm',
+            'ikl', 'ivs', 'm4a', 'm4b', 'm4p',
+            'mmf', 'mp3', 'mpc', 'msv', 'nmf',
+            'opu', 'ra', 'raw', 'rf6', 'sln',
+            'tta', 'voc', 'vox', 'wav', 'wma',
+            'wv', 'web', '8sv', 'cda',
+        ],
         'settings' => [
             'properties',
             'editorconfig',

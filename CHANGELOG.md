@@ -2,6 +2,28 @@
 
 All notable changes to **ShareX Media Server** will be documented in this file.
 
+## v1.8 - 2021-07-11
+
+* Added support for previewing files.
+    - Added icons for video and audio file previews.
+    - Added background icon to file previews.
+    - Added preview URL to API responses for files.
+    - Added support for previewing PDF files.
+    - Added support for previewing archive files (ZIP and Jar files).
+    - Added support for accessing files directly
+        - This requires that you setup the storage link, this can be done by running `php artisan storage:link`.
+    - Fixed default file icon showing the correct icon.
+    - Fixed file previews working on extra small devices.
+* Changed calculating used disk space job.
+    - The job is now scheduled anytime any files are uploaded or deleted, along with when files expire and are removed from the media server.
+* Fixed text upload form setting file extension correctly for some files.
+* Fixed file uploads setting file extension correctly for some files.
+* Fixed some spelling mistakes.
+* Changed 2FA QR code to make it easier to scan in dark mode.
+* Refactored code to follow default [Larastan](https://github.com/nunomaduro/larastan) rules.
+    - A GitHub workflow was also created to ensure all code in the future also follows the rules.
+* Upgraded Laravel to 8.49.2 along with other PHP and Node dependencies.
+
 ## v1.7 - 2021-06-27
 
 * Added support for uploading generic files was added.

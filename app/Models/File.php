@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Identifier\IdentifierContract;
 use App\Previewable\HeaderPreview;
 use App\Previewable\NullPreview;
+use App\Previewable\ZipArchivePreview;
 use App\Traits\BelongsToUser;
 use App\Traits\FileExtensionIcon;
 use App\Traits\MediaResource;
@@ -46,6 +47,7 @@ class File extends Model
             'mov', 'avi', 'wmv', 'mp3', 'm4a', 'webm',
             'jpg', 'jpeg', 'mpga', 'webp', 'wma', 'pdf',
         ],
+        ZipArchivePreview::class => ['zip', 'jar'],
     ];
 
     /**
@@ -119,11 +121,7 @@ class File extends Model
      */
     public function getPreviewUrlAttribute()
     {
-        if ($this->previewable && \file_exists(\public_path('fr'))) {
-            return url('fr/' . $this->getResourceName());
-        }
-
-        return route('view-file', [$this->name, 'preview', $this->original_name]);
+        return $this->createPreviewer()->url();
     }
 
     /**
@@ -162,14 +160,8 @@ class File extends Model
      */
     public function getFormattedSizeAttribute()
     {
-        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+        $size = \convertByteToHuman($this->size);
 
-        $bytes = max($this->size, 0);
-        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow = min($pow, count($units) - 1);
-
-        $bytes /= pow(1024, $pow);
-
-        return round($bytes, 1) . ' ' . $units[$pow];
+        return $size['size'] . ' ' . $size['unit'];
     }
 }

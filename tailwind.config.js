@@ -29,6 +29,9 @@ module.exports = {
                     900: '#1e1e28',
                 },
             },
+            screens: {
+                'xs': '400px',
+            },
         },
     },
 

@@ -24,6 +24,20 @@ abstract class FilePreview
     }
 
     /**
+     * Creates the URL that should be used to access the preview of the file.
+     *
+     * @return string
+     */
+    public function url()
+    {
+        if ($this->file->previewable && \file_exists(\public_path('fr'))) {
+            return url('fr/' . $this->file->getResourceName());
+        }
+
+        return route('view-file', [$this->file->name, 'preview', $this->file->original_name]);
+    }
+
+    /**
      * Render the file preview.
      *
      * @return mixed

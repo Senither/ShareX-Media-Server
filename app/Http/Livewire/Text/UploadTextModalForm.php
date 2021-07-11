@@ -93,15 +93,13 @@ class UploadTextModalForm extends Component
         ]);
 
         $parts = explode('.', $this->name);
-        if (count($parts) > 1) {
-            array_shift($parts);
-        }
+        $extension = count($parts) > 1 ? \array_pop($parts) : 'txt';
 
         $text = Text::create([
             'user_id' => auth()->user()->id,
             'name' => app(IdentifierContract::class)->generate(),
             'original_name' => $this->name,
-            'extension' => strtolower(join('.', $parts)),
+            'extension' => $extension,
             'content' => $this->text,
         ]);
 
